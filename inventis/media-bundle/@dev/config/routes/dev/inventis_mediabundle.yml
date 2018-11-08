@@ -1,0 +1,4 @@
+inventis_mediabundle_feature_routing:
+    resource: "@InventisMediaBundle/Features/Controller/"
+    type: annotation
+    prefix: /webadmin/mediabundle

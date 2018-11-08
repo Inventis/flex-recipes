@@ -1,0 +1,9 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\MediaBundle\\InventisMediaBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": ["media"]
+}
