@@ -1,0 +1,12 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\TranslationBundle\\InventisTranslationBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "bin/": "%BIN_DIR%/"
+  },
+  "composer-scripts": {
+    "bash bin/install-translation-bundle-config.sh": "script"
+  },
+  "aliases": ["translations"]
+}
