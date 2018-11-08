@@ -1,0 +1,12 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\BricksBundle\\InventisBricksBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "composer-scripts": {
+    "docker/console doctrine:schema:create": "script"
+  },
+  "aliases": ["bricks"]
+}
