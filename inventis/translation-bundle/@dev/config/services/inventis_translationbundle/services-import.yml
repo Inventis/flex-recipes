@@ -1,0 +1,93 @@
+services:
+    inventis_translation.translation_catalogue_file_info_determiner:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileInfoDeterminer
+
+    inventis_translation.translation_catalogue_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\Catalogue\TranslationCatalogueImporter
+        arguments:
+            - '@inventis_translation.doctrine_translation_storage_updater'
+
+    inventis_translation.translation_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\NullTranslationImporter
+
+    inventis_translation.translation_ods_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@inventis_translation.php_spreadsheet_file_loader.ods'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'ods'
+            - '@inventis_translation.translation_ods_catalogue_file_importer.inner'
+
+    inventis_translation.translation_xlsx_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@inventis_translation.php_spreadsheet_file_loader.xlsx'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'xlsx'
+            - '@inventis_translation.translation_xlsx_catalogue_file_importer.inner'
+
+    inventis_translation.translation_po_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@translation.loader.po'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'po'
+            - '@inventis_translation.translation_po_catalogue_file_importer.inner'
+
+    inventis_translation.translation_mo_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@translation.loader.mo'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'mo'
+            - '@inventis_translation.translation_mo_catalogue_file_importer.inner'
+
+    inventis_translation.translation_xliff_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@translation.loader.xliff'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'xliff'
+            - '@inventis_translation.translation_xliff_catalogue_file_importer.inner'
+
+    inventis_translation.translation_qt_catalogue_file_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationCatalogueFileImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@translation.loader.qt'
+            - '@inventis_translation.translation_catalogue_file_info_determiner'
+            - '@inventis_translation.translation_catalogue_importer'
+            - 'ts'
+            - '@inventis_translation.translation_qt_catalogue_file_importer.inner'
+
+    inventis_translation.translation_zip_importer:
+        class: Inventis\Bundle\TranslationBundle\Import\TranslationZipImporter
+        decorates: inventis_translation.translation_importer
+        arguments:
+            - '@inventis_translation.translation_zip_importer.inner'
+            - '@filesystem'
+            - '@inventis_translation.translation_zip_importer.inner'
+
+    inventis_translation.php_spreadsheet_file_loader.ods:
+        class: Inventis\Bundle\TranslationBundle\Import\PhpSpreadsheetFileLoader
+        tags:
+            - {name: translation.loader, alias: ods}
+        arguments:
+            - Ods
+
+    inventis_translation.php_spreadsheet_file_loader.xlsx:
+        class: Inventis\Bundle\TranslationBundle\Import\PhpSpreadsheetFileLoader
+        tags:
+            - {name: translation.loader, alias: xlsx}
+        arguments:
+            - Xlsx

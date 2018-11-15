@@ -1,0 +1,58 @@
+imports:
+- { resource: ./inventis_mediabundle/brickbuilders.yml }
+services:
+    inventis.media.form.media_type_extention:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\DynamicTypeExtension
+        public: false
+        factory: ['@inventis.bricks.form.dynamic_form_type_extention.factory', 'createFormTypeExtension']
+        arguments: [Inventis\Bundle\MediaBundle\Form\MediaType]
+        tags:
+        - { name: form.type_extension, extended_type: Inventis\Bundle\MediaBundle\Form\MediaType }
+    #
+    #    inventis.media.form.brick_extension.auto_wire_strategy.media:
+    #        class: Inventis\Bundle\MediaBundle\Form\Brick\AutoWire\MediaStrategy
+    #        tags:
+    #            - {name: inventis.bricks.brick_extension.auto_wire, types: "media,field"}
+
+    inventis.media.form.brick_builder_guesser.media_preview:
+        class: Inventis\Bundle\MediaBundle\Form\Brick\BuilderGuesser\MediaPreviewBuilderGuesser
+        arguments:
+        - '@inventis.bricks.builder.config_builder_factory'
+        tags:
+        # we register type specific builder guessers in the 100 range they are preferred over generics
+        - {name: inventis.bricks.brick_extension.builder_guesser, priority: 100}
+
+    inventis.media.form.brick_builder_guesser.media_file:
+        class: Inventis\Bundle\MediaBundle\Form\Brick\BuilderGuesser\MediaFileBuilderGuesser
+        arguments:
+        - '@inventis.bricks.builder.config_builder_factory'
+        tags:
+        # we register type specific builder guessers in the 100 range they are preferred over generics
+        - {name: inventis.bricks.brick_extension.builder_guesser, priority: 100}
+
+    inventis.media.context_formats_provider:
+        class: Inventis\Bundle\MediaBundle\Format\SonataContextFormatProvider
+        arguments:
+        - []
+
+    inventis.media.media_serialization_handler:
+        class: Inventis\Bundle\MediaBundle\Serialize\BricksMediaSerializationHandler
+        arguments:
+        - '@sonata.media.pool'
+        tags:
+        - {name: jms_serializer.subscribing_handler}
+
+    inventis.media.default_render_strategy.gallery_has_media.grid_storage_factory:
+        class: Inventis\Bundle\BricksBundle\Grid\DefaultRenderStrategy\RulerZFlexibleGridStorageFactory
+        lazy: true
+        arguments:
+        - '@doctrine'
+        - '@inventis.bricks.grid.default_render_strategy.request_query_builder_configurator'
+        - '@inventis.bricks.grid.default_render_strategy.query_builder_configurator'
+        - '@inventis.bricks.grid.default_render_strategy.serialized_query_result_rows_builder'
+        - '@inventis.bricks.grid.default_render_strategy.auto_join_factory'
+        tags:
+        -
+            name: 'inventis.bricks.grid.storage_factory'
+            entityClass: 'Inventis\Bundle\MediaBundle\Entity\GalleryHasMedia'
+

@@ -1,0 +1,71 @@
+services:
+    inventis_translation.php_spreadsheet_file_dumper.ods:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\PhpSpreadsheetFileDumper
+        tags:
+            - {name: translation.dumper, alias: ods}
+        arguments:
+            - Ods
+            - ods
+
+    inventis_translation.php_spreadsheet_file_dumper.xlsx:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\PhpSpreadsheetFileDumper
+        tags:
+            - {name: translation.dumper, alias: xlsx}
+        arguments:
+            - Xlsx
+            - xlsx
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.ods:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - ods
+            - '@inventis_translation.php_spreadsheet_file_dumper.ods'
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.xlsx:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - xlsx
+            - '@inventis_translation.php_spreadsheet_file_dumper.xlsx'
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.po:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - 'po'
+            - '@translation.dumper.po'
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.mo:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - 'mo'
+            - '@translation.dumper.mo'
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.xliff:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - 'xlf'
+            - '@translation.dumper.xliff'
+
+    inventis_translation.translation_catalogue_file_dumping_exporter.qt:
+        class: Inventis\Bundle\TranslationBundle\Export\FileExport\TranslationCatalogueFileDumpingExporter
+        arguments:
+            - 'ts'
+            - '@translation.dumper.qt'
+
+    inventis_translation.exporter_selector:
+        class: Inventis\Bundle\TranslationBundle\Export\ExporterSelection\TranslationCatalogueFileExporterMapSelector
+        arguments:
+            -
+                ods: '@inventis_translation.translation_catalogue_file_dumping_exporter.ods'
+                xlsx: '@inventis_translation.translation_catalogue_file_dumping_exporter.xlsx'
+                po: '@inventis_translation.translation_catalogue_file_dumping_exporter.po'
+                mo: '@inventis_translation.translation_catalogue_file_dumping_exporter.mo'
+                xliff: '@inventis_translation.translation_catalogue_file_dumping_exporter.xliff'
+                qt: '@inventis_translation.translation_catalogue_file_dumping_exporter.qt'
+
+    inventis_translation.translation_exporter:
+        class: Inventis\Bundle\TranslationBundle\Export\TranslationExporter
+        public: true
+        arguments:
+            - '@inventis_translation.locale_list_provider'
+            - '@inventis_translation.cached_doctrine_message_catalogue'
+            - '@inventis_translation.exporter_selector'

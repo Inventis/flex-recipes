@@ -1,0 +1,7 @@
+services:
+    inventis_translation.list_translation_keys_command:
+        class: Inventis\Bundle\TranslationBundle\Command\ListTranslationKeysCommand
+        arguments:
+            - '@inventis_translation.key_list_provider'
+        tags:
+            - { name: console.command }

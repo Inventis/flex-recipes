@@ -1,0 +1,156 @@
+services:
+# form auto wiring
+    inventis.bricks.form.brick_extension.auto_wire_strategy.default:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\StrategyChain
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire_container, type: ~}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.brick:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\BrickStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "brick,label"}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.label_aware:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\LabelAwareStrategy
+        arguments: ['@inventis.bricks.form.brick_extension.auto_wire.view_parser.label']
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: label}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.label:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\LabelStrategy
+        arguments: ['@inventis.bricks.form.brick_extension.auto_wire.view_parser.label']
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: label}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.button:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\ButtonStrategy
+        arguments: ['@inventis.bricks.form.brick_extension.auto_wire.view_parser.label']
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: button}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.field:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\FieldStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: field}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.input:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\InputStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: field}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.select:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\SelectStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "choices"}
+
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.checkable:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\CheckableStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: field}
+
+    inventis.bricks.form.brick_extension.choice_list.data_provider_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\ChoiceList\ChoiceListDataProviderFactory
+        arguments: ['@property_accessor']
+    inventis.bricks.form.brick_extension.auto_wire_strategy.item_list:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\ItemListStrategy
+        arguments:
+            - '@inventis.bricks.form.brick_extension.choice_list.data_provider_factory'
+            - '@inventis.bricks.entity.metadata_provider'
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "field,choices"}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.event_subscriber:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\EventSubscriberStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: brick}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.name_aware:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\NameAwareStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "field"}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.tab_panel:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\TabPanelStrategy
+        arguments:
+            - '%inventis.bricks.supported_locales%'
+            - '@inventis.bricks.builder.form.entity_factory_aggregate'
+            - '@doctrine'
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "collection"}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.language_panel:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\LanguagePanelStrategy
+        arguments: ['@property_accessor']
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "language"}
+
+    inventis.bricks.form.brick_extension.auto_wire_strategy.title_aware:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\AutoWire\TitleAwareStrategy
+        arguments: ['@inventis.bricks.form.brick_extension.auto_wire.view_parser.label']
+        tags:
+            - {name: inventis.bricks.brick_extension.auto_wire, types: "label,title"}
+
+#auto-wire view parsers
+    inventis.bricks.form.brick_extension.auto_wire.view_parser.label:
+        class: Inventis\Bundle\BricksBundle\Form\Parser\LabelValueParser
+    inventis.bricks.form_extension.brick.auto_wire.view_parser.callable_parser_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Parser\CallableParserFactory
+    inventis_bricks.form_extension.brick.auto_wire.view_parser.property_accessor_parser_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Parser\PropertyAccessorParserFactory
+        arguments: ['@property_accessor']
+    inventis.bricks.form_extension.brick.auto_wire.view_parser.dynamic_value_parser.factory:
+        class: Inventis\Bundle\BricksBundle\Form\Parser\DynamicValueParserChainFactory
+        arguments:
+            - '@inventis.bricks.form_extension.brick.auto_wire.view_parser.callable_parser_factory'
+            - '@inventis_bricks.form_extension.brick.auto_wire.view_parser.property_accessor_parser_factory'
+    inventis.bricks.form_extension.brick.auto_wire.view_parser.dynamic_label_parser:
+        class: Inventis\Bundle\BricksBundle\Form\Parser\ValueParserChain
+        factory: ['@inventis.bricks.form_extension.brick.auto_wire.view_parser.dynamic_value_parser.factory', 'createParser']
+        arguments: ['label_parser']
+        calls:
+            - [addParsers, ['@inventis.bricks.form.brick_extension.auto_wire.view_parser.label']]
+
+# brick class guessers
+    inventis.bricks.form.brick_extension.class_guesser_strategy.default:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\ClassGuesser\StrategyPriorityChain
+        tags:
+            - {name: inventis.bricks.brick_extension.class_guesser_container}
+
+    inventis.bricks.form.brick_extension.class_guesser.map:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\ClassGuesser\MappingStrategy
+        tags:
+            - {name: inventis.bricks.brick_extension.class_guesser, priority: 0}
+# brick builder guessers
+    inventis.bricks.form.brick_extension.builder_guesser_strategy.default:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\BuilderGuesser\StrategyPriorityChain
+        tags:
+            - {name: inventis.bricks.brick_extension.builder_guesser_container}
+
+    inventis.bricks.form.brick_extension.builder_guesser.map:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\BuilderGuesser\FieldBuilderGuesser
+        arguments:
+            - '@inventis.bricks.builder.config_builder_factory'
+        tags:
+            - {name: inventis.bricks.brick_extension.builder_guesser, priority: 0}
+# brick extension builders
+    inventis.bricks.form.brick_extension.brick_builder_strategy.default:
+            class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\Builder\BuilderStrategyPriorityChain
+            tags:
+                - {name: inventis.bricks.brick_extension.brick_builder_container}
+
+    inventis.bricks.form.brick_extension.brick_builder.array_builder:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\Builder\ArrayBuilderBuilderStrategy
+        arguments:
+            - '@inventis.bricks.setup.factory'
+            - '@inventis.bricks.form.brick_extension.class_guesser_strategy.default'
+        tags:
+            - {name: inventis.bricks.brick_extension.brick_builder, priority: -1}
+
+    inventis.bricks.form.brick_extension.brick_builder.config_builder:
+        class: Inventis\Bundle\BricksBundle\Form\Extension\Brick\Builder\ConfigBuilderBuilderStrategy
+        arguments:
+            - '@inventis.bricks.builder.config_builder_factory'
+            - '@inventis.bricks.form.brick_extension.builder_guesser_strategy.default'
+        tags:
+            - {name: inventis.bricks.brick_extension.brick_builder, priority: 0}

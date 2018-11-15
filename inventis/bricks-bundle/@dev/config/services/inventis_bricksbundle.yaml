@@ -1,0 +1,139 @@
+imports:
+- { resource: ./inventis_bricksbundle/autowire.yml }
+- { resource: ./inventis_bricksbundle/brickbuilders.yml }
+- { resource: ./inventis_bricksbundle/formextensions.yml }
+
+services:
+    inventis.bricks.route_path_resolver:
+        class: Inventis\Bundle\BricksBundle\Routing\RoutePathResolver
+        public: true
+        arguments:
+        - '@router.default'
+        -
+            cache_dir: '%kernel.cache_dir%'
+            debug: '%kernel.debug%'
+
+    inventis.bricks.setup.array_merger:
+        class: Inventis\Bundle\BricksBundle\Builder\ArrayBuilder\ArrayMerger
+        public: true
+    inventis.bricks.setup.factory:
+        class: Inventis\Bundle\BricksBundle\Builder\ArrayBuilder\ArrayFactory
+        public: true
+        arguments: ['@inventis.bricks.setup.array_merger', '@inventis.bricks.brick_setup.loader', '@file_locator']
+        calls:
+        - [setManager, ['@inventis.bricks.manager']]
+
+    inventis.bricks.manager:
+        class: Inventis\Bundle\BricksBundle\Brick\Manager
+        public: true
+        calls:
+        - [setFactory, ['@inventis.bricks.setup.factory']]
+        - [setContainer, ['@service_container']]
+
+    inventis.bricks.brick_setup.resolver:
+        class: Inventis\Bundle\BricksBundle\Builder\ArrayBuilder\LoaderResolver
+        public: true
+
+    inventis.bricks.brick_setup.loader:
+        class: Inventis\Bundle\BricksBundle\Builder\ArrayBuilder\DelegatingLoader
+        public: true
+        arguments: ['@inventis.bricks.brick_setup.resolver']
+
+    inventis.bricks.brick_setup.array_loader:
+        class: Inventis\Bundle\BricksBundle\Builder\ArrayBuilder\ArrayLoader
+        arguments: ['@file_locator']
+        public: true
+        tags:
+        - {name: inventis.bricks.setup_loader}
+
+    inventis.bricks.form.data_formatter:
+        class: Inventis\Bundle\BricksBundle\Form\JmsSerializableDataFormatter
+        arguments: ['@jms_serializer']
+        public: true
+
+    #serialization
+    inventis.bricks.form_view_serialization_handler:
+        class: Inventis\Bundle\BricksBundle\Serialize\FormViewHandler
+        tags:
+        - {name: jms_serializer.subscribing_handler}
+
+    inventis.bricks.form_error_iterator_serialization_handler:
+        class: Inventis\Bundle\BricksBundle\Serialize\FormErrorIteratorHandler
+        tags:
+        - {name: jms_serializer.subscribing_handler}
+
+    # Grid
+    inventis.bricks.grid.default_render_strategy.filter_specification_builder:
+        class: Inventis\Bundle\BricksBundle\Grid\DefaultRenderStrategy\SearchFiltersSpecificationBuilder
+    inventis.bricks.grid.default_render_strategy.auto_join_factory:
+        class: Inventis\Bundle\BricksBundle\Grid\RulerZAutoJoinFactory
+    inventis.bricks.grid.default_render_strategy.query_builder_configurator:
+        class: Inventis\Bundle\BricksBundle\Grid\RulerZAutoJoinSelectQueryBuilderConfigurator
+        arguments:
+        - '@inventis.bricks.grid.default_render_strategy.auto_join_factory'
+        - '@inventis.bricks.entity.metadata_provider'
+    inventis.bricks.grid.default_render_strategy.sort_query_builder_configurator:
+        class: Inventis\Bundle\BricksBundle\Grid\RulerZAutoJoinSortQueryBuilderConfigurator
+        arguments: ['@inventis.bricks.grid.default_render_strategy.auto_join_factory']
+    inventis.bricks.grid.default_render_strategy.request_query_builder_configurator:
+        class: Inventis\Bundle\BricksBundle\Grid\DefaultRenderStrategy\RulerZRequestQueryBuilderConfigurator
+        arguments:
+        - '@rulerz'
+        - '@inventis.bricks.grid.default_render_strategy.filter_specification_builder'
+        - '@inventis.bricks.grid.default_render_strategy.sort_query_builder_configurator'
+    inventis.bricks.grid.default_render_strategy.array_query_result_rows_builder:
+        class: Inventis\Bundle\BricksBundle\Grid\ArrayQueryResultRowsBuilder
+    inventis.bricks.grid.default_render_strategy.serialized_query_result_rows_builder:
+        class: Inventis\Bundle\BricksBundle\Grid\JmsSerializerQueryResultRowsBuilder
+        arguments:
+        - '@jms_serializer.serializer'
+    inventis.bricks.grid.default_render_strategy.grid_storage_factory:
+        class: Inventis\Bundle\BricksBundle\Grid\DefaultRenderStrategy\RulerZFlexibleGridStorageFactory
+        lazy: true
+        arguments:
+        - '@doctrine'
+        - '@inventis.bricks.grid.default_render_strategy.request_query_builder_configurator'
+        - '@inventis.bricks.grid.default_render_strategy.query_builder_configurator'
+        - '@inventis.bricks.grid.default_render_strategy.array_query_result_rows_builder'
+        - '@inventis.bricks.grid.default_render_strategy.auto_join_factory'
+    # register your own with: tags: - { name: 'inventis.bricks.grid.storage_factory', entityClass: 'some\Entity\Class'}
+    inventis.bricks.grid.storage_factory_registry:
+        class: Inventis\Bundle\BricksBundle\Grid\GridStorageFactoryRegistry
+        public: true
+        arguments:
+        - '@inventis.bricks.grid.default_render_strategy.grid_storage_factory'
+
+    inventis.bricks.entity.metadata_provider:
+        class: Inventis\Bundle\BricksBundle\Entity\DoctrineEntityMetadataProvider
+        arguments:
+        - '@doctrine'
+    # Form
+    inventis.bricks.form_builder.entity_factory_registry:
+        class: Inventis\Bundle\BricksBundle\Form\Provider\FormEntityFactoryRegistry
+
+    inventis.bricks.form_builder.supported_locales_form_entity_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Provider\SupportedLanguagesFormEntityFactory
+        arguments:
+        - '%inventis.bricks.supported_locales%'
+        - '@doctrine'
+        - '@property_accessor'
+        - '@inventis.bricks.builder.form.entity_factory_aggregate'
+        tags:
+        - { name: inventis.bricks.entity_factory }
+    inventis.bricks.form_builder.default_entity_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Provider\EntityDefaultsFormEntityFactory
+        public: true
+        arguments:
+        - '@inventis.bricks.form_builder.entity_factory_registry'
+    inventis.bricks.form_builder.entity_provider_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Provider\EntityFormStorageProviderFactory
+        public: true
+        arguments:
+        - '@doctrine'
+        - '@inventis.bricks.form_builder.default_entity_factory'
+
+    inventis.bricks.builder.form.default_entity_factory:
+        class: Inventis\Bundle\BricksBundle\Form\Entity\SimpleEntityFactory
+    inventis.bricks.builder.form.entity_factory_aggregate:
+        class: Inventis\Bundle\BricksBundle\Form\Entity\EntityFactoryAggregate
+        arguments: ['@inventis.bricks.builder.form.default_entity_factory']

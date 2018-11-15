@@ -1,0 +1,167 @@
+services:
+    inventis.bricks.builder.builder_registry:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilderRegistry
+        public: true
+    inventis.bricks.builder.builder_extension_registry:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilderExtensionRegistry
+        public: false
+    inventis.bricks.builder.builder_factory:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\ComposingBrickBuilderFactory
+        public: true
+        arguments:
+            - '@inventis.bricks.builder.builder_registry'
+            - '@inventis.bricks.builder.builder_extension_registry'
+    brick.factory:
+        alias: inventis.bricks.builder.config_builder
+        public: true
+    inventis.bricks.builder.brick_factory:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickFactory
+        public: true
+        arguments: ['@inventis.bricks.manager']
+    inventis.bricks.builder.config_builder_factory:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickConfigBuilderFactory
+        public: true
+        arguments:
+            - '@inventis.bricks.builder.builder_factory'
+            - '@inventis.bricks.builder.brick_factory'
+    inventis.bricks.builder.config_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickConfigBuilder
+        public: true
+        factory: ['@inventis.bricks.builder.config_builder_factory', 'createBuilder']
+        arguments:
+            - 'Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\BrickBuilder'
+    inventis.bricks.builders.event_routing_placeholder_mapper:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\EventRoutingPlaceholderMapper
+        public: false
+
+# brick builder instances
+    inventis.bricks.builder.panel_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\PanelBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.form_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\FormBuilder
+        public: false
+        arguments: ['@translator.default']
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.grid_form_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\GridFormBuilder
+        public: false
+        arguments:
+            - '@inventis.bricks.setup.array_merger'
+            - '@inventis.bricks.builders.event_routing_placeholder_mapper'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.two_layered_module:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\TwoLayerModuleBuilder
+        public: false
+        arguments:
+            - '@inventis.bricks.setup.array_merger'
+            - '@inventis.bricks.builders.event_routing_placeholder_mapper'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.preview_panel_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\PreviewPanelBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.ajax_button_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\AjaxButtonBuilder
+        public: false
+        arguments:
+            - '@translator.default'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.field_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\FieldBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.text_field_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\TextFieldBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.dialog_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\DialogBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.input_field_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\InputFieldBuilder
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.data_text_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\DataTextBuilder
+        public: false
+        arguments:
+            - '@translator.default'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.select_manager_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\SelectManagerBuilder
+        public: false
+        arguments:
+            - '@inventis.bricks.setup.array_merger'
+            - '@inventis.bricks.builders.event_routing_placeholder_mapper'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+    inventis.bricks.builder.select_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\SelectBuilder
+        public: false
+        arguments:
+            - '@service_container'
+            - '@inventis.bricks.form.brick_extension.choice_list.data_provider_factory'
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+
+    inventis.bricks.builder.grid_builder:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\GridBuilder
+        arguments:
+            - '@inventis.bricks.entity.metadata_provider'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+
+# brick builder extensions
+    inventis.bricks.builder.handling_extension:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\HandlingBuilderExtension
+        public: false
+        tags:
+            - {name: inventis.bricks.brick_builder.extension, builder: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\FieldBuilder}
+            - {name: inventis.bricks.brick_builder.extension, builder: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\FieldsetBuilder}
+
+    inventis.bricks.builder.render_strategy_resolver_registry:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\ResolverRegistry
+        public: false
+    inventis.bricks.builder.actions_resolver_registry:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\ResolverRegistry
+        public: false
+    inventis.bricks.builder.render_strategy_extension:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\RenderStrategyBuilderExtension
+        public: false
+        arguments:
+            - '@inventis.bricks.builder.render_strategy_resolver_registry'
+            - '@translator'
+        tags:
+            - {name: inventis.bricks.brick_builder.extension, builder: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BrickBuilder\GridBuilder}
+    inventis.bricks.builder.grid_render_strategy_resolver:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\GridRenderStrategyResolver
+        public: false
+        arguments:
+            - '@inventis.bricks.entity.metadata_provider'
+            - '@inventis.bricks.builder.grid_render_strategy_action_resolver'
+        tags:
+            -
+                name: inventis.bricks.brick_builder.extension.resolver
+                type: 'Inventis/Bundle/BricksBundle/Brick/Grid/BricksBundleGridRendererStrategy'
+                registry: inventis.bricks.builder.render_strategy_resolver_registry
+    inventis.bricks.builder.grid_render_strategy_action_resolver:
+        class: Inventis\Bundle\BricksBundle\Builder\ConfigBuilder\BuilderExtension\GridRenderStrategyActionToolbarActionResolver
+        public: false
+        arguments:
+            - '@inventis.bricks.builder.actions_resolver_registry'
+            - '@translator'

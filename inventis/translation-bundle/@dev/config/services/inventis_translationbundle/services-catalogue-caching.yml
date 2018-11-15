@@ -1,0 +1,27 @@
+services:
+    inventis_translation.message_catalogue_dumper:
+        class: Inventis\Bundle\TranslationBundle\CatalogueCaching\MessageCatalogueDumper
+
+    inventis_translation.message_catalogue_cache_locator:
+        class: Inventis\Bundle\TranslationBundle\CatalogueCaching\MessageCatalogueCacheLocator
+        arguments:
+            - '%inventis_translation.cache_directory%'
+
+    inventis_translation.cached_message_catalogue_loader:
+        class: Inventis\Bundle\TranslationBundle\CatalogueCaching\CachedMessageCatalogueLoader
+
+    inventis_translation.message_catalogue_cache_refresher:
+        class: Inventis\Bundle\TranslationBundle\CatalogueCaching\MessageCatalogueCacheRefresher
+        arguments:
+            - '@inventis_translation.doctrine_message_catalogue_factory'
+            - '@inventis_translation.message_catalogue_dumper'
+            - '@inventis_translation.message_catalogue_cache_locator'
+
+    inventis_translation.cached_doctrine_message_catalogue:
+        class: Inventis\Bundle\TranslationBundle\CatalogueCaching\CachedMessageCatalogueFactory
+        arguments:
+            - '@config_cache_factory'
+            - '@inventis_translation.message_catalogue_cache_locator'
+            - '@inventis_translation.message_catalogue_cache_refresher'
+            - '@inventis_translation.cached_message_catalogue_loader'
+            - '@inventis_translation.locale_list_provider'

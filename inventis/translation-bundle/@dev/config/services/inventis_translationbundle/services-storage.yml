@@ -1,0 +1,45 @@
+services:
+    inventis_translation.key_list_provider:
+        class: Inventis\Bundle\TranslationBundle\Storage\SpecificationKeyListProvider
+        arguments:
+            - '@inventis_translation.specification_satisfying_translation_key_provider'
+
+    inventis_translation.locale_list_provider:
+        class: Inventis\Bundle\TranslationBundle\Storage\SpecificationLocaleListProvider
+        arguments:
+            - '@inventis_translation.specification_satisfying_translation_locale_provider'
+
+    inventis_translation.domain_list_provider:
+        class: Inventis\Bundle\TranslationBundle\Storage\SpecificationDomainListProvider
+        arguments:
+            - '@inventis_translation.specification_satisfying_translation_domain_provider'
+
+    inventis_translation.doctrine_translation_storage_querier:
+        class: Inventis\Bundle\TranslationBundle\Storage\DoctrineTranslationStorageQuerier
+        arguments:
+            - '@inventis_translation.specification_satisfying_translation_key_provider'
+            - '@inventis_translation.specification_satisfying_translation_key_translation_provider'
+            - '@inventis_translation.specification_satisfying_translation_domain_provider'
+
+    # inventis_translation.caching_translation_storage_querier:
+    #     class: Inventis\Bundle\TranslationBundle\Storage\CachingTranslationStorageQuerier
+    #     decorates: inventis_translation.doctrine_translation_storage_querier
+    #     arguments:
+    #         - '@inventis_translation.caching_translation_storage_querier.inner'
+    #         - '@cache.app'
+
+    inventis_translation.doctrine_translation_storage_updater:
+        class: Inventis\Bundle\TranslationBundle\Storage\DoctrineTranslationStorageUpdater
+        arguments:
+            - '@inventis_translation.specification_satisfying_translation_key_provider'
+            - '@inventis_translation.specification_satisfying_translation_domain_provider'
+            - '@inventis_translation.specification_satisfying_translation_locale_provider'
+            - '@inventis_translation.specification_satisfying_translation_key_translation_provider'
+            - '@doctrine.orm.entity_manager'
+
+    inventis_translation.cache_refreshing_translation_storage_updater:
+        class: Inventis\Bundle\TranslationBundle\Storage\CacheRefreshingTranslationStorageUpdater
+        decorates: inventis_translation.doctrine_translation_storage_updater
+        arguments:
+            - '@inventis_translation.cache_refreshing_translation_storage_updater.inner'
+            - '@inventis_translation.message_catalogue_cache_refresher'

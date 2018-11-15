@@ -3,15 +3,7 @@
     "Inventis\\Bundle\\WebadminBundle\\InventisWebadminBundle": ["all"]
   },
   "copy-from-recipe": {
-    "bin/": "%BIN_DIR%/"
-  },
-  "composer-scripts": {
-    "bash bin/install-webadmin-bundle-config.sh": "script",
-    "docker/console inventis:webadmin:usergroup:create SUPERADMIN Superadmin": "script",
-    "docker/console inventis:webadmin:role:create ROLE_ACCESS_WEBADMIN": "script",
-    "docker/console inventis:webadmin:usergroup:add-role SUPERADMIN ROLE_ACCESS_WEBADMIN": "script",
-    "docker/console inventis:webadmin:user:create Inventis Inventis info@inventis.be --activate": "script",
-    "docker/console inventis:webadmin:user:add-usergroup info@inventis.be SUPERADMIN": "script"
+    "config/": "%CONFIG_DIR%/"
   },
   "aliases": ["webadmin"]
 }

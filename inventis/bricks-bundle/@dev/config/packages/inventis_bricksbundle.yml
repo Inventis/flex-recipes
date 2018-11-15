@@ -1,3 +1,6 @@
 inventis_bricks:
     supported_locales: ['nl_BE', 'fr_BE', 'en_GB']
 
+kphoen_rulerz:
+    targets:
+        doctrine: true

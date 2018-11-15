@@ -1,0 +1,58 @@
+services:
+    inventis_translation.specification_satisfying_doctrine_entity_provider_factory:
+        class: Inventis\Bundle\TranslationBundle\Specification\SpecificationSatisfyingDoctrineEntityProviderFactory
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@rulerz'
+
+
+
+    inventis_translation.specification_satisfying_doctrine_translation_key_provider:
+        class: Inventis\Bundle\TranslationBundle\Specification\SpecificationSatisfyingDoctrineEntityProvider
+        factory:
+            - '@inventis_translation.specification_satisfying_doctrine_entity_provider_factory'
+            - create
+        arguments:
+            - Inventis\Bundle\TranslationBundle\Entity\TranslationKey
+
+    inventis_translation.specification_satisfying_translation_key_provider:
+        alias: inventis_translation.specification_satisfying_doctrine_translation_key_provider
+
+
+
+    inventis_translation.specification_satisfying_doctrine_translation_key_translation_provider:
+        class: Inventis\Bundle\TranslationBundle\Specification\SpecificationSatisfyingDoctrineEntityProvider
+        factory:
+            - '@inventis_translation.specification_satisfying_doctrine_entity_provider_factory'
+            - create
+        arguments:
+            - Inventis\Bundle\TranslationBundle\Entity\TranslationKeyTranslation
+
+    inventis_translation.specification_satisfying_translation_key_translation_provider:
+        alias: inventis_translation.specification_satisfying_doctrine_translation_key_translation_provider
+
+
+
+    inventis_translation.specification_satisfying_doctrine_translation_locale_provider:
+        class: Inventis\Bundle\TranslationBundle\Specification\SpecificationSatisfyingDoctrineEntityProvider
+        factory:
+            - '@inventis_translation.specification_satisfying_doctrine_entity_provider_factory'
+            - create
+        arguments:
+            - Inventis\Bundle\TranslationBundle\Entity\TranslationLocale
+
+    inventis_translation.specification_satisfying_translation_locale_provider:
+        alias: inventis_translation.specification_satisfying_doctrine_translation_locale_provider
+
+
+
+    inventis_translation.specification_satisfying_doctrine_translation_domain_provider:
+        class: Inventis\Bundle\TranslationBundle\Specification\SpecificationSatisfyingDoctrineEntityProvider
+        factory:
+            - '@inventis_translation.specification_satisfying_doctrine_entity_provider_factory'
+            - create
+        arguments:
+            - Inventis\Bundle\TranslationBundle\Entity\TranslationDomain
+
+    inventis_translation.specification_satisfying_translation_domain_provider:
+        alias: inventis_translation.specification_satisfying_doctrine_translation_domain_provider

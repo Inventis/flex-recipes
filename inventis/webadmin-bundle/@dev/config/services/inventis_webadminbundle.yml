@@ -1,0 +1,110 @@
+services:
+    # User
+    inventis.webadmin.user.user_storage.default:
+        class: Inventis\Bundle\WebadminBundle\User\UserStorage
+        arguments: ['@doctrine.orm.entity_manager', '@inventis.webadmin.user.user_password_update', 'InventisWebadminBundle:User']
+
+    inventis.webadmin.user.user_manipulator:
+        class: Inventis\Bundle\WebadminBundle\User\UserManipulator
+        arguments: ['@inventis.webadmin.user.user_storage.default']
+
+    inventis.webadmin.user.user_password_update:
+        class: Inventis\Bundle\WebadminBundle\User\UserPasswordUpdater
+        arguments: ['@security.encoder_factory']
+
+    # Role
+    inventis.webadmin.role.role_storage.default:
+        class: Inventis\Bundle\WebadminBundle\Role\RoleStorage
+        arguments: ['@doctrine.orm.entity_manager', 'InventisWebadminBundle:Role']
+
+    inventis.webadmin.role.role_manipulator:
+        class: Inventis\Bundle\WebadminBundle\Role\RoleManipulator
+        arguments: ['@inventis.webadmin.role.role_storage.default']
+
+    # UserGroup
+    inventis.webadmin.usergroup.storage.default:
+        class: Inventis\Bundle\WebadminBundle\UserGroup\UserGroupStorage
+        arguments: ['@doctrine.orm.entity_manager', 'InventisWebadminBundle:UserGroup']
+
+    inventis.webadmin.usergroup.usergroup_manipulator:
+        class: Inventis\Bundle\WebadminBundle\UserGroup\UserGroupManipulator
+        arguments: ['@inventis.webadmin.usergroup.storage.default']
+
+    # Commands
+    inventis.webadmin.commands.role.create:
+        class: Inventis\Bundle\WebadminBundle\Command\Role\CreateCommand
+        arguments: ['@inventis.webadmin.role.role_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.role.delete:
+        class: Inventis\Bundle\WebadminBundle\Command\Role\DeleteCommand
+        arguments: ['@inventis.webadmin.role.role_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.activate:
+        class: Inventis\Bundle\WebadminBundle\Command\User\ActivateCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.deactivate:
+        class: Inventis\Bundle\WebadminBundle\Command\User\DeactivateCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.change_password:
+        class: Inventis\Bundle\WebadminBundle\Command\User\ChangePasswordCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.create:
+        class: Inventis\Bundle\WebadminBundle\Command\User\CreateCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.delete:
+        class: Inventis\Bundle\WebadminBundle\Command\User\DeleteCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.add-usergroup:
+        class: Inventis\Bundle\WebadminBundle\Command\User\AddUserGroupCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator', '@inventis.webadmin.usergroup.storage.default']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.user.remove-usergroup:
+        class: Inventis\Bundle\WebadminBundle\Command\User\RemoveUserGroupCommand
+        arguments: ['@inventis.webadmin.user.user_manipulator', '@inventis.webadmin.usergroup.storage.default']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.usergroup.add-role:
+        class: Inventis\Bundle\WebadminBundle\Command\UserGroup\AddRoleCommand
+        arguments: ['@inventis.webadmin.usergroup.usergroup_manipulator', '@inventis.webadmin.role.role_storage.default']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.usergroup.remove-role:
+        class: Inventis\Bundle\WebadminBundle\Command\UserGroup\RemoveRoleCommand
+        arguments: ['@inventis.webadmin.usergroup.usergroup_manipulator', '@inventis.webadmin.role.role_storage.default']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.usergroup.create:
+        class: Inventis\Bundle\WebadminBundle\Command\UserGroup\CreateCommand
+        arguments: ['@inventis.webadmin.usergroup.usergroup_manipulator']
+        tags:
+            - { name: console.command }
+
+    inventis.webadmin.commands.usergroup.delete:
+        class: Inventis\Bundle\WebadminBundle\Command\UserGroup\DeleteCommand
+        arguments: ['@inventis.webadmin.usergroup.usergroup_manipulator']
+        tags:
+            - { name: console.command }

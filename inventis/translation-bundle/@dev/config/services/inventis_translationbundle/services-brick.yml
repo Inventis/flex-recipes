@@ -1,0 +1,33 @@
+services:
+    inventis_translation.brick.filterable_translation_grid_brick_builder:
+        class: Inventis\Bundle\TranslationBundle\Brick\FilterableTranslationGridBrickBuilder
+        arguments:
+            - '@inventis.bricks.builders.event_routing_placeholder_mapper'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+
+    inventis_translation.brick.import_panel_brick_builder:
+        class: Inventis\Bundle\TranslationBundle\Brick\ImportPanelBrickBuilder
+        arguments:
+            - '@inventis.bricks.builders.event_routing_placeholder_mapper'
+        tags:
+            - {name: inventis.bricks.brick_builder}
+
+    inventis_translation.brick.grid.default_render_strategy.filter_specification_builder:
+        class: Inventis\Bundle\TranslationBundle\Brick\FilterSpecificationBuilder
+        decorates: inventis.bricks.grid.default_render_strategy.filter_specification_builder
+        arguments:
+            - '@inventis_translation.brick.grid.default_render_strategy.filter_specification_builder.inner'
+
+    inventis_translation.import_form_builder:
+        class: Symfony\Component\Form\FormFactory
+        factory: 'form.factory:createBuilder'
+        public: true
+        arguments:
+            - 'Inventis\Bundle\TranslationBundle\Brick\ImportFormSubmissionType'
+
+    inventis_translation.import_form_storage_provider:
+        class: Inventis\Bundle\TranslationBundle\Brick\ImportFormStorageProvider
+        public: true
+        arguments:
+            - '@inventis_translation.translation_importer'
