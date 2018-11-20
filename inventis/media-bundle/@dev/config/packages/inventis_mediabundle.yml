@@ -2,6 +2,11 @@ inventis_media:
     thumbnails:
         resolver: 'default'
 doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    SonataMediaBundle: ~
     dbal:
         types:
             json: Sonata\Doctrine\Types\JsonType
