@@ -1,0 +1,10 @@
+pipelines:
+    custom:
+        master:
+            - step:
+                name: Update Flex Server
+                image: ubuntu:18.04
+                script:
+                    - bash deploy.sh
+
+
