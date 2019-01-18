@@ -1,0 +1,17 @@
+inventis_navigation:
+    menus:
+        # these will get translated
+        - { title: 'menu.main', alias: 'main' }
+        - { title: 'menu.meta', alias: 'meta' }
+        - { title: 'menu.footer', alias: 'footer' }
+        - { title: 'menu.legal', alias: 'legal' }
+
+cmf_routing:
+    chain:
+        replace_symfony_router: true
+        routers_by_id:
+            router.default: 100
+
+cmf_core:
+    persistence:
+        phpcr: ~

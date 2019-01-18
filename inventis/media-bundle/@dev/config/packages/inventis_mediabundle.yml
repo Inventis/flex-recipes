@@ -11,6 +11,19 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
 
+doctrine_phpcr:
+    odm:
+        mappings:
+            SonataMediaBundle:
+                mapping: true
+                type: xml
+                dir: 'PHPCR'
+                prefix: 'Sonata\Media\PHPCR'
+            InventisMediaBundle:
+                mapping: true
+                type: xml
+                dir: 'PHPCR'
+                prefix: 'Inventis\Bundle\MediaBundle\PHPCR'
 sonata_media:
     db_driver: doctrine_orm
     # if you don't use default namespace configuration

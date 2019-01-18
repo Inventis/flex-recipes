@@ -2,8 +2,9 @@
   "bundles": {
     "Inventis\\Bundle\\WebadminBundle\\InventisWebadminBundle": ["all"]
   },
-  "copy-from-recipe": {
-    "config/": "%CONFIG_DIR%/"
+  "copy-from-package": {
+    "Resources/config/routing.yml": "%CONFIG_DIR%/routes/inventis_webadminbundle.yml",
+    "Resources/config/security.yml": "%CONFIG_DIR%/packages/inventis_webadminbundle.yml"
   },
-  "aliases": ["webadmin"]
+  "aliases": ["webadminbundle"]
 }

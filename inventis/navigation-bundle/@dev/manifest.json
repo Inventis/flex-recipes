@@ -1,0 +1,9 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\NavigationBundle\\InventisNavigationBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": ["navigationbundle"]
+}

@@ -2,8 +2,5 @@
   "bundles": {
     "Inventis\\Bundle\\TranslationBundle\\InventisTranslationBundle": ["all"]
   },
-  "copy-from-recipe": {
-    "config/": "%CONFIG_DIR%/"
-  },
-  "aliases": ["translations"]
+  "aliases": ["translationsbundle"]
 }
