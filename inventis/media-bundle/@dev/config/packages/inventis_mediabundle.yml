@@ -33,15 +33,15 @@ sonata_media:
         gallery_has_media: Inventis\Bundle\MediaBundle\Entity\GalleryHasMedia
     providers:
         image:
-            thumbnail:  inventis.media.thumbnail.liip_imagine
+            thumbnail: inventis.media.thumbnail.liip_imagine
             allowed_extensions: ['jpg', 'png', 'gif', 'jpeg'] # Optional
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif'] # Optional
         vimeo:
-            thumbnail:  inventis.media.thumbnail.liip_imagine
+            thumbnail: inventis.media.thumbnail.liip_imagine
         youtube:
-            thumbnail:  inventis.media.thumbnail.liip_imagine
+            thumbnail: inventis.media.thumbnail.liip_imagine
         dailymotion:
-            thumbnail:  inventis.media.thumbnail.liip_imagine
+            thumbnail: inventis.media.thumbnail.liip_imagine
     filesystem:
         local:
             create: true

@@ -1,6 +1,6 @@
 {
   "bundles": {
-    "Inventis\\Bundle\\TranslationBundle\\InventisTranslationBundle": [
+    "Inventis\\Bundle\\ContentBundle\\InventisContentBundle": [
       "all"
     ]
   },
@@ -8,6 +8,6 @@
     "config/": "%CONFIG_DIR%/"
   },
   "aliases": [
-    "translations-bundle"
+    "content-bundle"
   ]
 }

@@ -8,6 +8,6 @@
     "config/": "%CONFIG_DIR%/"
   },
   "aliases": [
-    "mediabundle"
+    "media-bundle"
   ]
 }

@@ -1,0 +1,17 @@
+inventis_webadmin_dashboard:
+    path:     /webadmin/
+    defaults: { _controller: Inventis\Bundle\WebadminBundle\Controller\DashboardController::index }
+
+inventis_webadmin_users_grid_form:
+    path:     /webadmin/users
+    defaults: { _controller: Inventis\Bundle\WebadminBundle\Controller\UsersController::index }
+
+inventis_webadmin_login:
+    path:     /webadmin/login
+    defaults: { _controller: Inventis\Bundle\WebadminBundle\Controller\SecurityController::login }
+
+inventis_webadmin_login_check:
+    path:     /webadmin/check_login
+
+inventis_webadmin_logout:
+    path: /logout

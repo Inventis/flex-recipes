@@ -1,5 +1,5 @@
 inventis_bricks:
-    supported_locales: ['nl_BE', 'fr_BE', 'en_GB']
+    supported_locales: '%inventis.bricks.supported_locales%'
 
 kphoen_rulerz:
     targets:

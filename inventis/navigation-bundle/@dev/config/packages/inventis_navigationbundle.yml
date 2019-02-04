@@ -6,11 +6,27 @@ inventis_navigation:
         - { title: 'menu.footer', alias: 'footer' }
         - { title: 'menu.legal', alias: 'legal' }
 
+jms_i18n_routing:
+    default_locale: '%locale%'
+    locales: '%inventis.bricks.supported_locales%'
+    strategy: prefix
 cmf_routing:
     chain:
-        replace_symfony_router: true
         routers_by_id:
-            router.default: 100
+            #router.default: 200
+            jms_i18n_routing.router: 150
+            cmf_routing.dynamic_router: 100
+        replace_symfony_router: true
+    dynamic:
+        persistence:
+            phpcr:
+                enabled: true
+                route_basepaths:
+                    - '/cms/routes'
+        match_implicit_locale: true
+        default_controller: 'inventis.bundle.contentbundle.controller.front.contentcontroller:indexAction'
+        controllers_by_class:
+            Symfony\Cmf\Component\Routing\RedirectRouteInterface: cmf_routing.redirect_controller:redirectAction
 
 cmf_core:
     persistence:

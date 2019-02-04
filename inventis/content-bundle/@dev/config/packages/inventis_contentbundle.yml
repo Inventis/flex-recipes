@@ -1,0 +1,8 @@
+# for more configuration settings run docker/console config:dump-reference CmfCoreBundle
+cmf_core:
+    multilang:
+        locales: '%inventis.bricks.supported_locales%'
+    persistence:
+        phpcr:
+            enabled: true
+            translation_strategy: child

@@ -1,0 +1,4 @@
+inventis_translation_bundle:
+    resource: "@InventisTranslationBundle/Controller"
+    prefix:   /webadmin/translations
+    type:     annotation

@@ -1,0 +1,42 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Inventis\Bundle\WebadminBundle\Entity\User:
+            algorithm: bcrypt
+            cost:      13
+
+    providers:
+        db_user_provider:
+            entity:
+                class:    InventisWebadminBundle:User
+                property: email
+
+    firewalls:
+        main:
+            pattern:   .*
+            anonymous: true
+            provider:  db_user_provider
+            context:   bricks
+            # This is the default WebAdmin login form.
+            form_login:
+                login_path: inventis_webadmin_login
+                check_path: inventis_webadmin_login_check
+                csrf_token_generator: security.csrf.token_manager
+                csrf_token_id: webadmin_login
+                default_target_path: inventis_webadmin_dashboard
+            remember_me:
+                secret: '%env(APP_SECRET)%'
+                lifetime: 604800 # 7 Days
+                path:     /
+                domain:   ~
+            logout:
+                path: inventis_webadmin_logout
+                target: /webadmin
+
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+    access_control:
+        - { path: ^/[a-z]{2}_[A-Z]{2}/webadmin(?!/login), roles: ROLE_ACCESS_WEBADMIN }
