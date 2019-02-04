@@ -8,7 +8,7 @@ inventis_navigation:
 
 jms_i18n_routing:
     default_locale: '%locale%'
-    locales: '%inventis.bricks.supported_locales%'
+    locales: ['nl_BE']
     strategy: prefix
 cmf_routing:
     chain:
