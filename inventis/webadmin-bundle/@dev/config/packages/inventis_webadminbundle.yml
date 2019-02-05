@@ -39,4 +39,5 @@ security:
             security: false
 
     access_control:
-        - { path: ^/[a-z]{2}_[A-Z]{2}/webadmin(?!/login), roles: ROLE_ACCESS_WEBADMIN }
+        # {} errors in Yaml::parseFile
+        - { path: ^/[a-z][a-z]_[A-Z][A-Z]/webadmin(?!/login), roles: ROLE_ACCESS_WEBADMIN }
