@@ -1,7 +1,7 @@
 # for more configuration settings run docker/console config:dump-reference CmfCoreBundle
 cmf_core:
     multilang:
-        locales: ['nl_BE']
+        locales: '%supported_locales%'
     persistence:
         phpcr:
             enabled: true
