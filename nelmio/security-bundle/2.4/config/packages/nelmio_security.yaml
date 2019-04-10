@@ -1,0 +1,57 @@
+nelmio_security:
+    # NOTE: Not enabled by default since it breaks logging in. Specify the cookies you want here manually.
+    # See also https://github.com/nelmio/NelmioSecurityBundle#signed-cookies
+    # signed_cookie:
+    #     names:
+    #         - Cookie1
+    #         - Cookie2
+    
+    clickjacking:
+        paths:
+            '^/.*': DENY
+
+    external_redirects:
+        abort: true
+        log: true
+
+    csp:
+        hosts: []
+        content_types: []
+        enforce:
+            block-all-mixed-content: true
+            upgrade-insecure-requests: true
+            level1_fallback: false
+            browser_adaptive:
+                enabled: false
+            default-src:
+                - none
+            img-src:
+                - self
+            connect-src:
+                - self
+            font-src:
+                - self
+                - https://fonts.gstatic.com/
+            style-src:
+                - self
+                - https://fonts.googleapis.com/css?family=Open+Sans
+            script-src:
+                - self
+
+    content_type:
+        nosniff: true
+
+    xss_protection:
+        enabled: true
+        mode_block: true
+
+    referrer_policy:
+        enabled: true
+        policies:
+            - no-referrer
+            - strict-origin-when-cross-origin
+
+    forced_ssl:
+        hsts_max_age: 2592000 # 30 days
+        hsts_subdomains: true
+        redirect_status_code: 302
