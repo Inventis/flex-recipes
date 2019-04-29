@@ -1,0 +1,8 @@
+image: inventis/bricks-build-server:v1.0.0-php7.1
+
+pipelines:
+    branches:
+        "master":
+            - step:
+                script:
+                    - ssh ssoinventisbe@ssh025.webhosting.be 'cd /data/sites/web/ssoinventisbe/subsites/flex_releases/current; bin/console recipes:update private'
