@@ -1,3 +1,7 @@
+inventis_bricksbundle_feature_routing:
+    resource: "@InventisBricksBundle/Features/Controller/"
+    type: annotation
+    prefix: /bricksbundle
 inventis_bricksbundle_styleguide_routing:
     resource: "@InventisBricksBundle/Styleguide/Controller/"
     type: annotation
