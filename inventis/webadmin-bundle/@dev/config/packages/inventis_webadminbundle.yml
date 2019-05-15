@@ -40,4 +40,4 @@ security:
 
     access_control:
         # {} errors in Yaml::parseFile
-        - { path: ^/[a-z][a-z]_[A-Z][A-Z]/webadmin(?!/login), roles: ROLE_ACCESS_WEBADMIN }
+        - { path: '^(/[a-z]{2}(_|-)[A-Z]{2})?/webadmin(?!/login)', roles: ROLE_ACCESS_WEBADMIN }
