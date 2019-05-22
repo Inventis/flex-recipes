@@ -1,6 +1,6 @@
 parameters:
     supported_locales: ['nl_BE']
-    env(ENABLE_COMPONENT_DEBUGGING): '%kernel.debug%'
+    env(ENABLE_BRICK_DEBUGGING): '%kernel.debug%'
 
 inventis_bricks:
     supported_locales: '%supported_locales%'
@@ -21,4 +21,4 @@ jms_serializer:
 
 twig:
     globals:
-        enable_component_debugging: '%env(ENABLE_COMPONENT_DEBUGGING)%'
+        enable_brick_debugging: '%env(ENABLE_BRICK_DEBUGGING)%'
