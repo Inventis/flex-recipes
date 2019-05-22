@@ -1,5 +1,6 @@
 parameters:
     supported_locales: ['nl_BE']
+    env(ENABLE_COMPONENT_DEBUGGING): '%kernel.debug%'
 
 inventis_bricks:
     supported_locales: '%supported_locales%'
