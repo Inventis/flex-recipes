@@ -31,10 +31,8 @@ nelmio_security:
                 - self
             font-src:
                 - self
-                - https://fonts.gstatic.com/
             style-src:
                 - self
-                - https://fonts.googleapis.com/css
             script-src:
                 - self
 
