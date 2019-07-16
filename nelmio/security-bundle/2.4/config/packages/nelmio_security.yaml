@@ -13,6 +13,8 @@ nelmio_security:
     external_redirects:
         abort: true
         log: true
+        whitelist:
+            - sso.inventis.be
 
     csp:
         hosts: []
