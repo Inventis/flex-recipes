@@ -59,13 +59,8 @@ liip_imagine:
             filesystem:
                 data_root:
                     # this is needed for LiipImagine root path validation as public/upload is outside document root
-                    # the ../ at the end is required because LiipImagine resolves the real path of the
-                    # symlink. doing just public which is not a symlink would resolve in a different path inside
-                    # the release folder, please note that because of the ../ you SHOULD NOT put the upload dir directly under
-                    # the shared directory, because then technically the whole shared directory is made accessible by LiipImagine
-                    # this can be solved by putting public shared files in something like shared/public/upload  outside your release
-                    # and symlink to that file
-                    - '%kernel.project_dir%/public/upload/..'
+                    - '%kernel.project_dir%/../shared/public/upload'
+                    - '%kernel.project_dir%/public'
             gaufrette:
                 filesystem: 'sonata.media.filesystem.local' # must match sonata_media.filesystem
     filter_sets:
