@@ -9,11 +9,6 @@ kphoen_rulerz:
     targets:
         doctrine: true
 
-framework:
-    # templating is added to support older twig path notations Bundle:Path:Template
-    # Currently symfony CmfCoreBundle still uses an old path like this
-    templating: { engines: ['twig'] }
-
 jms_serializer:
     property_naming:
         # why this isn't the default in the bundle elides me, I understand why it may not be the default for jms, but...
