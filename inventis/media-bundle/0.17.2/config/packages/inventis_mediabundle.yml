@@ -1,6 +1,6 @@
 inventis_media:
-    thumbnails:
-        resolver: 'default'
+    oembed: ~
+
 doctrine:
     orm:
         entity_managers:
