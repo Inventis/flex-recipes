@@ -1,0 +1,6 @@
+inventis_styleguide:
+    paths:
+        - {path: '%kernel.project_dir%/assets/website', namespace: 'styleguide' }
+    page_data:
+        page: 'page'
+    default_pagination_options: ~
