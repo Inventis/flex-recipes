@@ -5,7 +5,8 @@
   "copy-from-recipe": {
     "config/": "%CONFIG_DIR%/",
     "templates/": "templates/",
-    "Gruntfile.js": "Gruntfile.js"
+    "Gruntfile.js": "Gruntfile.js",
+    "package.json": "package.json"
   },
   "aliases": [
     "bricks-bundle",
