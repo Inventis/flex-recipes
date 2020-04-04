@@ -1,0 +1,14 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\BricksBundle\\InventisBricksBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/",
+    "templates/": "templates/",
+    "Gruntfile.js": "Gruntfile.js"
+  },
+  "aliases": [
+    "bricks-bundle",
+    "bricks"
+  ]
+}
