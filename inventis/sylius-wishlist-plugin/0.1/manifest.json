@@ -1,0 +1,15 @@
+{
+  "bundles": {
+    "\\Inventis\\SyliusWishlistPlugin\\InventisSyliusWishlistPlugin": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "sylius-wishlist",
+    "wishlist-plugin",
+    "sylius-wishlist-plugin"
+  ]
+}

@@ -1,0 +1,5 @@
+imports:
+    - { resource: "@InventisSyliusWishlistPlugin/Resources/config/config.yaml" }
+
+inventis_sylius_wishlist: ~
+    
