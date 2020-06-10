@@ -1,0 +1,2 @@
+_inventis_webadmin:
+    resource: "@InventisFormBundle/Resources/config/routing.yaml"
