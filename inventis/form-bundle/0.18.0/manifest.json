@@ -2,6 +2,9 @@
   "bundles": {
     "Inventis\\Bundle\\FormBundle\\InventisFormBundle": [
       "all"
+    ],
+    "Knp\\DoctrineBehaviors\\Bundle\\DoctrineBehaviorsBundle": [
+      "all"
     ]
   },
   "copy-from-recipe": {
