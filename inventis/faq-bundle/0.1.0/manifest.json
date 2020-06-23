@@ -1,0 +1,13 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\FaqBundleBundle\\InventisFaqBundleBundle": [
+      "all"
+    ],
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "faq-bundle"
+  ]
+}
