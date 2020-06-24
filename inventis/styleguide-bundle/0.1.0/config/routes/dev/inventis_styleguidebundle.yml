@@ -1,4 +1,4 @@
-styleguide:
+inventis_styleguidebundle_routing:
     resource: "@InventisStyleguideBundle/Controller"
     type: annotation
     prefix: /styleguide

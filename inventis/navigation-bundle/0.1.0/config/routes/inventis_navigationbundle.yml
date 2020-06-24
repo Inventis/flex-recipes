@@ -1,4 +1,4 @@
-inventis_mediabundle_feature_routing:
+inventis_navigationbundle_routing:
     resource: "@InventisNavigationBundle/Controller/Webadmin"
     type: annotation
     prefix: /webadmin/navigationbundle
