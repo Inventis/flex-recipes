@@ -8,6 +8,9 @@
     "config/": "%CONFIG_DIR%/",
     "assets/": "assets/"
   },
+  "copy-from-package": {
+    "Resources/boilerplate/": "assets/website/"
+  },
   "aliases": [
     "styleguide-bundle"
   ]
