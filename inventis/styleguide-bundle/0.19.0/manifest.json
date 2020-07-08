@@ -1,0 +1,14 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\StyleguideBundle\\InventisStyleguideBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/",
+    "assets/": "assets/"
+  },
+  "aliases": [
+    "styleguide-bundle"
+  ]
+}

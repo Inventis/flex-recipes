@@ -1,0 +1,70 @@
+inventis_styleguide:
+    blocks:
+        paragraph:
+            name: 'styleguide.block.paragraph.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/paragraph/paragraph.html.twig'
+        intro:
+            name: 'styleguide.block.intro.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/intro/intro.html.twig'
+        title-1:
+            name: 'styleguide.block.title-1.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/headings/h2.html.twig'
+        title-2:
+            name: 'styleguide.block.title-2.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/headings/h3.html.twig'
+        title-3:
+            name: 'styleguide.block.title-3.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/headings/h4.html.twig'
+        title-4:
+            name: 'styleguide.block.title-4.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/headings/h5.html.twig'
+        title-5:
+            name: 'styleguide.block.title-5.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/headings/h6.html.twig'
+        image-wide:
+            name: 'styleguide.block.image-wide.name'
+            group: 'styleguide.blocks-group.image.name'
+            template: '@styleguide/blocks/image/full-width.html.twig'
+        image-header:
+            name: 'styleguide.block.image-header.name'
+            group: 'styleguide.blocks-group.image.name'
+            template: '@styleguide/blocks/image/header.html.twig'
+        image-text:
+            name: 'styleguide.block.image-text.name'
+            group: 'styleguide.blocks-group.image.name'
+            template: '@styleguide/blocks/image/with-text.html.twig'
+        button:
+            name: 'styleguide.block.button.name'
+            group: 'styleguide.blocks-group.element.name'
+            template: '@styleguide/blocks/button-row/button-row.html.twig'
+        call-to-action:
+            name: 'styleguide.block.call-to-action.name'
+            group: 'styleguide.blocks-group.element.name'
+            template: '@styleguide/blocks/call-to-action/call-to-action.html.twig'
+        quote:
+            name: 'styleguide.block.quote.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/quote/quote.html.twig'
+        scrolling-table:
+            name: 'styleguide.block.scrolling-table.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/table/scrollable.html.twig'
+        squishing-table:
+            name: 'styleguide.block.squishing-table.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/table/squished.html.twig'
+        ordered-list:
+            name: 'styleguide.block.ordered-list.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/list/ordered-list.html.twig'
+        unordered-list:
+            name: 'styleguide.block.unordered-list.name'
+            group: 'styleguide.blocks-group.text.name'
+            template: '@styleguide/blocks/list/unordered-list.html.twig'
