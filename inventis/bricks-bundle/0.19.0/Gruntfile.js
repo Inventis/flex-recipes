@@ -30,6 +30,7 @@ module.exports = function (grunt) {
             'Inventis/Bundle/FormBundle': 'bundles/inventisform/js',
             // vendors
             'quill': 'vendor/quill/dist',
+            'grapesjs': 'vendor/grapesjs/dist',
             'when/es6-shim': 'vendor/when/es6-shim',
             'chartjs': 'vendor/chartjs',
             'nanoajax': 'vendor/nanoajax/nanoajax.min',
@@ -148,6 +149,9 @@ module.exports = function (grunt) {
                 cwd: 'node_modules', // set working folder / root to copy
                 src: [
                     '@inventis/ckeditor5-build-classic/**',
+                    'grapesjs/dist/**',
+                    'font-awesome/css/**',
+                    'font-awesome/fonts/**',
                     'chartjs/chart.js',
                     'quill/dist/**',
                     'when/es6-shim/Promise.js',

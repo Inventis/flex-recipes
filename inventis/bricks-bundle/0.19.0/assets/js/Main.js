@@ -23,6 +23,7 @@ require.config({
         'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',
         // define all vendor package loading rules below
         'quill': 'vendor/quill/dist',
+        'grapesjs': 'vendor/grapesjs/dist',
         'Sizzle': 'vendor/sizzle/dist/sizzle.min',
         'Plupload': 'vendor/plupload/js/plupload.full',
         'when': 'vendor/when',
