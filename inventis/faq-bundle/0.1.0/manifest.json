@@ -1,6 +1,6 @@
 {
   "bundles": {
-    "Inventis\\Bundle\\FaqBundleBundle\\InventisFaqBundleBundle": [
+    "Inventis\\Bundle\\FaqBundle\\InventisFaqBundle": [
       "all"
     ]
   },
