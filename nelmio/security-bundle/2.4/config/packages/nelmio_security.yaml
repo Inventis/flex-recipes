@@ -5,7 +5,7 @@ nelmio_security:
     #     names:
     #         - Cookie1
     #         - Cookie2
-    
+
     clickjacking:
         paths:
             '^/.*': DENY
@@ -29,14 +29,21 @@ nelmio_security:
                 - none
             img-src:
                 - self
+                - https://placeholder.inventis.be
+                - https://*.ytimg.com
             connect-src:
                 - self
             font-src:
                 - self
             style-src:
                 - self
+                - 'unsafe-inline'
             script-src:
                 - self
+                - https://www.youtube.com
+                - https://*.ytimg.com
+            frame-src:
+                - https://www.youtube.com
 
     content_type:
         nosniff: true

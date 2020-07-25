@@ -40,6 +40,10 @@ inventis_styleguide:
             name: 'styleguide.block.image-text.name'
             group: 'styleguide.blocks-group.image.name'
             template: '@styleguide/blocks/image/with-text.html.twig'
+        image-text-reversed:
+            name: 'styleguide.block.image-text-reversed.name'
+            group: 'styleguide.blocks-group.image.name'
+            template: '@styleguide/blocks/image/with-text-reversed.html.twig'
         button:
             name: 'styleguide.block.button.name'
             group: 'styleguide.blocks-group.element.name'
@@ -68,3 +72,8 @@ inventis_styleguide:
             name: 'styleguide.block.unordered-list.name'
             group: 'styleguide.blocks-group.text.name'
             template: '@styleguide/blocks/list/unordered-list.html.twig'
+        video:
+            name: 'styleguide.block.video.name'
+            group: 'styleguide.blocks-group.element.name'
+            template: '@styleguide/blocks/video/video.html.twig'
+            js_module: 'Inventis/Bundle/StyleguideBundle/Block/VideoPlugin'
