@@ -53,5 +53,5 @@ nelmio_security:
 
     forced_ssl:
         hsts_max_age: 2592000 # 30 days
-        hsts_subdomains: true
+        hsts_subdomains: false
         redirect_status_code: 302
