@@ -28,6 +28,7 @@ module.exports = function (grunt) {
             'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',
             'Inventis/Bundle/SeoBundle': 'bundles/inventisseo/js',
             'Inventis/Bundle/FormBundle': 'bundles/inventisform/js',
+            'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
             // vendors
             'quill': 'vendor/quill/dist',
             'grapesjs': 'vendor/grapesjs/dist',
