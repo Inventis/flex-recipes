@@ -7,7 +7,7 @@
     "templates/": "templates/",
     "Gruntfile.js": "Gruntfile.js",
     "package.json": "package.json",
-    "asserts/js/" : "assets/js/"
+    "assets/js/" : "assets/js/"
   },
   "aliases": [
     "bricks-bundle",
