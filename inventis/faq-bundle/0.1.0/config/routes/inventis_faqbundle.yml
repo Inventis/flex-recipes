@@ -1,0 +1,4 @@
+inventis_faqbundle_routing:
+    resource: "@InventisFaqBundle/Controller/Webadmin"
+    type:     annotation
+    prefix:   /webadmin/faqs

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{{ asset('vendor/@inventis/ckeditor5-build-classic/build/styles.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/@inventis/webadmin-styleguide-dist/default/styles/main.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body
+        class="body -{{ app.environment }}"
+        data-locale="{{ app.request.attributes.get('_locale') }}"
+        data-enable-brick-debugging="{% if enable_brick_debugging %}1{% else %}0{% endif %}"
+>
+{{ brick|raw }}
+<script type="text/javascript" data-main="{{ asset('js/Main.js') ~ '?v=0.17.3' }}" src="{{ asset('vendor/requirejs/require.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/inventisbricks/js/builder-debug.js') }}"></script>
+</body>
+</html>
