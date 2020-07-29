@@ -59,7 +59,7 @@ liip_imagine:
             filesystem:
                 data_root:
                     # this is needed for LiipImagine root path validation as public/upload is outside document root
-                    - '%kernel.project_dir%/../shared/public/upload'
+                    - '%kernel.project_dir%/../../shared/public/upload'
                     - '%kernel.project_dir%/public'
             gaufrette:
                 filesystem: 'sonata.media.filesystem.local' # must match sonata_media.filesystem
