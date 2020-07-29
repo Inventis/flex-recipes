@@ -1,0 +1,13 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\TextBundle\\InventisTextBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "text-bundle"
+  ]
+}
