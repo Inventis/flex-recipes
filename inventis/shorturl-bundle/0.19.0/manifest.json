@@ -4,6 +4,9 @@
       "all"
     ]
   },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
   "aliases": [
     "shorturl-bundle"
   ]
