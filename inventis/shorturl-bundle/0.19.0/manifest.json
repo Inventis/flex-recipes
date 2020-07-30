@@ -1,0 +1,10 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\ShortUrlBundle\\InventisShortUrlBundle": [
+      "all"
+    ]
+  },
+  "aliases": [
+    "shorturl-bundle"
+  ]
+}
