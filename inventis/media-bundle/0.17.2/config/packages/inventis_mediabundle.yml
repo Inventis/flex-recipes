@@ -64,10 +64,16 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [100, 70], mode: outbound }
+            post_processors:
+                jpegoptim: { strip_all: true, max: 75, progressive: true }
+                optipng: { strip_all: true, level: 5 }
         default_big:
             quality: 75
             filters:
                 thumbnail: { size: [500, 70], mode: outbound }
+            post_processors:
+                jpegoptim: { strip_all: true, max: 75, progressive: true }
+                optipng: { strip_all: true, level: 5 }
 
 jms_serializer:
     metadata:
