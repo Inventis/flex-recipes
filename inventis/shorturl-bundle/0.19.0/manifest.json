@@ -1,6 +1,6 @@
 {
   "bundles": {
-    "Inventis\\Bundle\\FaqBundle\\InventisFaqBundle": [
+    "Inventis\\Bundle\\ShortUrlBundle\\InventisShortUrlBundle": [
       "all"
     ]
   },
@@ -8,6 +8,6 @@
     "config/": "%CONFIG_DIR%/"
   },
   "aliases": [
-    "faq-bundle"
+    "shorturl-bundle"
   ]
 }

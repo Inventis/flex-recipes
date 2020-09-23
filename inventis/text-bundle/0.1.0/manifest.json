@@ -1,6 +1,6 @@
 {
   "bundles": {
-    "Inventis\\Bundle\\FaqBundle\\InventisFaqBundle": [
+    "Inventis\\Bundle\\TextBundle\\InventisTextBundle": [
       "all"
     ]
   },
@@ -8,6 +8,6 @@
     "config/": "%CONFIG_DIR%/"
   },
   "aliases": [
-    "faq-bundle"
+    "text-bundle"
   ]
 }
