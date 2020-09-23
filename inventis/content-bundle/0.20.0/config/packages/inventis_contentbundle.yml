@@ -1,0 +1,32 @@
+# for more configuration settings run docker/console config:dump-reference CmfCoreBundle
+cmf_core:
+    multilang:
+        locales: '%supported_locales%'
+    persistence:
+        phpcr:
+            enabled: true
+            translation_strategy: child
+
+cmf_routing:
+    dynamic:
+        controllers_by_class:
+            Symfony\Cmf\Component\Routing\RedirectRouteInterface: cmf_routing.redirect_controller:redirectAction
+
+jms_serializer:
+    metadata:
+        directories:
+            SymfonyCmfRouting:
+                namespace_prefix: 'Symfony\Cmf\Bundle\RoutingBundle'
+                path: "@InventisContentBundle/Resources/config/serializer/SymfonyCmfRouting"
+
+inventis_content:
+    controllers_by_class: ~
+    route_basepaths:
+        - '/cms/routes'
+    default_locale: '%locale%'
+    phpcr_namespaces:
+        app:
+            prefix: app
+            uri: https://app.inventis.be
+    phpcr_route_base_path_format: '%inventis_content.phpcr_basepath%/<namespace>:routes'
+    phpcr_active_namespace: app
