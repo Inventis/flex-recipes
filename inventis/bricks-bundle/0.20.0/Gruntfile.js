@@ -31,7 +31,7 @@ module.exports = function (grunt) {
             'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
             // vendors
             'quill': 'vendor/quill/dist',
-            'grapesjs': 'vendor/grapesjs/dist/grapes',
+            'grapesjs': 'vendor/grapesjs/dist',
             'gjs-plugin-ckeditor': 'vendor/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min',
             'ckeditor4': 'vendor/ckeditor/ckeditor',
             'when/es6-shim': 'vendor/when/es6-shim',
