@@ -6,7 +6,8 @@
     "config/": "%CONFIG_DIR%/",
     "templates/": "templates/",
     "Gruntfile.js": "Gruntfile.js",
-    "package.json": "package.json"
+    "package.json": "package.json",
+    "assets/js/": "assets/js/"
   },
   "aliases": [
     "bricks-bundle",
