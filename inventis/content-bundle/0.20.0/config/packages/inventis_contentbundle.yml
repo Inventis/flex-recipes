@@ -1,4 +1,7 @@
 # for more configuration settings run docker/console config:dump-reference CmfCoreBundle
+parameters:
+    locale: en
+
 cmf_core:
     multilang:
         locales: '%supported_locales%'
@@ -24,6 +27,7 @@ inventis_content:
     route_basepaths:
         - '/cms/routes'
     default_locale: '%locale%'
+    default_controller: 'inventis.bundle.contentbundle.controller.front.contentcontroller:indexAction'
     phpcr_namespaces:
         app:
             prefix: app
