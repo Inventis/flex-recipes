@@ -26,12 +26,10 @@ module.exports = function (grunt) {
             'Inventis/Bundle/WebadminBundle': 'bundles/inventiswebadmin/js',
             'Inventis/Bundle/NavigationBundle': 'bundles/inventisnavigation/js',
             'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',
-            'Inventis/Bundle/SeoBundle': 'bundles/inventisseo/js',
-            'Inventis/Bundle/FormBundle': 'bundles/inventisform/js',
             'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
             // vendors
             'quill': 'vendor/quill/dist',
-            'grapesjs': 'vendor/grapesjs/dist',
+            'grapesjs': 'vendor/grapesjs/dist/grapes',
             'gjs-plugin-ckeditor': 'vendor/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min',
             'ckeditor4': 'vendor/ckeditor/ckeditor',
             'when/es6-shim': 'vendor/when/es6-shim',
@@ -180,6 +178,18 @@ module.exports = function (grunt) {
             build: ['public/build'],
             vendor: ['public/vendor']
         },
+        babel: {
+            options: {
+                sourceMap: false,
+                presets: ['@babel/preset-env']
+            },
+            dist: {
+                files: {
+                    'public/bundles/inventisbricks/js/Brick/PageContent/DefaultBlockConfig.js': 'public/bundles/inventisbricks/js/Brick/PageContent/DefaultBlockConfig.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/DefaultComponentsPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/DefaultComponentsPlugin.js'
+                }
+            }
+        },
         amdwrap: {
             searchString: {
                 expand: true,
@@ -229,7 +239,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks("grunt-amd-wrap");
+    grunt.loadNpmTasks("grunt-babel");
 
     // Default task(s).
-    grunt.registerTask('build', ['clean', 'copy', 'amdwrap', 'requirejs:all']);
+    grunt.registerTask('build', ['clean', 'copy', 'amdwrap', 'babel', 'requirejs:all']);
 };
