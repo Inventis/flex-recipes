@@ -120,3 +120,9 @@ inventis_styleguide:
             template: '@styleguide/blocks/video/video.html.twig'
             js_module: 'Inventis/Bundle/StyleguideBundle/Block/VideoPlugin'
             preview_image: 'blocks/video/preview-images/video.svg'
+        divider:
+            name: 'styleguide.block.divider.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3009
+            template: '@styleguide/blocks/divider/divider.html.twig'
+            preview_image: 'blocks/divider/preview-images/divider.svg'
