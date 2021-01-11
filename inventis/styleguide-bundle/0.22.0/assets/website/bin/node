@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+binDir=`dirname "$BASH_SOURCE"`
+
+# Set INVENTIS_SSH_FILE_PATH environment variable if you want to change the default ssh key file path; use an absolute path to your custom key
+[[ -z "${INVENTIS_SSH_FILE_PATH}" ]] && sshFilePath=~/.ssh/id_rsa || sshFilePath="${INVENTIS_SSH_FILE_PATH}"
+
+WORKDIR=.
+IMAGE=inventis/node:14-alpine
+PUBLIC_PATH=/assets/website/
+OUTPUT_PATH=dist/
+
+# Add workdir option
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -w|--workdir)
+    WORKDIR="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+
+# If no command is given run bash
+if [[ -z "${POSITIONAL[@]}" ]]; then
+    POSITIONAL+=("bash")
+fi
+
+${binDir}/docker-run --workdir ${WORKDIR} -e OUTPUT_PATH=${OUTPUT_PATH} -e PUBLIC_PATH=${PUBLIC_PATH} --volume ${sshFilePath}:/root/.ssh/id_rsa:ro --volume ~/.cache/docker-npm:/root/.npm ${IMAGE} ${POSITIONAL[@]}
