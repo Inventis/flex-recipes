@@ -21,6 +21,7 @@ require.config({
         'Inventis/Bundle/WebadminBundle': 'bundles/inventiswebadmin/js',
         'Inventis/Bundle/NavigationBundle': 'bundles/inventisnavigation/js',
         'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',
+        'Inventis/Bundle/TemplateBundle': 'bundles/inventistemplate/js',
         'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
         // define all vendor package loading rules below
         'quill': 'vendor/quill/dist',
