@@ -1,0 +1,2 @@
+inventis_templatebundle_routing:
+    resource: "@InventisTemplateBundle/Resources/config/routing.yaml"

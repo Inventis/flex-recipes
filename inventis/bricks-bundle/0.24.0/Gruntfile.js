@@ -26,6 +26,7 @@ module.exports = function (grunt) {
             'Inventis/Bundle/WebadminBundle': 'bundles/inventiswebadmin/js',
             'Inventis/Bundle/NavigationBundle': 'bundles/inventisnavigation/js',
             'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',
+            'Inventis/Bundle/TemplateBundle': 'bundles/inventistemplate/js',
             'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
             // vendors
             'quill': 'vendor/quill/dist',
