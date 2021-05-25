@@ -1,0 +1,13 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\TemplateContentBridgeBundle\\InventisTemplateContentBridgeBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "template-content-bridge-bundle"
+  ]
+}
