@@ -150,7 +150,7 @@ module.exports = function (grunt) {
             node_modules: {
                 cwd: 'node_modules', // set working folder / root to copy
                 src: [
-                    '@inventis/ckeditor5-build-classic/**',
+                    '@inventis/ckeditor5-builds/**',
                     'grapesjs/dist/**',
                     'grapesjs-plugin-ckeditor/dist/**',
                     'ckeditor/**',
