@@ -26,8 +26,6 @@ require.config({
         // define all vendor package loading rules below
         'quill': 'vendor/quill/dist',
         'grapesjs': 'vendor/grapesjs/dist',
-        'gjs-plugin-ckeditor': 'vendor/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min',
-        'ckeditor4': 'vendor/ckeditor/ckeditor',
         'Sizzle': 'vendor/sizzle/dist/sizzle.min',
         'Plupload': 'vendor/plupload/js/plupload.full',
         'when': 'vendor/when',

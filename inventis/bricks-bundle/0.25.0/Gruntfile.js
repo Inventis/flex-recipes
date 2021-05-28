@@ -31,8 +31,6 @@ module.exports = function (grunt) {
             // vendors
             'quill': 'vendor/quill/dist',
             'grapesjs': 'vendor/grapesjs/dist/grapes.min',
-            'gjs-plugin-ckeditor': 'vendor/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min',
-            'ckeditor4': 'vendor/ckeditor/ckeditor',
             'when/es6-shim': 'vendor/when/es6-shim',
             'chartjs': 'vendor/chartjs',
             'nanoajax': 'vendor/nanoajax/nanoajax.min',
@@ -152,8 +150,6 @@ module.exports = function (grunt) {
                 src: [
                     '@inventis/ckeditor5-builds/**',
                     'grapesjs/dist/**',
-                    'grapesjs-plugin-ckeditor/dist/**',
-                    'ckeditor/**',
                     'font-awesome/css/**',
                     'font-awesome/fonts/**',
                     'chartjs/chart.js',
@@ -182,12 +178,23 @@ module.exports = function (grunt) {
         babel: {
             options: {
                 sourceMap: false,
-                presets: ['@babel/preset-env']
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    ['@babel/plugin-proposal-object-rest-spread', {'loose': true}],
+                    ['@babel/plugin-proposal-class-properties']
+                ],
             },
             dist: {
                 files: {
+                    'public/bundles/inventisbricks/js/Brick/PageContent.js': 'public/bundles/inventisbricks/js/Brick/PageContent.js',
                     'public/bundles/inventisbricks/js/Brick/PageContent/DefaultBlockConfig.js': 'public/bundles/inventisbricks/js/Brick/PageContent/DefaultBlockConfig.js',
-                    'public/bundles/inventisbricks/js/Brick/PageContent/DefaultComponentsPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/DefaultComponentsPlugin.js'
+                    'public/bundles/inventisbricks/js/Brick/PageContent/ComponentTypeDefinitionBuilder.js': 'public/bundles/inventisbricks/js/Brick/PageContent/ComponentTypeDefinitionBuilder.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DefaultComponentsPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DefaultComponentsPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/GrapesOverridesPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/GrapesOverridesPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentDropzoneHighlighterPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentDropzoneHighlighterPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentWrapperPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentWrapperPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js',
+                    'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js': 'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js',
                 }
             }
         },
