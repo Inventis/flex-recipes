@@ -1,6 +1,6 @@
 inventis_styleguide:
     paths:
-        - {path: '%kernel.project_dir%/src/Bundle/StyleguideBundle/Resources/boilerplate', namespace: 'styleguide' }
+        - { path: '%kernel.project_dir%/assets/website', namespace: 'styleguide' }
     sections:
         pages:
             name: 'Pages'

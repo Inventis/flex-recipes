@@ -11,6 +11,8 @@
     "devDependencies": {
         "@babel/core": "^7.1.2",
         "@babel/preset-env": "^7.1.0",
+        "@babel/plugin-proposal-class-properties": "^7.12.13",
+        "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
         "eslint": "^4.19.1",
         "eslint-config-inventis": "git+ssh://git@bitbucket.org/inventis/coding-conventions.git#master",
         "eslint-plugin-jasmine": "^2.10.1",
