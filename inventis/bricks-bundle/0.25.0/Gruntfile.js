@@ -103,6 +103,7 @@ module.exports = function (grunt) {
     const ignoredModules = [
         'App/Main',
         'App/app',
+        'Inventis/Bundle/BricksBundle/Brick/PageContent/RunInFrame',
         'Inventis/Bundle/BricksBundle/Main',
         'Inventis/Bundle/BricksBundle/Mixins/Adapters/Renderers/Ext/FileField',
         'Inventis/Bundle/BricksBundle/Mixins/Adapters/Renderers/Ext/Grid',
