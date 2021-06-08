@@ -1,0 +1,4 @@
+inventis_content_migrations:
+    content_migration_template: '@InventisContentMigrationsBundle/Migrations/content_migration.tpl'
+    content_migration_paths:
+        'InventisContentMigrations': '%kernel.project_dir%/src/Migrations/Content'
