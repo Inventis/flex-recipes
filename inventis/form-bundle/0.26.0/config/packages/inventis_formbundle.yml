@@ -1,0 +1,9 @@
+inventis_form:
+    classes:
+        form: Inventis\Bundle\FormBundle\Entity\Form
+        form_field: Inventis\Bundle\FormBundle\Entity\FormField
+        form_field_choice: Inventis\Bundle\FormBundle\Entity\FormFieldChoice
+        form_field_choice_translation: Inventis\Bundle\FormBundle\Entity\FormFieldChoiceTranslation
+        form_submission: Inventis\Bundle\FormBundle\Entity\FormSubmission
+        form_submission_answer: Inventis\Bundle\FormBundle\Entity\FormSubmissionAnswer
+        form_translation: Inventis\Bundle\FormBundle\Entity\FormTranslation
