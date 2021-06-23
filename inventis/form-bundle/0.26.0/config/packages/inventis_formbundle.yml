@@ -7,3 +7,6 @@ inventis_form:
         form_submission: Inventis\Bundle\FormBundle\Entity\FormSubmission
         form_submission_answer: Inventis\Bundle\FormBundle\Entity\FormSubmissionAnswer
         form_translation: Inventis\Bundle\FormBundle\Entity\FormTranslation
+
+parameters:
+    form_bundle.file_submission_upload_dir: upload/formBundle/submissions
