@@ -178,7 +178,6 @@ module.exports = function (grunt) {
         babel: {
             options: {
                 sourceMap: false,
-                presets: ['@babel/preset-env'],
                 plugins: [
                     ['@babel/plugin-transform-spread', {'loose': true}],
                     ['@babel/plugin-proposal-object-rest-spread', {'loose': true}],
