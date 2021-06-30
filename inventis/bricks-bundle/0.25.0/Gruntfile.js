@@ -98,7 +98,6 @@ module.exports = function (grunt) {
         'Inventis/Bundle/SeoBundle',
         'Inventis/Bundle/MediaBundle',
         'Inventis/Bundle/WebadminBundle',
-        'Inventis/Bundle/FormBundle',
     ];
     const ignoredModules = [
         'App/Main',
