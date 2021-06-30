@@ -25,7 +25,7 @@ require.config({
         'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',
         // define all vendor package loading rules below
         'quill': 'vendor/quill/dist',
-        'grapesjs': 'vendor/grapesjs/dist',
+        'grapesjs': 'vendor/grapesjs/dist/grapes.min',
         'Sizzle': 'vendor/sizzle/dist/sizzle.min',
         'Plupload': 'vendor/plupload/js/plupload.full',
         'when': 'vendor/when',
