@@ -1,0 +1,16 @@
+inventis_site_settings:
+    themes: ~
+    actions:
+        cache_clear:
+            message_class: Inventis\Bundle\SiteSettingsBundle\Message\CacheClearCommand
+            label: 'inventis_site.site_settings.form.actions.label.cache_clear'
+            menu_group_label: 'inventis_site.site_settings.form.actions.label.cache_clear.group'
+            global: true
+
+#        cache_clear_without_warmup:
+#            message_class: Inventis\Bundle\SiteSettingsBundle\Message\CacheClearWithoutWarmupCommand
+#            label: 'inventis_site.site_settings.form.actions.label.cache_clear_no_warmup'
+#            menu_group_label: 'inventis_site.site_settings.form.actions.label.cache_clear.group'
+#            global: true
+#            options:
+#                noWarmup: true
