@@ -24,7 +24,7 @@
         </script>
         -->
 
-        <script type="text/javascript" data-main="{{ asset('js/Main.js') }}" src="{{ asset('vendor/requirejs/require.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/inventisbricks/js/builder-debug.js') }}"></script>
+        <script type="text/javascript" data-main="{{ asset('js/Main.js') }}" src="{{ asset('vendor/requirejs/require.js') }}" nonce="{{ csp_nonce('script') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/inventisbricks/js/builder-debug.js') }}" nonce="{{ csp_nonce('script') }}"></script>
     </body>
 </html>
