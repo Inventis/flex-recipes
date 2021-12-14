@@ -1,0 +1,17 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\FormBundle\\InventisFormBundle": [
+      "all"
+    ],
+    "Knp\\DoctrineBehaviors\\Bundle\\DoctrineBehaviorsBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/",
+    "src/": "%SRC_DIR%/"
+  },
+  "aliases": [
+    "form-bundle"
+  ]
+}
