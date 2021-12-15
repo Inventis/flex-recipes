@@ -9,4 +9,4 @@ inventis_form:
         form_translation: Inventis\Bundle\FormBundle\Entity\FormTranslation
 
 parameters:
-    form_bundle.file_submission_upload_dir: upload/formBundle/submissions
+    form_bundle.file_submission_upload_dir: '%kernel.project_dir%/var/upload/form-submissions'

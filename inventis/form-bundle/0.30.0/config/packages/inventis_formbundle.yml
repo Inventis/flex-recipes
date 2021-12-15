@@ -1,0 +1,11 @@
+inventis_form:
+    classes:
+        form: App\Entity\Form\Form
+        form_field: App\Entity\Form\FormField
+        form_field_translation: App\Entity\Form\FormFieldTranslation
+        form_field_choice: App\Entity\Form\FormFieldChoice
+        form_field_choice_translation: App\Entity\Form\FormFieldChoiceTranslation
+        form_submission: App\Entity\Form\FormSubmission
+        form_submission_answer: App\Entity\Form\FormSubmissionAnswer
+        form_translation: App\Entity\Form\FormTranslation
+        form_receiver: App\Entity\Form\FormReceiver
