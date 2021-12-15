@@ -9,6 +9,3 @@ inventis_form:
         form_submission_answer: App\Entity\Form\FormSubmissionAnswer
         form_translation: App\Entity\Form\FormTranslation
         form_receiver: App\Entity\Form\FormReceiver
-
-parameters:
-    form_bundle.file_submission_upload_dir: upload/formBundle/submissions
