@@ -9,3 +9,13 @@ inventis_form:
         form_submission_answer: App\Entity\Form\FormSubmissionAnswer
         form_translation: App\Entity\Form\FormTranslation
         form_receiver: App\Entity\Form\FormReceiver
+    blocks:
+        form:
+            name: 'styleguide.block.form.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3013
+            template: '@InventisForm/rows/form/form.html.twig'
+            preview_image: '/bundles/inventisform/assets/preview-images/form.svg'
+            translation_domain: 'InventisFormBundle'
+            js_module: 'Inventis/Bundle/FormBundle/Block/FormPlugin'
+            factory: 'inventis_form.block.form_block_provider_factory'
