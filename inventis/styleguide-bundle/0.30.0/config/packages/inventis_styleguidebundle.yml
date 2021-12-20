@@ -1,0 +1,182 @@
+inventis_styleguide:
+    paths:
+        - { path: '%kernel.project_dir%/assets/website', namespace: 'styleguide' }
+    sections:
+        pages:
+            name: 'Pages'
+            root: pages
+            mode: page
+        components:
+            name: 'Components'
+            root: components
+            mode: component
+        blocks:
+            name: 'Pagebuilder blocks'
+            root: blocks
+            mode: component
+    page_data:
+        page: 'data'
+    default_pagination_options: ~
+    blocks:
+        paragraph:
+            name: 'styleguide.block.paragraph.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1000
+            template: '@styleguide/blocks/paragraph/paragraph.html.twig'
+            preview_image: 'blocks/paragraph/preview-images/paragraph.svg'
+        intro:
+            name: 'styleguide.block.intro.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1001
+            template: '@styleguide/blocks/intro/intro.html.twig'
+            preview_image: 'blocks/intro/preview-images/intro.svg'
+        heading-1:
+            name: 'styleguide.block.title-1.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1002
+            template: '@styleguide/blocks/headings/heading-1.html.twig'
+            preview_image: 'blocks/headings/preview-images/title.svg'
+            js_module_options:
+                base_class: 'row'
+        heading-2:
+            name: 'styleguide.block.title-2.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1003
+            template: '@styleguide/blocks/headings/heading-2.html.twig'
+            preview_image: 'blocks/headings/preview-images/title.svg'
+            js_module_options:
+                base_class: 'row'
+        heading-3:
+            name: 'styleguide.block.title-3.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1004
+            template: '@styleguide/blocks/headings/heading-3.html.twig'
+            preview_image: 'blocks/headings/preview-images/title.svg'
+            js_module_options:
+                base_class: 'row'
+        heading-4:
+            name: 'styleguide.block.title-4.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1005
+            template: '@styleguide/blocks/headings/heading-4.html.twig'
+            preview_image: 'blocks/headings/preview-images/title.svg'
+            js_module_options:
+                base_class: 'row'
+        heading-5:
+            name: 'styleguide.block.title-5.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1006
+            template: '@styleguide/blocks/headings/heading-5.html.twig'
+            preview_image: 'blocks/headings/preview-images/title.svg'
+            js_module_options:
+                base_class: 'row'
+        full-width-image:
+            name: 'styleguide.block.image-wide.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2001
+            template: '@styleguide/blocks/image/full-width.html.twig'
+            preview_image: 'blocks/image/preview-images/image-full-width.svg'
+        header-image:
+            name: 'styleguide.block.image-header.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2002
+            template: '@styleguide/blocks/image/header.html.twig'
+            preview_image: 'blocks/image/preview-images/image-header.svg'
+        image-with-text:
+            name: 'styleguide.block.image-text.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2003
+            template: '@styleguide/blocks/image/with-text.html.twig'
+            preview_image: 'blocks/image/preview-images/image-with-text.svg'
+            js_module_options:
+                base_class: 'row'
+                variants:
+                    - name: '30%% / 60%%'
+                      class: ''
+                    - name: '50%% / 50%%'
+                      class: '-image-text-even'
+        image-with-text-reversed:
+            name: 'styleguide.block.image-text-reversed.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2004
+            template: '@styleguide/blocks/image/with-text-reversed.html.twig'
+            preview_image: 'blocks/image/preview-images/text-with-image.svg'
+            js_module_options:
+                base_class: 'row'
+                variants:
+                    - name: '30%% / 60%%'
+                      class: ''
+                    - name: '50%% / 50%%'
+                      class: '-image-text-even'
+        button-row:
+            name: 'styleguide.block.button-row.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3001
+            template: '@styleguide/blocks/button-row/button-row.html.twig'
+            preview_image: 'blocks/button-row/preview-images/button-row.svg'
+            js_module_options:
+                base_class: 'row'
+                variants:
+                    - name: 'Links uitlijnen'
+                      class: ''
+                    - name: 'Centreren'
+                      class: '-buttons-centered'
+        button:
+            name: 'styleguide.block.button.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3002
+            template: '@styleguide/blocks/button/button.html.twig'
+            preview_image: 'blocks/button/preview-images/button.svg'
+            js_module_options:
+                base_type: 'link'
+                containers:
+                    - 'button-row'
+        call-to-action:
+            name: 'styleguide.block.call-to-action.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3003
+            template: '@styleguide/blocks/call-to-action/call-to-action.html.twig'
+            preview_image: 'blocks/call-to-action/preview-images/call-to-action.svg'
+        quote:
+            name: 'styleguide.block.quote.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 3004
+            template: '@styleguide/blocks/quote/quote.html.twig'
+            preview_image: 'blocks/quote/preview-images/quote.svg'
+        scrollable-table:
+            name: 'styleguide.block.scrolling-table.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 3005
+            template: '@styleguide/blocks/table/scrollable.html.twig'
+            preview_image: 'blocks/table/preview-images/scrolling-table.svg'
+        squishable-table:
+            name: 'styleguide.block.squishing-table.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 3006
+            template: '@styleguide/blocks/table/squishable.html.twig'
+            preview_image: 'blocks/table/preview-images/squishing-table.svg'
+        ordered-list:
+            name: 'styleguide.block.ordered-list.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 3007
+            template: '@styleguide/blocks/list/ordered-list.html.twig'
+            preview_image: 'blocks/list/preview-images/list-ordered.svg'
+        unordered-list:
+            name: 'styleguide.block.unordered-list.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 3008
+            template: '@styleguide/blocks/list/unordered-list.html.twig'
+            preview_image: 'blocks/list/preview-images/list-unordered.svg'
+        video:
+            name: 'styleguide.block.video.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3009
+            template: '@styleguide/blocks/video/video.html.twig'
+            js_module: 'Inventis/Bundle/StyleguideBundle/Block/VideoPlugin'
+            preview_image: 'blocks/video/preview-images/video.svg'
+        divider:
+            name: 'styleguide.block.divider.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3010
+            template: '@styleguide/blocks/divider/divider.html.twig'
+            preview_image: 'blocks/divider/preview-images/divider.svg'
