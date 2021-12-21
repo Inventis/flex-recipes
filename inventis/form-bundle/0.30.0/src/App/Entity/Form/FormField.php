@@ -9,11 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Inventis\Bundle\FormBundle\Metadata\Model\MetadataAwareTrait;
 use Inventis\Bundle\FormBundle\Model\FormField as FormFieldModel;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Table(name="form_fields")
  * @ORM\Entity
  *
+ * @JMS\ExclusionPolicy("all")
  * @final Not explicitly made final because of Doctrine proxies, but consider it to be final BC-wise.
  */
 class FormField extends FormFieldModel
@@ -43,6 +45,9 @@ class FormField extends FormFieldModel
      *     orphanRemoval=true,
      *     cascade={"persist","remove"}
      * )
+     *
+     * @JMS\Expose
+     * @JMS\MaxDepth(1)
      */
     protected $choices;
 }

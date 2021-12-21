@@ -11,6 +11,7 @@ use Inventis\Bundle\FormContentBridgeBundle\Model\SuccessPageAwareInterface;
 use Inventis\Bundle\FormContentBridgeBundle\Model\SuccessPageAwareTrait;
 use Inventis\Bundle\FormBundle\Model\Form as FormModel;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Table(name="forms")
@@ -33,6 +34,9 @@ class Form extends FormModel
      * @var ArrayCollection ArrayCollection<FormField>
      *
      * @ORM\OneToMany(targetEntity="FormField", mappedBy="form", orphanRemoval=true, fetch="EAGER")
+     *
+     * @JMS\Expose
+     * @JMS\MaxDepth(1)
      */
     protected $fields;
 
@@ -40,6 +44,9 @@ class Form extends FormModel
      * @var ArrayCollection ArrayCollection<FormSubmission>
      *
      * @ORM\OneToMany(targetEntity="FormSubmission", mappedBy="form")
+     *
+     * @JMS\Expose
+     * @JMS\MaxDepth(1)
      */
     protected $submissions;
 
@@ -47,6 +54,9 @@ class Form extends FormModel
      * @var ArrayCollection ArrayCollection<FormReceiver>
      *
      * @ORM\ManyToMany(targetEntity="FormReceiver", inversedBy="receivers")
+     *
+     * @JMS\Expose
+     * @JMS\MaxDepth(1)
      */
     protected $receivers;
 }

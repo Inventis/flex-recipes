@@ -9,11 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Inventis\Bundle\FormBundle\Model\Form;
 use Inventis\Bundle\FormBundle\Model\FormReceiver as FormReceiverModel;
 use Inventis\Bundle\FormBundle\Model\FormSubmission;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Table(name="form_receivers")
  * @ORM\Entity
  *
+ * @JMS\ExclusionPolicy("all")
  * @final Not explicitly made final because of Doctrine proxies, but consider it to be final BC-wise.
  */
 class FormReceiver extends FormReceiverModel
