@@ -1,0 +1,4 @@
+inventis_sitesettingsbundle_routing:
+    resource: "@InventisSiteSettingsBundle/Controller/Webadmin"
+    prefix:   /webadmin/site_settings
+    type:     annotation
