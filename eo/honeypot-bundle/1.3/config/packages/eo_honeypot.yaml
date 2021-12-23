@@ -1,0 +1,27 @@
+eo_honeypot:
+  storage:
+    # database:
+    #     enabled: false
+    #     driver: mongodb # orm and mongodb are supported
+    #     class: ApplicationEoHoneypotBundle:HoneypotPrey
+    # You can also use file format to store honeypot preys.
+    # This may come handy if you need to parse logs with fail2ban
+    file:
+      enabled: true
+      output: '%kernel.logs_dir%/honeypot.log'
+  # redirect:
+  #     enabled: true
+  #     url: "/"
+  #     # route: homepage
+  #     # route_parameters: ~
+
+# this mapping only exists to prevent doctrine PHPCR from trying to map
+# this bundle with attributes in environments where this bundles README.md
+# file is not copied to the production env causing the symfony/doctrine-bridge
+# bundle to not find annotations and as a result will fail because it then falls back on
+# attributes which phpcr does not support as of this writing
+doctrine_phpcr:
+  odm:
+    mappings:
+      EoHoneypotBundle:
+        mapping: false
