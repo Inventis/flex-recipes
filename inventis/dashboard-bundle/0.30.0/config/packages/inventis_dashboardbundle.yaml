@@ -1,2 +1,4 @@
 inventis_dashboard:
     unaudited_entities:
+        - Inventis\Bundle\MediaBundle\Entity\GalleryItem
+        - Inventis\Bundle\ContentMigrationsBundle\Model\ContentMigrationModel

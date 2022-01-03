@@ -24,7 +24,7 @@ security:
                 check_path: inventis_webadmin_login_check
                 enable_csrf: true
                 csrf_token_id: webadmin_login
-                default_target_path: 'inventis_webadmin_dashboard'
+                default_target_path: 'inventis_webadmin'
                 use_referer: true
             remember_me:
                 secret: '%env(APP_SECRET)%'
@@ -45,7 +45,7 @@ security:
                 check_path: inventis_webadmin_login_check
                 enable_csrf: true
                 csrf_token_id: webadmin_login
-                default_target_path: inventis_webadmin_dashboard
+                default_target_path: inventis_webadmin
             remember_me:
                 secret: '%env(APP_SECRET)%'
                 lifetime: 86400 # 1 Day
