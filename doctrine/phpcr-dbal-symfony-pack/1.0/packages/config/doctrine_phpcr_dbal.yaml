@@ -15,7 +15,7 @@ doctrine_phpcr:
             App:
                 mapping: true
                 type: annotation
-                dir: '%kernel.project_dir%/Document'
+                dir: '%kernel.project_dir%/src/Document'
                 alias: App
                 prefix: App\Document\
                 is_bundle: false
