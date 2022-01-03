@@ -1,0 +1,14 @@
+inventis_mediabundle_routing:
+    resource: "@InventisMediaBundle/Controller/Webadmin"
+    type: annotation
+    prefix: /webadmin/mediabundle
+
+_media_oembed:
+    resource: "@InventisMediaBundle/Resources/config/routing/oembed.yaml"
+
+# if you want feature tests enables uncomment this
+#inventis_mediabundle_feature_routing:
+#    resource: "@InventisMediaBundle/Features/Controller/"
+#    type: annotation
+#    prefix: /mediabundle
+
