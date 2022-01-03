@@ -1,0 +1,2 @@
+inventis_templatecontentbridgebundle_routing:
+  resource: "@InventisTemplateContentBridgeBundle/Resources/config/routing.yaml"

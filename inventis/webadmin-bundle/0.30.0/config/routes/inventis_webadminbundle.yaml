@@ -1,0 +1,2 @@
+inventis_webadminbundle_routing:
+    resource: "@InventisWebadminBundle/Resources/config/routing.yml"

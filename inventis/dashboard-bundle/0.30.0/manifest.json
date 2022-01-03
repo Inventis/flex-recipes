@@ -1,0 +1,13 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\DashboardBundle\\InventisDashboardBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "dashboard-bundle"
+  ]
+}

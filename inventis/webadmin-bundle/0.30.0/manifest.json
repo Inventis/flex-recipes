@@ -1,0 +1,15 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\WebadminBundle\\InventisWebadminBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/",
+    "fixtures/": "fixtures/"
+  },
+  "aliases": [
+    "webadmin-bundle",
+    "webadmin"
+  ]
+}

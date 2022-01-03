@@ -1,0 +1,4 @@
+inventis_shorturlbundle_routing:
+    resource: "@InventisShortUrlBundle/Controller/Webadmin"
+    type:     annotation
+    prefix:   /webadmin/shorturl
