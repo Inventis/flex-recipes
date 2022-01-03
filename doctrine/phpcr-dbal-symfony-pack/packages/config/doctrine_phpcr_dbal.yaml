@@ -1,0 +1,25 @@
+doctrine_phpcr:
+    session:
+        backend:
+            type: doctrinedbal
+            connection: default
+            parameters:
+                jackalope.check_login_on_server: false
+        workspace: '%env(PHPCR_WORKSPACE)%'
+        username: '%env(PHPCR_USER)%'
+        password: '%env(PHPCR_PASSWORD)%'
+    odm:
+        auto_mapping: true
+        auto_generate_proxy_classes: true
+        mappings:
+            App:
+                mapping: true
+                type: annotation
+                dir: '%kernel.project_dir%/Document'
+                alias: App
+                prefix: App\Document\
+                is_bundle: false
+        locale_chooser: doctrine_phpcr.odm.locale_chooser
+        default_locale: '%locale%'
+        locales:
+            en: {  }
