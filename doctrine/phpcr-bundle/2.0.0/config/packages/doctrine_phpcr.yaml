@@ -1,0 +1,15 @@
+doctrine_phpcr:
+    session:
+        backend:
+            type: doctrinedbal
+            connection: default
+            parameters:
+                jackalope.check_login_on_server: false
+        workspace: '%env(PHPCR_WORKSPACE)%'
+        username: '%env(PHPCR_USER)%'
+        password: '%env(PHPCR_PASSWORD)%'
+    odm:
+        auto_mapping: true
+        auto_generate_proxy_classes: true
+        locale_chooser: doctrine_phpcr.odm.locale_chooser
+        locale_fallback: hardcoded
