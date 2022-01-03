@@ -1,0 +1,3 @@
+inventis_dashboard_bundle.webadmin:
+    resource: "@InventisDashboardBundle/Controller"
+    type:     annotation
