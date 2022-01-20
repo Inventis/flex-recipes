@@ -7,8 +7,6 @@ namespace App\Entity\Form;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Inventis\Bundle\FormBundle\Metadata\Model\MetadataAwareTrait;
-use Inventis\Bundle\FormContentBridgeBundle\Model\SuccessPageAwareInterface;
-use Inventis\Bundle\FormContentBridgeBundle\Model\SuccessPageAwareTrait;
 use Inventis\Bundle\FormBundle\Model\Form as FormModel;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 use JMS\Serializer\Annotation as JMS;
@@ -23,6 +21,12 @@ class Form extends FormModel
 {
     use TranslatableTrait, MetadataAwareTrait;
 
+    /**
+     * @param string|null $locale
+     * @param bool $fallbackToDefault
+     *
+     * @return FormTranslation
+     */
     public function translate(?string $locale = null, $fallbackToDefault = true): FormTranslation
     {
         /** @var FormTranslation $translation */
