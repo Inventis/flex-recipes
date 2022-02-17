@@ -1,0 +1,18 @@
+parameters:
+    supported_locales: ['nl_BE']
+
+inventis_bricks:
+    supported_locales: '%supported_locales%'
+
+kphoen_rulerz:
+    targets:
+        doctrine: true
+
+jms_serializer:
+    property_naming:
+        # why this isn't the default in the bundle elides me, I understand why it may not be the default for jms, but...
+        id: 'jms_serializer.identical_property_naming_strategy'
+
+twig:
+    globals:
+        enable_brick_debugging: '%kernel.debug%'
