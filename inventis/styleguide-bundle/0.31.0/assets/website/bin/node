@@ -6,7 +6,7 @@ binDir=`dirname "$BASH_SOURCE"`
 [[ -z "${INVENTIS_SSH_FILE_PATH}" ]] && sshFilePath=~/.ssh/id_rsa || sshFilePath="${INVENTIS_SSH_FILE_PATH}"
 
 WORKDIR=.
-IMAGE=inventis/node:14-alpine
+IMAGE=inventis/node:16-alpine
 PUBLIC_PATH=/assets/website/
 
 # Add workdir option
@@ -33,4 +33,4 @@ if [[ -z "${POSITIONAL[@]}" ]]; then
     POSITIONAL+=("bash")
 fi
 
-${binDir}/docker-run --workdir ${WORKDIR} -e OUTPUT_PATH=/dist -e PUBLIC_PATH=${PUBLIC_PATH} --volume "$PWD"/../../public/assets/website:/dist:cached --volume ${sshFilePath}:/root/.ssh/id_rsa:ro --volume ~/.cache/docker-npm:/root/.npm ${IMAGE} ${POSITIONAL[@]}
+${binDir}/docker-run --workdir ${WORKDIR} -e OUTPUT_PATH=/dist -e PUBLIC_PATH=${PUBLIC_PATH} --volume "$PWD"/../../public/assets/website:/dist:cached --volume ${sshFilePath}:/root/.ssh/id_rsa:ro --volume ~/.cache/docker-npm:/root/.npm --volume ~/.npmrc:/root/.npmrc:ro ${IMAGE} ${POSITIONAL[@]}

@@ -6,102 +6,129 @@ inventis_styleguide:
             name: 'Pages'
             root: pages
             mode: page
+        elements:
+            name: 'Elements'
+            root: elements
+            mode: component
         components:
             name: 'Components'
             root: components
             mode: component
         blocks:
             name: 'Pagebuilder blocks'
-            root: blocks
+            root: contentbuilder
             mode: component
-    page_data:
-        page: 'data'
     default_pagination_options: ~
     blocks:
         paragraph:
             name: 'styleguide.block.paragraph.name'
             group: 'styleguide.blocks-group.text.name'
             sequence: 1000
-            template: '@styleguide/blocks/paragraph/paragraph.html.twig'
-            preview_image: 'blocks/paragraph/preview-images/paragraph.svg'
+            template: '@styleguide/contentbuilder/rows/paragraph/paragraph.html.twig'
+            preview_image: 'contentbuilder/rows/paragraph/preview-image/paragraph.svg'
         intro:
             name: 'styleguide.block.intro.name'
             group: 'styleguide.blocks-group.text.name'
             sequence: 1001
-            template: '@styleguide/blocks/intro/intro.html.twig'
-            preview_image: 'blocks/intro/preview-images/intro.svg'
-        heading-2:
-            name: 'styleguide.block.title-2.name'
-            group: 'styleguide.blocks-group.text.name'
-            sequence: 1002
-            template: '@styleguide/blocks/headings/heading-2.html.twig'
-            preview_image: 'blocks/headings/preview-images/title.svg'
-        heading-3:
-            name: 'styleguide.block.title-3.name'
+            template: '@styleguide/contentbuilder/rows/intro/intro.html.twig'
+            preview_image: 'contentbuilder/rows/intro/preview-image/intro.svg'
+        heading-1:
+            name: 'styleguide.block.heading-1.name'
             group: 'styleguide.blocks-group.text.name'
             sequence: 1003
-            template: '@styleguide/blocks/headings/heading-3.html.twig'
-            preview_image: 'blocks/headings/preview-images/title.svg'
+            template: '@styleguide/contentbuilder/rows/heading/heading-1.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
+        heading-2:
+            name: 'styleguide.block.heading-2.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1002
+            template: '@styleguide/contentbuilder/rows/heading/heading-2.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
+        heading-3:
+            name: 'styleguide.block.heading-3.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1003
+            template: '@styleguide/contentbuilder/rows/heading/heading-3.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
         heading-4:
-            name: 'styleguide.block.title-4.name'
+            name: 'styleguide.block.heading-4.name'
             group: 'styleguide.blocks-group.text.name'
             sequence: 1004
-            template: '@styleguide/blocks/headings/heading-4.html.twig'
-            preview_image: 'blocks/headings/preview-images/title.svg'
+            template: '@styleguide/contentbuilder/rows/heading/heading-4.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
         heading-5:
-            name: 'styleguide.block.title-5.name'
+            name: 'styleguide.block.heading-5.name'
+            group: 'styleguide.blocks-group.text.name'
+            sequence: 1006
+            template: '@styleguide/contentbuilder/rows/heading/heading-5.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
+        heading-6:
+            name: 'styleguide.block.heading-6.name'
             group: 'styleguide.blocks-group.text.name'
             sequence: 1005
-            template: '@styleguide/blocks/headings/heading-5.html.twig'
-            preview_image: 'blocks/headings/preview-images/title.svg'
-        full-width-image:
-            name: 'styleguide.block.image-wide.name'
+            template: '@styleguide/contentbuilder/rows/heading/heading-6.html.twig'
+            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
+        image-full:
+            name: 'styleguide.block.image-full.name'
             group: 'styleguide.blocks-group.image.name'
             sequence: 2001
-            template: '@styleguide/blocks/image/full-width.html.twig'
-            preview_image: 'blocks/image/preview-images/image-full-width.svg'
-        header-image:
-            name: 'styleguide.block.image-header.name'
-            group: 'styleguide.blocks-group.image.name'
-            sequence: 2002
-            template: '@styleguide/blocks/image/header.html.twig'
-            preview_image: 'blocks/image/preview-images/image-header.svg'
-        image-with-text:
+            template: '@styleguide/contentbuilder/rows/image/image-full.html.twig'
+            preview_image: 'contentbuilder/rows/image/preview-image/image-full.svg'
+        image-text:
             name: 'styleguide.block.image-text.name'
             group: 'styleguide.blocks-group.image.name'
-            sequence: 2003
-            template: '@styleguide/blocks/image/with-text.html.twig'
-            preview_image: 'blocks/image/preview-images/image-with-text.svg'
-            js_module_options:
-                variants:
-                    ratio:
-                        name: 'styleguide.block.image-text.variant.ratio.name'
-                        options:
-                            - name: 'styleguide.block.image-text.variant.ratio.option.30-60'
-                              value: 'default'
-                            - name: 'styleguide.block.image-text.variant.ratio.option.50-50'
-                              value: 'image-text-even'
-        image-with-text-reversed:
-            name: 'styleguide.block.image-text-reversed.name'
+            sequence: 2002
+            template: '@styleguide/contentbuilder/rows/image/image-text.html.twig'
+            preview_image: 'contentbuilder/rows/image/preview-image/image-text.svg'
+        image-with-text:
+            name: 'styleguide.block.image-with-text.name'
             group: 'styleguide.blocks-group.image.name'
-            sequence: 2004
-            template: '@styleguide/blocks/image/with-text-reversed.html.twig'
-            preview_image: 'blocks/image/preview-images/text-with-image.svg'
+            sequence: 2003
+            template: '@styleguide/contentbuilder/rows/image-with-text/image-with-text.html.twig'
+            preview_image: 'contentbuilder/rows/image-with-text/preview-image/image-with-text.svg'
             js_module_options:
                 variants:
-                    ratio:
-                        name: 'styleguide.block.image-text-reversed.variant.ratio.name'
+                    order:
+                        name: 'styleguide.block.image-with-text.variant.order.name'
                         options:
-                            - name: 'styleguide.block.image-text-reversed.variant.ratio.option.30-60'
-                              value: 'default'
-                            - name: 'styleguide.block.image-text-reversed.variant.ratio.option.50-50'
-                              value: 'image-text-even'
+                            - name: 'styleguide.block.image-with-text.variant.order.option.image-text'
+                              value: 'image-text'
+                            - name: 'styleguide.block.image-with-text.variant.order.option.text-image'
+                              value: 'text-image'
+        image-grid:
+            name: 'styleguide.block.image-grid.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2005
+            template: '@styleguide/contentbuilder/rows/image-grid/image-grid.html.twig'
+            preview_image: 'contentbuilder/rows/image-grid/preview-image/image-grid.svg'
+            js_module_options:
+                variants:
+                    columns:
+                        name: 'styleguide.block.image-grid.variant.columns.name'
+                        options:
+                            - name: 'styleguide.block.image-grid.variant.columns.option.one'
+                              value: 'one'
+                            - name: 'styleguide.block.image-grid.variant.columns.option.two'
+                              value: 'two'
+                            - name: 'styleguide.block.image-grid.variant.columns.option.three'
+                              value: 'three'
+                            - name: 'styleguide.block.image-grid.variant.columns.option.four'
+                              value: 'four'
+        image-element:
+            name: 'styleguide.block.image-element.name'
+            group: 'styleguide.blocks-group.image.name'
+            sequence: 2006
+            template: '@styleguide/contentbuilder/components/image-element/image-element.html.twig'
+            preview_image: 'contentbuilder/components/image-element/preview-image/image-element.svg'
+            js_module_options:
+                containers:
+                    - 'image-grid'
         button-row:
             name: 'styleguide.block.button-row.name'
             group: 'styleguide.blocks-group.element.name'
             sequence: 3001
-            template: '@styleguide/blocks/button-row/button-row.html.twig'
-            preview_image: 'blocks/button-row/preview-images/button-row.svg'
+            template: '@styleguide/contentbuilder/rows/button-row/button-row.html.twig'
+            preview_image: 'contentbuilder/rows/button-row/preview-image/button-row.svg'
             js_module_options:
                 variants:
                     alignment:
@@ -110,63 +137,132 @@ inventis_styleguide:
                             - name: 'styleguide.block.button-row.variant.alignment.option.left'
                               value: ''
                             - name: 'styleguide.block.button-row.variant.alignment.option.center'
-                              value: '-buttons-centered'
+                              value: 'centered'
         button:
             name: 'styleguide.block.button.name'
             group: 'styleguide.blocks-group.element.name'
             sequence: 3002
-            template: '@styleguide/blocks/button/button.html.twig'
-            preview_image: 'blocks/button/preview-images/button.svg'
+            template: '@styleguide/contentbuilder/components/button/button.html.twig'
+            preview_image: 'contentbuilder/components/button/preview-image/button.svg'
             js_module_options:
                 base_type: 'link'
                 containers:
                     - 'button-row'
+                variants:
+                    color:
+                        name: 'styleguide.block.button.variant.color.name'
+                        options:
+                            -   name: 'styleguide.block.button.variant.color.option.primary'
+                                value: 'primary'
+                            -   name: 'styleguide.block.button.variant.color.option.white'
+                                value: 'white'
+                    style:
+                        name: 'styleguide.block.button.variant.style.name'
+                        options:
+                            -   name: 'styleguide.block.button.variant.style.option.fill'
+                                value: ''
+                            -   name: 'styleguide.block.button.variant.style.option.outline'
+                                value: 'outline'
+        faq-container:
+            name: 'styleguide.block.faq-container.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3003
+            template: '@styleguide/contentbuilder/rows/faq/faq-container.html.twig'
+            preview_image: 'contentbuilder/rows/faq/preview-image/faq-container.svg'
+        faq-item:
+            name: 'styleguide.block.faq-item.name'
+            group: 'styleguide.blocks-group.element.name'
+            sequence: 3004
+            template: '@styleguide/contentbuilder/components/faq/faq-item.html.twig'
+            preview_image: 'contentbuilder/components/faq/preview-image/faq-item.svg'
+            js_module_options:
+                containers:
+                    - 'faq'
         call-to-action:
             name: 'styleguide.block.call-to-action.name'
             group: 'styleguide.blocks-group.element.name'
-            sequence: 3003
-            template: '@styleguide/blocks/call-to-action/call-to-action.html.twig'
-            preview_image: 'blocks/call-to-action/preview-images/call-to-action.svg'
+            sequence: 3005
+            template: '@styleguide/contentbuilder/rows/call-to-action/call-to-action.html.twig'
+            preview_image: 'contentbuilder/rows/call-to-action/preview-image/call-to-action.svg'
         quote:
             name: 'styleguide.block.quote.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 3004
-            template: '@styleguide/blocks/quote/quote.html.twig'
-            preview_image: 'blocks/quote/preview-images/quote.svg'
+            sequence: 3006
+            template: '@styleguide/contentbuilder/rows/quote/quote.html.twig'
+            preview_image: 'contentbuilder/rows/quote/preview-image/quote.svg'
         scrollable-table:
             name: 'styleguide.block.scrolling-table.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 3005
-            template: '@styleguide/blocks/table/scrollable.html.twig'
-            preview_image: 'blocks/table/preview-images/scrolling-table.svg'
+            sequence: 3007
+            template: '@styleguide/contentbuilder/rows/table/scroll.html.twig'
+            preview_image: 'contentbuilder/rows/table/preview-image/scroll-table.svg'
         squishable-table:
             name: 'styleguide.block.squishing-table.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 3006
-            template: '@styleguide/blocks/table/squishable.html.twig'
-            preview_image: 'blocks/table/preview-images/squishing-table.svg'
+            sequence: 3008
+            template: '@styleguide/contentbuilder/rows/table/squished.html.twig'
+            preview_image: 'contentbuilder/rows/table/preview-image/squished-table.svg'
         ordered-list:
             name: 'styleguide.block.ordered-list.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 3007
-            template: '@styleguide/blocks/list/ordered-list.html.twig'
-            preview_image: 'blocks/list/preview-images/list-ordered.svg'
+            sequence: 3009
+            template: '@styleguide/contentbuilder/rows/list/ordered-list.html.twig'
+            preview_image: 'contentbuilder/rows/list/preview-image/list-ordered.svg'
         unordered-list:
             name: 'styleguide.block.unordered-list.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 3008
-            template: '@styleguide/blocks/list/unordered-list.html.twig'
-            preview_image: 'blocks/list/preview-images/list-unordered.svg'
+            sequence: 3010
+            template: '@styleguide/contentbuilder/rows/list/unordered-list.html.twig'
+            preview_image: 'contentbuilder/rows/list/preview-image/list-unordered.svg'
         video:
             name: 'styleguide.block.video.name'
             group: 'styleguide.blocks-group.element.name'
-            sequence: 3009
-            template: '@styleguide/blocks/video/video.html.twig'
+            sequence: 3011
+            template: '@styleguide/contentbuilder/rows/video/video.html.twig'
             js_module: 'Inventis/Bundle/StyleguideBundle/Block/VideoPlugin'
-            preview_image: 'blocks/video/preview-images/video.svg'
+            preview_image: 'contentbuilder/rows/video/preview-image/video.svg'
         divider:
             name: 'styleguide.block.divider.name'
             group: 'styleguide.blocks-group.element.name'
-            sequence: 3010
-            template: '@styleguide/blocks/divider/divider.html.twig'
-            preview_image: 'blocks/divider/preview-images/divider.svg'
+            sequence: 3012
+            template: '@styleguide/contentbuilder/rows/divider/divider.html.twig'
+            preview_image: 'contentbuilder/rows/divider/preview-image/divider.svg'
+        text-over-image:
+            name: 'styleguide.block.text-over-image.name'
+            group: 'styleguide.blocks-group.graphic.name'
+            sequence: 4001
+            template: '@styleguide/contentbuilder/rows/text-over-image/text-over-image.html.twig'
+            preview_image: 'contentbuilder/rows/text-over-image/preview-image/text-over-image.svg'
+            js_module_options:
+                variants:
+                    alignment:
+                        name: 'styleguide.block.text-over-image.variant.alignment.name'
+                        options:
+                            - name: 'styleguide.block.text-over-image.variant.alignment.option.left'
+                              value: 'left'
+                            - name: 'styleguide.block.text-over-image.variant.alignment.option.center'
+                              value: 'center'
+                            - name: 'styleguide.block.text-over-image.variant.alignment.option.right'
+                              value: 'right'
+        image-with-text-alt:
+            name: 'styleguide.block.image-with-text-alt.name'
+            group: 'styleguide.blocks-group.graphic.name'
+            sequence: 4002
+            template: '@styleguide/contentbuilder/rows/image-with-text-alt/image-with-text-alt.html.twig'
+            preview_image: 'contentbuilder/rows/image-with-text-alt/preview-image/text-with-image.svg'
+            js_module_options:
+                variants:
+                    order:
+                        name: 'styleguide.block.image-with-text-alt.variant.order.name'
+                        options:
+                            - name: 'styleguide.block.image-with-text-alt.variant.order.option.image-first'
+                              value: 'image-first'
+                            - name: 'styleguide.block.image-with-text-alt.variant.order.option.text-first'
+                              value: 'text-first'
+                    size:
+                        name: 'styleguide.block.image-with-text-alt.variant.size.name'
+                        options:
+                            - name: 'styleguide.block.image-with-text-alt.variant.size.option.large'
+                              value: 'large'
+                            - name: 'styleguide.block.image-with-text-alt.variant.size.option.small'
+                              value: 'small'
