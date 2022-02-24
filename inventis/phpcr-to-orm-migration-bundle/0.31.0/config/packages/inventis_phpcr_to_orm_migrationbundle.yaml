@@ -1,0 +1,61 @@
+doctrine_phpcr:
+    session:
+        backend:
+            type: doctrinedbal
+            connection: default
+            parameters:
+                jackalope.check_login_on_server: false
+        workspace: '%env(PHPCR_WORKSPACE)%'
+        username: '%env(PHPCR_USER)%'
+        password: '%env(PHPCR_PASSWORD)%'
+    odm:
+        auto_mapping: false
+        auto_generate_proxy_classes: true
+        locale_chooser: doctrine_phpcr.odm.locale_chooser
+        default_locale: nl_BE
+        locale_fallback: hardcoded
+        mappings:
+            App:
+                mapping: true
+                type: annotation
+                dir: '%kernel.project_dir%/src/App/Document'
+                alias: App
+                prefix: App\Document\
+                is_bundle: false
+            SeoBundle:
+                mapping: true
+                type: xml
+                alias: SeoBundle
+                prefix: Inventis\Bundle\SeoBundle\Document
+                dir: '%kernel.project_dir%/vendor/inventis/phpcr-to-orm-migration-bundle/SeoBundle/Resources/config/doctrine'
+                is_bundle: false
+            MediaBundle:
+                mapping: true
+                type: xml
+                alias: MediaBundle
+                prefix: Inventis\Bundle\MediaBundle\PHPCR
+                dir: '%kernel.project_dir%/vendor/inventis/phpcr-to-orm-migration-bundle/MediaBundle/Resources/config/doctrine'
+                is_bundle: false
+            # offer default resolution of "App\Document\". For more details, see: https://symfony.com/doc/current/cmf/bundles/phpcr_odm/introduction.html#doctrine-phpcr-odm-configuration
+            ContentBundle:
+                mapping: true
+                type: annotation
+                alias: ContentBundle
+                prefix: Inventis\Bundle\ContentBundle\Document
+                dir: '%kernel.project_dir%/vendor/inventis/phpcr-to-orm-migration-bundle/ContentBundle/Document'
+                is_bundle: false
+            # offer default resolution of "App\Document\". For more details, see: https://symfony.com/doc/current/cmf/bundles/phpcr_odm/introduction.html#doctrine-phpcr-odm-configuration
+            NavigationBundle:
+                mapping: true
+                type: annotation
+                alias: NavigationBundle
+                prefix: Inventis\Bundle\NavigationBundle\Document
+                dir: '%kernel.project_dir%/vendor/inventis/phpcr-to-orm-migration-bundle/NavigationBundle/Document'
+                is_bundle: false
+        locales:
+            nl_BE: []
+            fr_BE: []
+            en_GB: []
+cmf_core:
+    multilang:
+        locales: [nl_BE, fr_BE, en_GB]

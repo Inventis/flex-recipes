@@ -1,0 +1,13 @@
+{
+  "bundles": {
+    "Inventis\\Bundle\\WebadminBundle\\InventisPhpcrToOrmMigrationBundle": [
+      "all"
+    ]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "aliases": [
+    "phpcr-migration"
+  ]
+}
