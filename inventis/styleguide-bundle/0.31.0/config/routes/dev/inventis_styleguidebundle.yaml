@@ -1,5 +1,5 @@
-inventis_styleguidebundle_routing:
-    resource: "@InventisStyleguideBundle/Controller"
+inventis_styleguidebundle_preview_routing:
+    resource: "@InventisStyleguideBundle/Controller/Preview"
     type: annotation
     prefix: /styleguide
     options:
