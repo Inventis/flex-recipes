@@ -30,34 +30,28 @@ inventis_styleguide:
             sequence: 1001
             template: '@styleguide/blocks/intro/intro.html.twig'
             preview_image: 'blocks/intro/preview-images/intro.svg'
-        heading-1:
-            name: 'styleguide.block.title-1.name'
-            group: 'styleguide.blocks-group.text.name'
-            sequence: 1002
-            template: '@styleguide/blocks/headings/heading-1.html.twig'
-            preview_image: 'blocks/headings/preview-images/title.svg'
         heading-2:
             name: 'styleguide.block.title-2.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 1003
+            sequence: 1002
             template: '@styleguide/blocks/headings/heading-2.html.twig'
             preview_image: 'blocks/headings/preview-images/title.svg'
         heading-3:
             name: 'styleguide.block.title-3.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 1004
+            sequence: 1003
             template: '@styleguide/blocks/headings/heading-3.html.twig'
             preview_image: 'blocks/headings/preview-images/title.svg'
         heading-4:
             name: 'styleguide.block.title-4.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 1005
+            sequence: 1004
             template: '@styleguide/blocks/headings/heading-4.html.twig'
             preview_image: 'blocks/headings/preview-images/title.svg'
         heading-5:
             name: 'styleguide.block.title-5.name'
             group: 'styleguide.blocks-group.text.name'
-            sequence: 1006
+            sequence: 1005
             template: '@styleguide/blocks/headings/heading-5.html.twig'
             preview_image: 'blocks/headings/preview-images/title.svg'
         full-width-image:
