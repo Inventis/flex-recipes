@@ -121,6 +121,7 @@ inventis_styleguide:
             template: '@styleguide/contentbuilder/components/image-element/image-element.html.twig'
             preview_image: 'contentbuilder/components/image-element/preview-image/image-element.svg'
             js_module_options:
+                base_type: 'image'
                 containers:
                     - 'image-grid'
         button-row:
