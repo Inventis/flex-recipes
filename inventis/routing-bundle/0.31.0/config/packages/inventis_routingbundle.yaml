@@ -1,1 +1,8 @@
-inventis_routing: ~
+inventis_routing:
+    supported_locales: ['nl_BE']
+
+cmf_routing:
+    dynamic:
+        persistence:
+            orm:
+                manager_name: '%doctrine.default_entity_manager%'
