@@ -1,0 +1,11 @@
+inventis_content:
+    classes:
+        content: App\Entity\Content\Content
+        content_translation: App\Entity\Content\ContentTranslation
+        content_collection: App\Entity\Content\ContentCollection
+        content_collection_translation: App\Entity\Content\ContentCollectionTranslation
+        content_node: App\Entity\Content\ContentNode
+    default_locale: '%locale%'
+
+    default_controller: ~
+    controllers_by_class: ~
