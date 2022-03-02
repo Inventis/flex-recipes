@@ -3,7 +3,3 @@ inventis_navigation:
         # these will get translated
         - { title: 'menu.main', alias: 'main' }
         - { title: 'menu.footer', alias: 'footer' }
-
-cmf_core:
-    persistence:
-        phpcr: ~
