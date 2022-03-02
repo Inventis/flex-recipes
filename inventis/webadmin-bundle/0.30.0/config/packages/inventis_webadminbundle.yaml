@@ -17,7 +17,7 @@ security:
         webadmin:
             pattern: '^(/[a-z]{2}(_|-)[A-Z]{2})?/webadmin'
             provider: db_user_provider
-            user_checker: inventis.webadmin.user.checker
+            user_checker: inventis.webadmin.security.user_checker
             context: webadmin
             # This is the default WebAdmin login form.
             form_login:
@@ -40,7 +40,7 @@ security:
             # main firewall required for webadmin preview mode
             lazy: true
             provider: db_user_provider
-            user_checker: inventis.webadmin.user.checker
+            user_checker: inventis.webadmin.security.user_checker
             context: webadmin
             form_login:
                 login_path: inventis_webadmin_login
