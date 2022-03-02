@@ -7,5 +7,5 @@ inventis_content:
         content_node: App\Entity\Content\ContentNode
     default_locale: '%locale%'
 
-    default_controller: 'App\Controller\ContentController:indexAction'
+    default_controller: ~
     controllers_by_class: ~
