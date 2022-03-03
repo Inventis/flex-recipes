@@ -12,7 +12,7 @@ sonata_media:
     class:
         media: Inventis\Bundle\MediaBundle\Entity\Media
         gallery: Inventis\Bundle\MediaBundle\Entity\Gallery
-        gallery_item: Inventis\Bundle\MediaBundle\Entity\GalleryHasMedia
+        gallery_item: Inventis\Bundle\MediaBundle\Entity\GalleryItem
     providers:
         image:
             thumbnail: inventis.media.thumbnail.liip_imagine
