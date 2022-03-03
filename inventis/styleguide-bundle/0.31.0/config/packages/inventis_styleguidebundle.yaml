@@ -32,12 +32,6 @@ inventis_styleguide:
             sequence: 1001
             template: '@styleguide/contentbuilder/rows/intro/intro.html.twig'
             preview_image: 'contentbuilder/rows/intro/preview-image/intro.svg'
-        heading-1:
-            name: 'styleguide.block.heading-1.name'
-            group: 'styleguide.blocks-group.text.name'
-            sequence: 1003
-            template: '@styleguide/contentbuilder/rows/heading/heading-1.html.twig'
-            preview_image: 'contentbuilder/rows/heading/preview-image/heading.svg'
         heading-2:
             name: 'styleguide.block.heading-2.name'
             group: 'styleguide.blocks-group.text.name'
