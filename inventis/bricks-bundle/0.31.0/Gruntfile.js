@@ -199,6 +199,8 @@ module.exports = function (grunt) {
                     'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentDropzoneHighlighterPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentDropzoneHighlighterPlugin.js',
                     'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentWrapperPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/PageContentWrapperPlugin.js',
                     'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/ComponentToolbarManagerPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/ComponentToolbarManagerPlugin.js',
+                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DeletableNodeListener.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DeletableNodeListener.js',
                     'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js': 'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js',
                 }
             }
