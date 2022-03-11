@@ -1,0 +1,30 @@
+{
+    "manifests": {
+        "inventis/form-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\FormBundle\\InventisFormBundle": [
+                        "all"
+                    ],
+                    "Knp\\DoctrineBehaviors\\Bundle\\DoctrineBehaviorsBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/inventis_formbundle.yml": {
+                    "contents": [
+                        "inventis_formbundle_routing:",
+                        "    resource: \"@InventisFormBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b916a6ce5652673331bcd237f7a0a93ae911bf7a"
+        }
+    }
+}

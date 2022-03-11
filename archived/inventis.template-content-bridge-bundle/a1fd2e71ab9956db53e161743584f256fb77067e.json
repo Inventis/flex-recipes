@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "inventis/template-content-bridge-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TemplateContentBridgeBundle\\InventisTemplateContentBridgeBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/inventis_templatecontentbridgebundle.yaml": {
+                    "contents": [
+                        "inventis_templatecontentbridgebundle_routing:",
+                        "  resource: \"@InventisTemplateContentBridgeBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "a1fd2e71ab9956db53e161743584f256fb77067e"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "manifests": {
+        "inventis/bricks-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\BricksBundle\\InventisBricksBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_bricksbundle.yml": {
+                    "contents": [
+                        "parameters:",
+                        "    supported_locales: ['nl_BE']",
+                        "",
+                        "inventis_bricks:",
+                        "    supported_locales: '%supported_locales%'",
+                        "",
+                        "kphoen_rulerz:",
+                        "    targets:",
+                        "        doctrine: true",
+                        "",
+                        "framework:",
+                        "    # templating is added to support older twig path notations Bundle:Path:Template",
+                        "    # Currently symfony CmfCoreBundle still uses an old path like this",
+                        "    templating: { engines: ['twig'] }",
+                        "",
+                        "jms_serializer:",
+                        "    property_naming:",
+                        "        # why this isn't the default in the bundle elides me, I understand why it may not be the default for jms, but...",
+                        "        id: 'jms_serializer.identical_property_naming_strategy'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "7b91a527d0fdc48a88290fd81975277f9c0e6d1b"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "inventis/shorturl-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ShortUrlBundle\\InventisShortUrlBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "routes/inventis_shorturlbundle.yml": {
+                    "contents": [
+                        "inventis_shorturlbundle_routing:",
+                        "    resource: \"@InventisShortUrlBundle/Controller/Webadmin\"",
+                        "    type:     annotation",
+                        "    prefix:   /webadmin/shorturl",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "1555c69f6301c012acf34e9cb6c5a76e6c8a51a9"
+        }
+    }
+}

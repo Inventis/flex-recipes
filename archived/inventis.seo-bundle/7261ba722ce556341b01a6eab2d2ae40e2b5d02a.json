@@ -1,0 +1,26 @@
+{
+    "manifests": {
+        "inventis/seo-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\SeoBundle\\InventisSeoBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_seobundle.yaml": {
+                    "contents": [
+                        "inventis_seo: ~",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "7261ba722ce556341b01a6eab2d2ae40e2b5d02a"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "manifests": {
+        "inventis/form-content-bridge-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\FormContentBridgeBundle\\InventisFormContentBridgeBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_formcontentbridge.yml": {
+                    "contents": [
+                        "inventis_form_content_bridge:",
+                        "    classes:",
+                        "        success_page: ~",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b4ae213d144f278cdce43944e207d767ea344ebf"
+        }
+    }
+}

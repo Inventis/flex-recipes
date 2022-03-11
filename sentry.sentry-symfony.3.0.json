@@ -1,0 +1,36 @@
+{
+    "manifests": {
+        "sentry/sentry-symfony": {
+            "manifest": {
+                "bundles": {
+                    "Sentry\\SentryBundle\\SentryBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "env": {
+                    "SENTRY_DSN": ""
+                }
+            },
+            "files": {
+                "config/packages/sentry.yaml": {
+                    "contents": [
+                        "sentry:",
+                        "    dsn: '%env(SENTRY_DSN)%'",
+                        "    options:",
+                        "        excluded_exceptions:",
+                        "            - Symfony\\Component\\Security\\Core\\Exception\\AccessDeniedException",
+                        "            - Symfony\\Component\\Security\\Core\\Exception\\AuthenticationCredentialsNotFoundException",
+                        "            - Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
+                        "            - Symfony\\Component\\HttpKernel\\Exception\\BadRequestHttpException",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "6acf85e666eb8a1a457efadb99e73015830c5d83"
+        }
+    }
+}

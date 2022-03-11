@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "inventis/translation-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TranslationBundle\\InventisTranslationBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/inventis_translationbundle.yml": {
+                    "contents": [
+                        "inventis_translationbundle_routing:",
+                        "    resource: \"@InventisTranslationBundle/Controller\"",
+                        "    prefix:   /webadmin/translations",
+                        "    type:     annotation",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "7468c307f76bb41ec4fe231943525763d34cd67f"
+        }
+    }
+}

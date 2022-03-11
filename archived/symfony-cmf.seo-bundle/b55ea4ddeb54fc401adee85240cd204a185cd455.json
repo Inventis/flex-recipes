@@ -1,0 +1,36 @@
+{
+    "manifests": {
+        "symfony-cmf/seo-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Symfony\\Cmf\\Bundle\\SeoBundle\\CmfSeoBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/cmf_seo_bundle.yaml": {
+                    "contents": [
+                        "# Read the documentation: https://symfony.com/doc/master/cmf/bundles/seo/configuration.html",
+                        "cmf_seo:",
+                        "    persistence:",
+                        "        phpcr: true",
+                        "    title: '%%content_title%% | Insert your base Title'",
+                        "    description: '%%content_description%% Insert you base description here.'",
+                        "",
+                        "sonata_seo:",
+                        "    page:",
+                        "        separator: ' \u2013 '",
+                        "        title: \"Inventis Webadmin\"",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b55ea4ddeb54fc401adee85240cd204a185cd455"
+        }
+    }
+}

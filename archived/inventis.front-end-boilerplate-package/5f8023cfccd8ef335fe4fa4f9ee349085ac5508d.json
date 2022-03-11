@@ -1,0 +1,125 @@
+{
+    "manifests": {
+        "inventis/front-end-boilerplate-package": {
+            "manifest": {
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "assets/": "assets/"
+                }
+            },
+            "files": {
+                "assets/website/bin/docker-run": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "POSITIONAL=()",
+                        "while [[ $# -gt 0 ]]",
+                        "do",
+                        "key=\"$1\"",
+                        "",
+                        "case $key in",
+                        "    -w|--workdir)",
+                        "    WORKDIR=\"$2\"",
+                        "    shift # past argument",
+                        "    shift # past value",
+                        "    ;;",
+                        "    *)    # unknown option",
+                        "    POSITIONAL+=(\"$1\") # save it in an array for later",
+                        "    shift # past argument",
+                        "    ;;",
+                        "esac",
+                        "done",
+                        "",
+                        "docker run --rm --interactive --tty --init --volume \"$PWD\":/app:cached --volume \"$PWD\"/../../public/assets/website:/app/dist:cached --workdir /app/$WORKDIR ${POSITIONAL[@]}",
+                        ""
+                    ],
+                    "executable": true
+                },
+                "assets/website/bin/node": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "binDir=`dirname \"$BASH_SOURCE\"`",
+                        "",
+                        "# Set INVENTIS_SSH_FILE_PATH environment variable if you want to change the default ssh key file path; use an absolute path to your custom key",
+                        "[[ -z \"${INVENTIS_SSH_FILE_PATH}\" ]] && sshFilePath=~/.ssh/id_rsa || sshFilePath=\"${INVENTIS_SSH_FILE_PATH}\"",
+                        "",
+                        "WORKDIR=.",
+                        "IMAGE=inventis/node:12-alpine",
+                        "PUBLIC_PATH=/assets/website/",
+                        "OUTPUT_PATH=dist/",
+                        "",
+                        "# Add workdir option",
+                        "POSITIONAL=()",
+                        "while [[ $# -gt 0 ]]",
+                        "do",
+                        "key=\"$1\"",
+                        "",
+                        "case $key in",
+                        "    -w|--workdir)",
+                        "    WORKDIR=\"$2\"",
+                        "    shift # past argument",
+                        "    shift # past value",
+                        "    ;;",
+                        "    *)    # unknown option",
+                        "    POSITIONAL+=(\"$1\") # save it in an array for later",
+                        "    shift # past argument",
+                        "    ;;",
+                        "esac",
+                        "done",
+                        "",
+                        "# If no command is given run bash",
+                        "if [[ -z \"${POSITIONAL[@]}\" ]]; then",
+                        "    POSITIONAL+=(\"bash\")",
+                        "fi",
+                        "",
+                        "${binDir}/docker-run --workdir ${WORKDIR} -e OUTPUT_PATH=${OUTPUT_PATH} -e PUBLIC_PATH=${PUBLIC_PATH} --volume ${sshFilePath}:/root/.ssh/id_rsa:ro --volume ~/.cache/docker-npm:/root/.npm ${IMAGE} ${POSITIONAL[@]}",
+                        ""
+                    ],
+                    "executable": true
+                },
+                "config/packages/assets.yaml": {
+                    "contents": [
+                        "framework:",
+                        "    assets:",
+                        "        json_manifest_path: '%kernel.project_dir%/public/assets/website/manifest.json'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/inventis_styleguide.yml": {
+                    "contents": [
+                        "inventis_styleguide:",
+                        "    paths:",
+                        "        - {path: '%kernel.project_dir%/assets/website', namespace: 'styleguide' }",
+                        "    page_data:",
+                        "        page: 'page'",
+                        "    default_pagination_options: ~",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/webpack_encore.yaml": {
+                    "contents": [
+                        "webpack_encore:",
+                        "    # The path where Encore is building the assets.",
+                        "    # This should match Encore.setOutputPath() in webpack.config.js.",
+                        "    output_path: '%kernel.project_dir%/public/assets/website'",
+                        "    # If multiple builds are defined (as shown below), you can disable the default build:",
+                        "    # output_path: false",
+                        "",
+                        "    # if using Encore.enableIntegrityHashes() specify the crossorigin attribute value (default: false, or use 'anonymous' or 'use-credentials')",
+                        "    # crossorigin: 'anonymous'",
+                        "",
+                        "    # Cache the entrypoints.json (rebuild Symfony's cache when entrypoints.json changes)",
+                        "    # Available in version 1.2",
+                        "    #cache: '%kernel.debug%'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "5f8023cfccd8ef335fe4fa4f9ee349085ac5508d"
+        }
+    }
+}

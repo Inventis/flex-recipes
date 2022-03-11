@@ -1,0 +1,31 @@
+{
+    "manifests": {
+        "inventis/styleguide-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\StyleguideBundle\\InventisStyleguideBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/dev/inventis_styleguidebundle.yml": {
+                    "contents": [
+                        "inventis_styleguidebundle_routing:",
+                        "    resource: \"@InventisStyleguideBundle/Controller\"",
+                        "    type: annotation",
+                        "    prefix: /styleguide",
+                        "    options:",
+                        "        i18n: false",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "24df20ee0f8ba3366117d6d86728056bc410ec4a"
+        }
+    }
+}
