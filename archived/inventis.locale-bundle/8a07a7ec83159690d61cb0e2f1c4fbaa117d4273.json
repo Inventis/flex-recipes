@@ -1,0 +1,25 @@
+{
+    "manifests": {
+        "inventis/locale-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\LocaleBundle\\InventisLocaleBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_localebundle.yaml": {
+                    "contents": [
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "8a07a7ec83159690d61cb0e2f1c4fbaa117d4273"
+        }
+    }
+}
