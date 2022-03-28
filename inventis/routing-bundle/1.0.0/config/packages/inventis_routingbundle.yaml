@@ -1,0 +1,5 @@
+cmf_routing:
+    dynamic:
+        persistence:
+            orm:
+                manager_name: '%doctrine.default_entity_manager%'
