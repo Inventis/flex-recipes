@@ -1,0 +1,3 @@
+inventis_locale:
+    default_locale: nl_BE
+    locales: ['nl_BE']
