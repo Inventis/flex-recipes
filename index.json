@@ -1,6 +1,5 @@
 {
     "aliases": {
-        "architect": "inventis/architect",
         "boilerplate": "inventis/front-end-boilerplate-package",
         "bricks": "inventis/bricks-bundle",
         "bricks-bundle": "inventis/bricks-bundle",
@@ -63,9 +62,6 @@
         ],
         "eightpoints/guzzle-bundle": [
             "7.0"
-        ],
-        "inventis/architect": [
-            "1.0.0-RC1"
         ],
         "inventis/bricks-bundle": [
             "0.1.0",
