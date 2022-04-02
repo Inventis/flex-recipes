@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+binDir=`dirname "$BASH_SOURCE"`
+
+if ! command -v symfony &> /dev/null
+then
+  echo "[BUILD] - YOU MUST INSTALL SYMFONY CLI BEFORE PROCEEDING"
+  exit 1
+fi
+
+symfony composer install
+
+if [ -f `npm whoami --registry=https://npm.inventis.be` ]; then
+    echo
+    echo "[BUILD] - CREDENTIALS CAN BE FOUND IN PASSWORD VAULT"
+    echo
+    npm adduser --scope=@inventis --registry=https://npm.inventis.be
+fi
+
+echo "[BUILD] - BUILDING WEBADMIN FRONT-END"
+echo
+symfony console assets:install public --symlink --relative
+${binDir}/npm install
+#${binDir}/grunt build # is dont by postinstall...
+symfony console cache:clear
+
+echo "[BUILD] - INSTALLING FRONT-END BOILERPLATE"
+echo
+cd assets/website && bin/node yarn install \&\& yarn run prod && cd -
+
+

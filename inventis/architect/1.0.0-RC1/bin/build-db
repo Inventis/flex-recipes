@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+printf "\n[INSTALL] - BUILDING DATABASE... \n"
+symfony console doctrine:schema:create
+
+symfony console hautelook:fixtures:load --no-interaction
+symfony console inventis:media:gallery:create default default reference --activate
+symfony console inventis:navigation:initialize:menu
+
+symfony console doctrine:migrations:sync-metadata-storage
+symfony console doctrine:migrations:version --add --all --no-interaction

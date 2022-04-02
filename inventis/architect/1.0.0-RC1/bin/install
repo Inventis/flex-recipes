@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+binDir=`dirname "$BASH_SOURCE"`
+
+# DOCKER SERVER
+tput bold
+printf "\n[INSTALL] - DOCKER SERVER: STARTING... \n"
+tput sgr0
+if [ ! -f "${binDir}/../docker-compose.yml" ]; then
+    echo "docker-compose.yml was not found. We will create one for you in the root. Please specify some details?"
+
+    mysqlPort=3306
+    mailhog1Port=8025
+    mailhog2Port=1025
+
+    read -r -p "[INSTALL] - DEFAULT PORTS? [yes]" response
+    response=${response}
+    if [[ ${response} =~ ^(no|n) ]]; then
+        read -p "MYSQL port? (default $mysqlPort): " mysqlPortInput
+        read -p "MAILHOG port? (default $mailhog1Port): " mailhog1PortInput
+        read -p "MAILHOG port? (default $mailhog2Port): " mailhog2PortInput
+
+        if [ -n "${mysqlPortInput}" ]; then
+            mysqlPort=$mysqlPortInput
+        fi
+        if [ -n "${mailhog1PortInput}" ]; then
+            mailhog1Port=$mailhog1PortInput
+        fi
+        if [ -n "${mailhog2PortInput}" ]; then
+            mailhog2Port=$mailhog2PortInput
+        fi
+    fi
+
+    while [ -z ${mysqlDbName} ];
+    do
+        read -p "MYSQL database name: " mysqlDbName
+    done
+
+    while [ -z ${mysqlDbPAssword} ];
+    do
+        read -p "MYSQL database password: " mysqlDbPAssword
+    done
+
+    cp ${binDir}/../docker-compose.yml.dist ${binDir}/../docker-compose.yml
+    cp ${binDir}/../.env.dist ${binDir}/../.env
+    sed -i -- "s/<HTTPD-PORT>/$httpdPort/g; s/<MAILHOG1-PORT>/$mailhog1Port/g; s/<MAILHOG2-PORT>/$mailhog2Port/g; s/<MYSQL-PORT>/$mysqlPort/g; s/<MYSQL-DATABASE>/$mysqlDbName/g; s/<MYSQL-PASSWORD>/$mysqlDbPAssword/g" docker-compose.yml
+    sed -i -- "s/<MYSQL-PASSWORD>/$mysqlDbPAssword/g; s/<MYSQL-DATABASE>/$mysqlDbName/g" .env
+
+    rm docker-compose.yml--
+    rm .env--
+fi
+
+docker-compose up -d --remove-orphans
+
+# SYMFONY SERVER
+read -r -p "[INSTALL] - ENABLE SYMFONY TLS? [yes]" response
+response=${response}
+if [[ ${response} =~ ^(yes|y| ) ]] || [[ -z ${response} ]]; then
+    symfony server:ca:install
+fi
+symfony server:start -d
+
+printf "[INSTALL] - DOCKER AND SYMFONY SERVER: RUNNING! \n"
+
+
+echo -e "\n[INSTALL] - RUNNING COMPOSER INSTALL \n";
+symfony composer install
+
+# CONFIG FILES FIX
+echo -e "\n[INSTALL] - FIXING CONFIG FILES... \n";
+symfony php bin/installScript/localeFixer
+symfony php bin/installScript/securityFixer
+symfony php bin/installScript/doctrineFixer
+symfony php bin/installScript/sonataFixer
+
+# BUILD UPLOAD DIRECTORIES
+if [ ! -d "public/media" ]; then
+    mkdir public/media
+fi
+if [ ! -d "public/upload" ]; then
+    mkdir public/upload
+fi
+if [ ! -d "public/upload/media" ]; then
+    mkdir public/upload/media
+fi
+
+# BUILD DATABASE
+read -r -p "[INSTALL] - BUILD DATABASE? [yes]" response
+response=${response}
+if [[ ${response} =~ ^(yes|y| ) ]] || [[ -z ${response} ]]; then
+    bin/build-db
+fi
+
+# BUILD ASSETS
+printf "\n[INSTALL] - BUILDING ASSETS... \n"
+bin/build
+
+# WARM UP CACHE
+printf "\n[INSTALL] - WARM UP CACHE... \n"
+symfony console cache:warmup
