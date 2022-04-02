@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+if ! [ -x "$(command -v brew)" ] && ! [ -x "$(command -v mkcert)" ]; then
+  echo 'Error: brew is not installed.' >&2
+  exit 1
+fi
+
+echo "Type your personal TLD, followed by [ENTER]:"
+read tld
+
+echo
+
+if ! [ -x "$(command -v mkcert)" ]; then
+    DEBUG=$(brew update)
+
+    if ! brew ls --versions mkcert > /dev/null; then
+      DEBUG=$(brew install mkcert)
+    fi
+    if ! brew ls --versions nss > /dev/null; then
+      DEBUG=$(brew install nss)
+    fi
+fi
+
+IS_HTTPD_RUNNING=`docker-compose top httpd`
+if [ "${IS_HTTPD_RUNNING}" != "" ]; then
+    docker-compose stop httpd
+fi
+
+if [ ! -d ~/.ssl ]; then
+    mkdir ~/.ssl
+fi
+cd ~/.ssl
+rm -rf _wildcard.local.*
+
+echo "Generating certificates..."
+
+DEBUG=$(mkcert -install 2>&1)
+DEBUG=$(mkcert "*.local.$tld" 2>&1)
+cd - > /dev/null
+
+#echo DEBUG
+
+# Rename files for easier configuration
+mv -i ~/.ssl/_wildcard.local."$tld".pem ~/.ssl/_wildcard.local.pem
+mv -i ~/.ssl/_wildcard.local."$tld"-key.pem ~/.ssl/_wildcard.local.key.pem
+
+# Remove rootCA as extra security
+rm -f ~/Library/Application\ Support/mkcert/rootCA*
+
+echo "Done!"
+
+if [ "${IS_HTTPD_RUNNING}" != "" ]; then
+    docker-compose start httpd
+fi
+
+echo -e "\nYou can now use [project].local.$tld as hostname for your local projects. No extra www subdomain allowed!"

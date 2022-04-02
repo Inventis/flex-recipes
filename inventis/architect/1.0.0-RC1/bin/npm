@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+binDir=`dirname "$BASH_SOURCE"`
+
+WORKDIR=.
+IMAGE=inventis/node:12-alpine
+
+# Set INVENTIS_SSH_FILE_PATH environment variable if you want to change the default ssh key file path
+[[ -z "${INVENTIS_SSH_FILE_PATH}" ]] && sshFilePath=~/.ssh/id_rsa || sshFilePath="${INVENTIS_SSH_FILE_PATH}"
+
+docker pull ${IMAGE}
+${binDir}/docker-run -i -t --rm --workdir ${WORKDIR} --volume ${sshFilePath}:/root/.ssh/id_rsa:ro --volume ~/.cache/docker-npm:/root/.npm --volume ~/.npmrc:/root/.npmrc:ro ${IMAGE} npm $@

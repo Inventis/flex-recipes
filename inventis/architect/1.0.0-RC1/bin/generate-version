@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+binDir=$(dirname "${BASH_SOURCE[0]}")
+
+REVISION_FILE="${binDir}"/../VERSION
+
+# Fetch Git tag most relevant to current HEAD - the commit hash is returned if there is none.
+if git describe --tags &> /dev/null; then
+    # If the current commit is the tag, return the tag itself, i.e. 1.0.0. If not, use the last tag with the commit hash
+    # behind it, i.e. 1.0.0-2-gCOMMIT to indicate this is not a stable release.
+    git describe --tags > "$REVISION_FILE"
+else
+    # No versions are tagged yet, use 1.0.0-alpha.COMMIT. Note that this must be a proper semantic version.
+    echo -n "1.0.0-alpha." > "$REVISION_FILE"
+    git rev-parse --short HEAD >> "$REVISION_FILE"
+fi
