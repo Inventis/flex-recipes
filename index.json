@@ -1,5 +1,6 @@
 {
     "aliases": {
+        "architect": "inventis/architect",
         "boilerplate": "inventis/front-end-boilerplate-package",
         "bricks": "inventis/bricks-bundle",
         "bricks-bundle": "inventis/bricks-bundle",
@@ -20,6 +21,8 @@
         "formcontentbridgebundle": "inventis/form-content-bridge-bundle",
         "front-end": "inventis/front-end-boilerplate-package",
         "frontend": "inventis/front-end-boilerplate-package",
+        "locale-bundle": "inventis/locale-bundle",
+        "localebundle": "inventis/locale-bundle",
         "media-bundle": "inventis/media-bundle",
         "mediabundle": "inventis/media-bundle",
         "navigation-bundle": "inventis/navigation-bundle",
@@ -61,6 +64,9 @@
         "eightpoints/guzzle-bundle": [
             "7.0"
         ],
+        "inventis/architect": [
+            "1.0.0-RC1"
+        ],
         "inventis/bricks-bundle": [
             "0.1.0",
             "0.3.0",
@@ -73,7 +79,9 @@
             "0.26.0",
             "0.29.3",
             "0.30.0",
-            "0.31.0"
+            "0.31.0",
+            "1.0.0",
+            "1.0.0-RC1"
         ],
         "inventis/content-bundle": [
             "0.1.0",
@@ -105,6 +113,9 @@
         "inventis/front-end-boilerplate-package": [
             "0.17"
         ],
+        "inventis/locale-bundle": [
+            "1.0.0"
+        ],
         "inventis/media-bundle": [
             "0.1.0",
             "0.17.2",
@@ -120,7 +131,8 @@
             "0.31.0"
         ],
         "inventis/routing-bundle": [
-            "0.31.0"
+            "0.31.0",
+            "1.0.0"
         ],
         "inventis/seo-bundle": [
             "0.1.0",
@@ -178,14 +190,14 @@
     },
     "recipe-conflicts": [],
     "versions": [],
-    "branch": "test",
+    "branch": "recipes",
     "is_contrib": false,
     "_links": {
-        "repository": "github.com/flex-recipes",
-        "origin_template": "{package}:{version}@github.com/Inventis/flex-recipes:master",
-        "recipe_template": "https://raw.githubusercontent.com/Inventis/flex-recipes/master/{package_dotted}.{version}.json",
+        "repository": "github.com/inventis/flex-recipes",
+        "origin_template": "{package}:{version}@github.com/inventis/flex-recipes:recipes",
+        "recipe_template": "https://raw.githubusercontent.com/inventis/flex-recipes/master/{package_dotted}.{version}.json",
         "recipe_template_relative": "{package_dotted}.{version}.json",
-        "archived_recipes_template": "https://raw.githubusercontent.com/Inventis/flex-recipes/master/archived/{package_dotted}/{ref}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/inventis/flex-recipes/master/archived/{package_dotted}/{ref}.json",
         "archived_recipes_template_relative": "archived/{package_dotted}/{ref}.json"
     }
 }

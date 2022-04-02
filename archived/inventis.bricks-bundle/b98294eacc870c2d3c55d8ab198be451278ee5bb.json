@@ -50,6 +50,7 @@
                         "            'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',",
                         "            'Inventis/Bundle/SeoBundle': 'bundles/inventisseo/js',",
                         "            'Inventis/Bundle/SiteSettingsBundle': 'bundles/inventissitesettings/js',",
+                        "            'Inventis/Bundle/RoutingBundle': 'bundles/inventisrouting/js',",
                         "            // vendors",
                         "            'quill': 'vendor/quill/dist',",
                         "            'grapesjs': 'vendor/grapesjs/dist/grapes.min',",
@@ -121,6 +122,7 @@
                         "        'Inventis/Bundle/MediaBundle',",
                         "        'Inventis/Bundle/WebadminBundle',",
                         "        'Inventis/Bundle/SiteSettingsBundle',",
+                        "        'Inventis/Bundle/RoutingBundle',",
                         "    ];",
                         "    const ignoredModules = [",
                         "        'App/Main',",
@@ -187,7 +189,7 @@
                         "                    'node-bind/src/**',",
                         "                    'moment/moment.js',",
                         "                    'moment-timezone/builds/moment-timezone-with-data.min.js',",
-                        "                    '@inventis/webadmin-styleguide-dist/**',",
+                        "                    '@inventis/webadmin-ui/**',",
                         "                    '!**/node_modules/**', // make sure we ignore any node_modules in packages, who does this #$@?!",
                         "                ],",
                         "                dest: 'public/vendor', // destination folder",
@@ -306,6 +308,7 @@
                         "        'Inventis/Bundle/ContentBundle': 'bundles/inventiscontent/js',",
                         "        'Inventis/Bundle/TemplateBundle': 'bundles/inventistemplate/js',",
                         "        'Inventis/Bundle/StyleguideBundle': 'bundles/inventisstyleguide/js',",
+                        "        'Inventis/Bundle/RoutingBundle': 'bundles/inventisrouting/js',",
                         "        // define all vendor package loading rules below",
                         "        'quill': 'vendor/quill/dist',",
                         "        'grapesjs': 'vendor/grapesjs/dist/grapes.min',",
@@ -404,13 +407,10 @@
                         "{",
                         "    \"name\": \"@inventis/mortar\",",
                         "    \"repository\": {",
-                        "        \"url\": \"https://bitbucket.org/inventis/medizorg/\"",
+                        "        \"url\": \"https://bitbucket.org/inventis/mortar/\"",
                         "    },",
                         "    \"version\": \"1.0.0\",",
                         "    \"description\": \"Aggregates all bundles, libraries and other Symfony-related projects into one, large repository in order to simplify maintenance.\",",
-                        "    \"dependencies\": {",
-                        "        \"@inventis/bricks-bundle\": \"file:vendor/inventis/bricks-bundle\"",
-                        "    },",
                         "    \"devDependencies\": {",
                         "        \"@babel/core\": \"^7.1.2\",",
                         "        \"@babel/plugin-proposal-class-properties\": \"^7.14.5\",",
@@ -466,7 +466,9 @@
                         "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
                         "        <link href=\"{{ asset('vendor/@inventis/ckeditor5-builds/build/styles.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
                         "        <link href=\"{{ asset('vendor/grapesjs/dist/css/grapes.min.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
-                        "        <link href=\"{{ asset('vendor/@inventis/webadmin-styleguide-dist/default/styles/main.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
+                        "        <link href=\"{{ asset('vendor/@inventis/webadmin-ui/dist/styles/main.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
+                        "        <link href=\"{{ asset('tests/style.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
+                        "        {% include '@InventisBricks/favicon/favicons.html.twig' %}",
                         "    </head>",
                         "    <body",
                         "        class=\"body -{{ app.environment }}\"",
@@ -490,7 +492,7 @@
                     "executable": false
                 }
             },
-            "ref": "9d7fe0a13865bae25ffa5f205fb956c18f232edf"
+            "ref": "b98294eacc870c2d3c55d8ab198be451278ee5bb"
         }
     }
 }
