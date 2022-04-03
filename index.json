@@ -76,7 +76,6 @@
             "0.29.3",
             "0.30.0",
             "0.31.0",
-            "1.0.0",
             "1.0.0-RC1"
         ],
         "inventis/content-bundle": [
@@ -110,7 +109,7 @@
             "0.17"
         ],
         "inventis/locale-bundle": [
-            "1.0.0"
+            "1.0.0-RC1"
         ],
         "inventis/media-bundle": [
             "0.1.0",
@@ -128,7 +127,7 @@
         ],
         "inventis/routing-bundle": [
             "0.31.0",
-            "1.0.0"
+            "1.0.0-RC1"
         ],
         "inventis/seo-bundle": [
             "0.1.0",
