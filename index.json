@@ -48,8 +48,11 @@
         "templatecontentbridgebundle": "inventis/template-content-bridge-bundle",
         "text-bundle": "inventis/text-bundle",
         "textbundle": "inventis/text-bundle",
+        "translation": "symfony/translation",
+        "translations": "symfony/translation",
         "translations-bundle": "inventis/translation-bundle",
         "translationsbundle": "inventis/translation-bundle",
+        "translator": "symfony/translation",
         "webadmin": "inventis/webadmin-bundle",
         "webadmin-bundle": "inventis/webadmin-bundle",
         "webadminbundle": "inventis/webadmin-bundle",
@@ -127,7 +130,7 @@
         ],
         "inventis/routing-bundle": [
             "0.31.0",
-            "1.0.0-RC1"
+            "0.99.0"
         ],
         "inventis/seo-bundle": [
             "0.1.0",
@@ -181,6 +184,9 @@
         ],
         "symfony-cmf/seo-bundle": [
             "2.0"
+        ],
+        "symfony/translation": [
+            "5.3"
         ]
     },
     "recipe-conflicts": [],

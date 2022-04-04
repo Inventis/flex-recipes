@@ -1,0 +1,38 @@
+{
+    "manifests": {
+        "inventis/routing-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\RoutingBundle\\InventisRoutingBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_routingbundle.yaml": {
+                    "contents": [
+                        "inventis_routing:",
+                        "    locale_routing_options:",
+                        "    # if you don't want locale prefixing because you have one or more languages per domain",
+                        "    # you can configure these as you desire",
+                        "",
+                        "#        nl-be:",
+                        "#            locale_prefix: false",
+                        "#            host: www.your-domain.be",
+                        "",
+                        "cmf_routing:",
+                        "    dynamic:",
+                        "        persistence:",
+                        "            orm:",
+                        "                manager_name: '%doctrine.default_entity_manager%'"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "124f9f67d36a0e90412b5c1c70e2e5fd351e8517"
+        }
+    }
+}
