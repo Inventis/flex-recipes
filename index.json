@@ -141,7 +141,8 @@
             "0.30.0"
         ],
         "inventis/site-settings-bundle": [
-            "0.30.0"
+            "0.30.0",
+            "0.99.0"
         ],
         "inventis/styleguide-bundle": [
             "0.1.0",
