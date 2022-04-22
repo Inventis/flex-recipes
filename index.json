@@ -118,7 +118,8 @@
             "0.1.0",
             "0.17.2",
             "0.30.0",
-            "0.31.0"
+            "0.31.0",
+            "0.99.0"
         ],
         "inventis/navigation-bundle": [
             "0.1.0",
@@ -170,7 +171,8 @@
         ],
         "inventis/translation-bundle": [
             "0.1.0",
-            "0.30.0"
+            "0.30.0",
+            "0.99.0"
         ],
         "inventis/webadmin-bundle": [
             "0.1.0",
