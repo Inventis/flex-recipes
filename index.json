@@ -176,7 +176,8 @@
         ],
         "inventis/webadmin-bundle": [
             "0.1.0",
-            "0.30.0"
+            "0.30.0",
+            "0.99.0"
         ],
         "nelmio/security-bundle": [
             "2.4"
