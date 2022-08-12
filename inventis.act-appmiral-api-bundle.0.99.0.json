@@ -1,0 +1,78 @@
+{
+    "manifests": {
+        "inventis/act-appmiral-api-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ActAppmiralBundleBundle\\InventisActAppmiralBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_actappmiralbundle.yaml": {
+                    "contents": [
+                        "inventis_act_appmiral_api:",
+                        "    classes:",
+                        "        act_appmiral_api_act: App\\Entity\\ActAppmiralApi\\ActAppmiralApiAct",
+                        "        act_appmiral_api_location: App\\Entity\\ActAppmiralApi\\ActAppmiralApiLocation",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_actappmiralbundle.yaml": {
+                    "contents": [
+                        "inventis_actappmiralbundle_routing:",
+                        "    resource: \"@InventisActAppmiralApiBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/ActAppmiralApi/ActAppmiralApiAct.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\ActAppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\ActAppmiralApiActModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActAppmiralApiAct extends ActAppmiralApiActModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/ActAppmiralApi/ActAppmiralApiLocation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\ActAppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\ActAppmiralApiLocationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActAppmiralApiLocation extends ActAppmiralApiLocationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "5491aae16226631f2239758210243e4987a10d01"
+        }
+    }
+}
