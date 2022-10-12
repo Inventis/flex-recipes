@@ -109,7 +109,8 @@
             "0.30.0"
         ],
         "inventis/faq-bundle": [
-            "0.1.0"
+            "0.1.0",
+            "0.99.0"
         ],
         "inventis/form-bundle": [
             "0.18.0",
