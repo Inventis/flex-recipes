@@ -126,7 +126,8 @@
             "0.17"
         ],
         "inventis/locale-bundle": [
-            "0.99.0"
+            "0.99.0",
+            "1.0.0"
         ],
         "inventis/media-bundle": [
             "0.1.0",
