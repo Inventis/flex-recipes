@@ -9,7 +9,6 @@
                 },
                 "copy-from-recipe": {
                     "config/": "%CONFIG_DIR%/",
-                    "templates/": "templates/",
                     "Gruntfile.js": "Gruntfile.js",
                     "package.json": "package.json",
                     "assets/": "assets/"
@@ -54,7 +53,7 @@
                         "            'Inventis/Bundle/RoutingBundle': 'bundles/inventisrouting/js',",
                         "            // vendors",
                         "            'quill': 'vendor/quill/dist',",
-                        "            'grapesjs': 'vendor/@inventis/grapesjs/dist/grapes.min',",
+                        "            'grapesjs': 'vendor/grapesjs/dist/grapes.min',",
                         "            'when/es6-shim': 'vendor/when/es6-shim',",
                         "            'chartjs': 'vendor/chartjs',",
                         "            'nanoajax': 'vendor/nanoajax/nanoajax.min',",
@@ -178,7 +177,7 @@
                         "                cwd: 'node_modules', // set working folder / root to copy",
                         "                src: [",
                         "                    '@inventis/ckeditor5-builds/**',",
-                        "                    '@inventis/grapesjs/dist/**',",
+                        "                    'grapesjs/dist/**',",
                         "                    'font-awesome/css/**',",
                         "                    'font-awesome/fonts/**',",
                         "                    'chartjs/chart.js',",
@@ -208,7 +207,7 @@
                         "            options: {",
                         "                sourceMap: false,",
                         "                plugins: [",
-                        "                    ['@babel/plugin-transform-spread', {'allowArrayLike': true}],",
+                        "                    ['@babel/plugin-transform-spread', {'loose': true}],",
                         "                    ['@babel/plugin-proposal-object-rest-spread', {'loose': true}],",
                         "                    ['@babel/plugin-proposal-class-properties']",
                         "                ],",
@@ -225,7 +224,6 @@
                         "                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/ComponentToolbarManagerPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/ComponentToolbarManagerPlugin.js',",
                         "                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DeletableNodeListener.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/DeletableNodeListener.js',",
                         "                    'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js': 'public/bundles/inventisbricks/js/Brick/PageContent/Plugin/CustomGrapesJsBlocksPlugin.js',",
-                        "                    'public/bundles/inventisbricks/js/Grid/Plugin/ActionPlugin/ActionDropdownMenuPlugin.js': 'public/bundles/inventisbricks/js/Grid/Plugin/ActionPlugin/ActionDropdownMenuPlugin.js',",
                         "                    'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js': 'public/bundles/inventisstyleguide/js/Block/VideoPlugin.js',",
                         "                }",
                         "            }",
@@ -319,7 +317,7 @@
                         "        'Inventis/Bundle/RoutingBundle': 'bundles/inventisrouting/js',",
                         "        // define all vendor package loading rules below",
                         "        'quill': 'vendor/quill/dist',",
-                        "        'grapesjs': 'vendor/@inventis/grapesjs/dist/grapes.min',",
+                        "        'grapesjs': 'vendor/grapesjs/dist/grapes.min',",
                         "        'Sizzle': 'vendor/sizzle/dist/sizzle.min',",
                         "        'Plupload': 'vendor/plupload/js/plupload.full',",
                         "        'when': 'vendor/when',",
@@ -460,43 +458,9 @@
                         ""
                     ],
                     "executable": false
-                },
-                "templates/brick_layout.html.twig": {
-                    "contents": [
-                        "<!doctype html>",
-                        "<html {{ seo_html_attributes() }} class=\"fontawesome-i2svg-active fontawesome-i2svg-complete\">",
-                        "<head {{ seo_head_attributes() }}>",
-                        "    {{ seo_title() }}",
-                        "    {{ seo_metadatas() }}",
-                        "    {{ seo_link_canonical() }}",
-                        "    {{ seo_lang_alternates() }}",
-                        "",
-                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-                        "    <link href=\"{{ asset('vendor/@inventis/ckeditor5-builds/build/styles.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
-                        "    <link href=\"{{ asset('vendor/grapesjs/dist/css/grapes.min.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
-                        "    <link href=\"{{ asset('vendor/@inventis/webadmin-ui/dist/style/main.css') }}\" rel=\"stylesheet\" type=\"text/css\">",
-                        "    {% include '@InventisBricks/favicon/favicons.html.twig' %}",
-                        "</head>",
-                        "<body",
-                        "        class=\"-{{ app.environment }}\"",
-                        "        data-locale=\"{{ app.request.attributes.get('_locale') }}\"",
-                        "        data-enable-brick-debugging=\"{% if enable_brick_debugging %}1{% else %}0{% endif %}\"",
-                        ">",
-                        "<main class=\"main\">",
-                        "    <div class=\"container-fluid\" data-layout=\"container\">",
-                        "        {{ brick|raw }}",
-                        "    </div>",
-                        "</main>",
-                        "<script type=\"text/javascript\" data-main=\"{{ asset('js/Main.js') }}\" src=\"{{ asset('vendor/requirejs/require.js') }}\" nonce=\"{{ csp_nonce('script') }}\"></script>",
-                        "<script type=\"text/javascript\" src=\"{{ asset('bundles/inventisbricks/js/builder-debug.js') }}\" nonce=\"{{ csp_nonce('script') }}\"></script>",
-                        "</body>",
-                        "</html>",
-                        ""
-                    ],
-                    "executable": false
                 }
             },
-            "ref": "b0e1a899b549ac75c51980de7f6b7048a87a88a6"
+            "ref": "480d4a021a2d3a0458456bbe134d5faa10079476"
         }
     }
 }

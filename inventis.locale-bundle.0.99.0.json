@@ -1,0 +1,34 @@
+{
+    "manifests": {
+        "inventis/locale-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\LocaleBundle\\InventisLocaleBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_localebundle.yaml": {
+                    "contents": [
+                        "parameters:",
+                        "    locale: 'nl-be'",
+                        "    default_locale: '%locale%'",
+                        "    supported_locales: [ '%locale%' ]",
+                        "    inventis.locale.locales: '%supported_locales%'",
+                        "",
+                        "inventis_locale:",
+                        "    default_locale: '%default_locale%'",
+                        "    locales: '%supported_locales%'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "de3a1c3a0bb6d126711bfac6cb4750f83562bd92"
+        }
+    }
+}
