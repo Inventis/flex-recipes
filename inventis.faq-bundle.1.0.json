@@ -1,0 +1,115 @@
+{
+    "manifests": {
+        "inventis/faq-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\FaqBundle\\InventisFaqBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_faqbundle.yaml": {
+                    "contents": [
+                        "inventis_faq:",
+                        "    classes:",
+                        "        faq: App\\Entity\\Faq\\Faq",
+                        "        faq_translation: App\\Entity\\Faq\\FaqTranslation",
+                        "        faq_category: App\\Entity\\Faq\\FaqCategory",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_faqbundle.yaml": {
+                    "contents": [
+                        "inventis_faqbundle_routing:",
+                        "    resource: \"@InventisFaqBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Faq/Faq.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Faq;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\FaqBundle\\Model\\FaqModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class Faq extends FaqModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Faq/FaqCategory.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Faq;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\FaqBundle\\Model\\FaqCategoryModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class FaqCategory extends FaqCategoryModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Faq/FaqTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Faq;",
+                        "",
+                        "use DateTime;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\FaqBundle\\Model\\FaqTranslationModel;",
+                        "use Symfony\\Cmf\\Bundle\\CoreBundle\\PublishWorkflow\\PublishTimePeriodInterface;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "class FaqTranslation extends FaqTranslationModel",
+                        "{",
+                        "    #[ORM\\PrePersist]",
+                        "    #[ORM\\PreUpdate]",
+                        "    public function onPrePersistAndUpdate(): void",
+                        "    {",
+                        "        $faq = $this->getTranslatable();",
+                        "        if (!$faq instanceof PublishTimePeriodInterface) {",
+                        "            return;",
+                        "        }",
+                        "",
+                        "        if ($this->getPublishable() && $faq->getPublishStartDate() === null) {",
+                        "            $faq->setPublishStartDate(new DateTime());",
+                        "        }",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "2ca900a4eb62c800896bc619c1d2eb0b5a6a9cbb"
+        }
+    }
+}

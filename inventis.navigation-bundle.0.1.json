@@ -1,0 +1,46 @@
+{
+    "manifests": {
+        "inventis/navigation-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\NavigationBundle\\InventisNavigationBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_navigationbundle.yml": {
+                    "contents": [
+                        "inventis_navigation:",
+                        "    menus:",
+                        "        # these will get translated",
+                        "        - { title: 'menu.main', alias: 'main' }",
+                        "        - { title: 'menu.meta', alias: 'meta' }",
+                        "        - { title: 'menu.footer', alias: 'footer' }",
+                        "        - { title: 'menu.legal', alias: 'legal' }",
+                        "",
+                        "cmf_core:",
+                        "    persistence:",
+                        "        phpcr: ~",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_navigationbundle.yml": {
+                    "contents": [
+                        "inventis_navigationbundle_routing:",
+                        "    resource: \"@InventisNavigationBundle/Controller/Webadmin\"",
+                        "    type: annotation",
+                        "    prefix: /webadmin/navigationbundle",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "ad43703b1a317086f4b5686b9c3b306abd59dc4c"
+        }
+    }
+}

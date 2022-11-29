@@ -1,0 +1,69 @@
+{
+    "manifests": {
+        "inventis/content-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ContentBundle\\InventisContentBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_contentbundle.yml": {
+                    "contents": [
+                        "# for more configuration settings run docker/console config:dump-reference CmfCoreBundle",
+                        "parameters:",
+                        "    locale: en",
+                        "",
+                        "cmf_core:",
+                        "    multilang:",
+                        "        locales: '%supported_locales%'",
+                        "    persistence:",
+                        "        phpcr:",
+                        "            enabled: true",
+                        "            translation_strategy: child",
+                        "",
+                        "cmf_routing:",
+                        "    dynamic:",
+                        "        controllers_by_class:",
+                        "            Symfony\\Cmf\\Component\\Routing\\RedirectRouteInterface: cmf_routing.redirect_controller:redirectAction",
+                        "",
+                        "jms_serializer:",
+                        "    metadata:",
+                        "        directories:",
+                        "            SymfonyCmfRouting:",
+                        "                namespace_prefix: 'Symfony\\Cmf\\Bundle\\RoutingBundle'",
+                        "                path: \"@InventisContentBundle/Resources/config/serializer/SymfonyCmfRouting\"",
+                        "",
+                        "inventis_content:",
+                        "    controllers_by_class: ~",
+                        "    route_basepaths:",
+                        "        - '/cms/routes'",
+                        "    default_locale: '%locale%'",
+                        "    default_controller: 'inventis.bundle.contentbundle.controller.front.contentcontroller:indexAction'",
+                        "    phpcr_namespaces:",
+                        "        app:",
+                        "            prefix: app",
+                        "            uri: https://app.inventis.be",
+                        "    phpcr_route_base_path_format: '%inventis_content.phpcr_basepath%/<namespace>:routes'",
+                        "    phpcr_active_namespace: app"
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_contentbundle.yml": {
+                    "contents": [
+                        "inventis_contentbundle_routing:",
+                        "    resource: \"@InventisContentBundle/Controller/Webadmin\"",
+                        "    type: annotation",
+                        "    prefix: /webadmin/contentbundle"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "19322112abc74205e00f639c00424369aa1bfe0b"
+        }
+    }
+}

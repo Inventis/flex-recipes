@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "inventis/content-migrations-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ContentMigrationsBundle\\InventisContentMigrationsBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_contentmigrationsbundle.yaml": {
+                    "contents": [
+                        "inventis_content_migrations:",
+                        "    content_migration_template: '@InventisContentMigrationsBundle/Migrations/content_migration.tpl'",
+                        "    content_migration_paths:",
+                        "        'InventisContentMigrations': '%kernel.project_dir%/src/Migrations/Content'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "61a2900991575141aaf498085122de1ea786e0d3"
+        }
+    }
+}

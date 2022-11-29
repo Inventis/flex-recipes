@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "inventis/text-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TextBundle\\InventisTextBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/inventis_textbundle.yaml": {
+                    "contents": [
+                        "inventis_textbundle.webadmin:",
+                        "    resource: \"@InventisTextBundle/Controller/Webadmin\"",
+                        "    type:     annotation",
+                        "    prefix:   /webadmin/text",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "10e9b73a1626a2cfda6bcab6f4d7b3b5ea3b4a68"
+        }
+    }
+}

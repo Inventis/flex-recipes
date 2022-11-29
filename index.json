@@ -73,10 +73,10 @@
             "7.0"
         ],
         "inventis/act-appmiral-api-bundle": [
-            "1.0.0"
+            "1.0"
         ],
         "inventis/act-bundle": [
-            "1.0.0"
+            "1.0"
         ],
         "inventis/bricks-bundle": [
             "0.1",
@@ -94,103 +94,103 @@
             "1.0"
         ],
         "inventis/content-bundle": [
-            "0.1.0",
-            "0.8.0",
-            "0.10.1",
-            "0.20.0",
-            "0.30.0",
-            "0.31.0"
+            "0.1",
+            "0.8",
+            "0.10",
+            "0.20",
+            "0.30",
+            "0.31"
         ],
         "inventis/content-migrations-bundle": [
-            "0.25.6"
+            "0.25"
         ],
         "inventis/dashboard-bundle": [
-            "0.28.0",
-            "0.30.0"
+            "0.28",
+            "0.30"
         ],
         "inventis/faq-bundle": [
-            "0.1.0",
-            "1.0.0"
+            "0.1",
+            "1.0"
         ],
         "inventis/form-bundle": [
-            "0.18.0",
-            "0.24.0",
-            "0.26.0",
-            "0.30.0"
+            "0.18",
+            "0.24",
+            "0.26",
+            "0.30"
         ],
         "inventis/form-content-bridge-bundle": [
-            "0.31.0"
+            "0.31"
         ],
         "inventis/front-end-boilerplate-package": [
             "0.17"
         ],
         "inventis/locale-bundle": [
-            "1.0.0"
+            "1.0"
         ],
         "inventis/media-bundle": [
-            "0.1.0",
-            "0.17.2",
-            "0.30.0",
-            "0.31.0",
-            "1.0.0"
+            "0.1",
+            "0.17",
+            "0.30",
+            "0.31",
+            "1.0"
         ],
         "inventis/navigation-bundle": [
-            "0.1.0",
-            "0.30.0",
-            "0.31.0"
+            "0.1",
+            "0.30",
+            "0.31"
         ],
         "inventis/phpcr-to-orm-migration-bundle": [
-            "0.31.0"
+            "0.31"
         ],
         "inventis/routing-bundle": [
-            "0.31.0",
-            "1.0.0"
+            "0.31",
+            "1.0"
         ],
         "inventis/seo-bundle": [
-            "0.1.0",
-            "0.30.0"
+            "0.1",
+            "0.30"
         ],
         "inventis/shorturl-bundle": [
-            "0.19.0",
-            "0.30.0"
+            "0.19",
+            "0.30"
         ],
         "inventis/site-settings-bundle": [
-            "0.30.0",
-            "1.0.0"
+            "0.30",
+            "1.0"
         ],
         "inventis/styleguide-bundle": [
-            "0.1.0",
-            "0.19.0",
-            "0.21.0",
-            "0.22.0",
-            "0.24.0",
-            "0.25.0",
-            "0.30.0",
-            "0.31.0"
+            "0.1",
+            "0.19",
+            "0.21",
+            "0.22",
+            "0.24",
+            "0.25",
+            "0.30",
+            "0.31"
         ],
         "inventis/sylius-wishlist-plugin": [
             "0.1"
         ],
         "inventis/template-bundle": [
-            "0.24.0",
-            "0.30.0"
+            "0.24",
+            "0.30"
         ],
         "inventis/template-content-bridge-bundle": [
-            "0.24.0",
-            "0.30.0"
+            "0.24",
+            "0.30"
         ],
         "inventis/text-bundle": [
-            "0.1.0"
+            "0.1"
         ],
         "inventis/translation-bundle": [
-            "0.1.0",
-            "0.30.0",
-            "1.0.0"
+            "0.1",
+            "0.30",
+            "1.0"
         ],
         "inventis/webadmin-bundle": [
-            "0.1.0",
-            "0.30.0",
-            "1.0.0"
+            "0.1",
+            "0.30",
+            "1.0"
         ],
         "nelmio/security-bundle": [
             "2.4"
