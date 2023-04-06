@@ -138,7 +138,8 @@
         "inventis/navigation-bundle": [
             "0.1",
             "0.30",
-            "0.31"
+            "0.31",
+            "1.1"
         ],
         "inventis/phpcr-to-orm-migration-bundle": [
             "0.31"
