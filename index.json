@@ -37,6 +37,8 @@
         "routing": "inventis/routing-bundle",
         "routing-bundle": "inventis/routing-bundle",
         "routingbundle": "inventis/routing-bundle",
+        "search-bundle": "inventis/search-bundle",
+        "searchbundle": "inventis/search-bundle",
         "seo": "inventis/seo-bundle",
         "shorturl-bundle": "inventis/shorturl-bundle",
         "shorturlbundle": "inventis/shorturl-bundle",
@@ -148,6 +150,9 @@
         "inventis/routing-bundle": [
             "0.31",
             "1.0"
+        ],
+        "inventis/search-bundle": [
+            "1.1"
         ],
         "inventis/seo-bundle": [
             "0.1",

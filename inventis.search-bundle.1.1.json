@@ -1,0 +1,63 @@
+{
+    "manifests": {
+        "inventis/search-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\SearchBundle\\InventisSearchBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_searchbundle.yaml": {
+                    "contents": [
+                        "parameters:",
+                        "    env(ELASTICSEARCH_DSN): ''",
+                        "    env(SYNONYMS_PATH): 'synonyms.txt'",
+                        "    env(SYNONYMS_PATH_LOCAL): '%kernel.project_dir%/var/elasticsearch/synonyms.txt'",
+                        "inventis_search:",
+                        "    clients:",
+                        "        es1: '%env(resolve:ELASTICSEARCH_DSN)%'",
+                        "    providers:",
+                        "        orm:",
+                        "            driver: 'orm'",
+                        "            models:",
+                        "                - ~",
+                        "                # - App\\Entity\\IndexedEntity",
+                        "",
+                        "    messenger:",
+                        "        enabled: false # currently running sync for easier issue pickup",
+                        "    #        command_bus: 'command.bus'",
+                        "    #        event_bus: 'event.bus'",
+                        "",
+                        "    # automatically reindex search results",
+                        "    events:",
+                        "        relations:",
+                        "    # Example configuration",
+                        "    #            App\\Entity\\Promotion\\PromotionPage:",
+                        "    #                App\\Entity\\Promotion\\PromotionPageTranslation:",
+                        "    #                    property_path: 'translations'",
+                        "    #                    update_on_remove: false",
+                        "    #            App\\Entity\\Product\\ProductSelectionProduct:",
+                        "    #                App\\Entity\\Product\\ProductVariantTranslation: ~ # we handle this one ourselves",
+                        "    #            App\\Entity\\Channel\\ChannelPricing:",
+                        "    #                App\\Entity\\Product\\ProductVariantTranslation:",
+                        "    #                    property_path: 'productVariant.translations'",
+                        "",
+                        "    synonyms:",
+                        "        use_file: false",
+                        "        synonyms_path: '%env(SYNONYMS_PATH)%'",
+                        "        synonyms_path_local: '%env(resolve:SYNONYMS_PATH_LOCAL)%'",
+                        "        entity_class: App\\Entity\\Search\\ElasticSearchSynonym",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "6f05953a3fa22f5bc215affa9bfa2b4e6d54552a"
+        }
+    }
+}
