@@ -1,0 +1,131 @@
+{
+    "manifests": {
+        "inventis/media-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\MediaBundle\\InventisMediaBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_mediabundle.yaml": {
+                    "contents": [
+                        "inventis_media:",
+                        "    oembed: ~",
+                        "",
+                        "doctrine:",
+                        "    dbal:",
+                        "        types:",
+                        "            json: Sonata\\Doctrine\\Types\\JsonType",
+                        "",
+                        "sonata_media:",
+                        "    db_driver: doctrine_orm",
+                        "    # if you don't use default namespace configuration",
+                        "    class:",
+                        "        media: Inventis\\Bundle\\MediaBundle\\Entity\\Media",
+                        "        gallery: Inventis\\Bundle\\MediaBundle\\Entity\\Gallery",
+                        "        gallery_item: Inventis\\Bundle\\MediaBundle\\Entity\\GalleryItem",
+                        "    providers:",
+                        "        image:",
+                        "            thumbnail: inventis.media.thumbnail.liip_imagine",
+                        "            allowed_extensions: ['jpg', 'png', 'gif', 'jpeg'] # Optional",
+                        "            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif'] # Optional",
+                        "        vimeo:",
+                        "            thumbnail: inventis.media.thumbnail.liip_imagine",
+                        "        youtube:",
+                        "            thumbnail: inventis.media.thumbnail.liip_imagine",
+                        "        dailymotion:",
+                        "            thumbnail: inventis.media.thumbnail.liip_imagine",
+                        "    filesystem:",
+                        "        local:",
+                        "            create: true",
+                        "",
+                        "twig:",
+                        "    form_themes:",
+                        "        - '@SonataMedia/Form/media_widgets.html.twig'",
+                        "",
+                        "liip_imagine:",
+                        "    resolvers:",
+                        "        default:",
+                        "            web_path:",
+                        "                cache_prefix: cache/media",
+                        "",
+                        "    loaders:",
+                        "        default:",
+                        "            filesystem:",
+                        "                data_root:",
+                        "                    # this is needed for LiipImagine root path validation as public/upload is outside document root",
+                        "                    - '%kernel.project_dir%/public'",
+                        "            gaufrette:",
+                        "                filesystem: 'sonata.media.filesystem.local' # must match sonata_media.filesystem",
+                        "    default_filter_set_settings:",
+                        "        quality: 95",
+                        "        filters:",
+                        "            auto_rotate: ~",
+                        "    filter_sets:",
+                        "        # these must match <context>_<format> options of your sonata media context",
+                        "        default_small:",
+                        "            filters:",
+                        "                thumbnail: { size: [100, 70], mode: outbound }",
+                        "        default_big:",
+                        "            filters:",
+                        "                thumbnail: { size: [500, 70], mode: outbound }",
+                        "        default_cb:",
+                        "            filters:",
+                        "                thumbnail: { size: [920, 920], mode: outbound }",
+                        "        default_cb_banner:",
+                        "            filters:",
+                        "                thumbnail: { size: [1600, 575], mode: outbound }",
+                        "        default_cb_full:",
+                        "            filters:",
+                        "                thumbnail: { size: [1600, 1600], mode: outbound }",
+                        "        default_card:",
+                        "            filters:",
+                        "                fixed: { width: 500, height: 375 }",
+                        "        default_card_rounded:",
+                        "            filters:",
+                        "                fixed: { width: 400, height: 400 }",
+                        "",
+                        "jms_serializer:",
+                        "    metadata:",
+                        "        directories:",
+                        "            SonataMedia:",
+                        "                namespace_prefix: \"Sonata\\\\MediaBundle\"",
+                        "                path: \"@InventisMediaBundle/Resources/config/serializer/SonataMedia\"",
+                        "",
+                        "framework:",
+                        "    validation:",
+                        "        enabled: true",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_mediabundle.yaml": {
+                    "contents": [
+                        "inventis_mediabundle_routing:",
+                        "    resource: \"@InventisMediaBundle/Controller/Webadmin\"",
+                        "    type: annotation",
+                        "    prefix: /{_locale}/webadmin/mediabundle",
+                        "",
+                        "_media_oembed:",
+                        "    resource: \"@InventisMediaBundle/Resources/config/routing/oembed.yaml\"",
+                        "",
+                        "# if you want feature tests enables uncomment this",
+                        "#inventis_mediabundle_feature_routing:",
+                        "#    resource: \"@InventisMediaBundle/Features/Controller/\"",
+                        "#    type: annotation",
+                        "#    prefix: /mediabundle",
+                        "",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "1ac20e445439ef7ddd9c247eb6260320ab6de627"
+        }
+    }
+}
