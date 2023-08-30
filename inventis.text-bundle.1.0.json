@@ -1,0 +1,81 @@
+{
+    "manifests": {
+        "inventis/text-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TextBundle\\InventisTextBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_textbundle.yaml": {
+                    "contents": [
+                        "inventis_text:",
+                        "    classes:",
+                        "        text: App\\Entity\\Text\\Text",
+                        "        text_translation: App\\Entity\\Text\\TextTranslation"
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_textbundle.yaml": {
+                    "contents": [
+                        "inventis_textbundle.webadmin:",
+                        "    resource: \"@InventisTextBundle/Controller/Webadmin\"",
+                        "    type: annotation",
+                        "    prefix: /{_locale}/webadmin/text",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Text/Text.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Text;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TextBundle\\Model\\TextModel;",
+                        "use Inventis\\Bundle\\TextBundle\\Repository\\TextRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TextRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class Text extends TextModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Text/TextTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Text;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TextBundle\\Model\\TextTranslationModel;",
+                        "use Inventis\\Bundle\\TextBundle\\Repository\\TextTranslationRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TextTranslationRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TextTranslation extends TextTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "9d3867416880bd8a64a60e086774317266a06b44"
+        }
+    }
+}

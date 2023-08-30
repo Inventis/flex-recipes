@@ -193,7 +193,8 @@
             "0.30"
         ],
         "inventis/text-bundle": [
-            "0.1"
+            "0.1",
+            "1.0"
         ],
         "inventis/translation-bundle": [
             "0.1",
