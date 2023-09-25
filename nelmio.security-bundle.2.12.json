@@ -1,0 +1,101 @@
+{
+    "manifests": {
+        "nelmio/security-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Nelmio\\SecurityBundle\\NelmioSecurityBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/nelmio_security.yaml": {
+                    "contents": [
+                        "nelmio_security:",
+                        "    # NOTE: Not enabled by default since it breaks logging in. Specify the cookies you want here manually.",
+                        "    # See also https://github.com/nelmio/NelmioSecurityBundle#signed-cookies",
+                        "    # signed_cookie:",
+                        "    #     names:",
+                        "    #         - Cookie1",
+                        "    #         - Cookie2",
+                        "",
+                        "    clickjacking:",
+                        "        paths:",
+                        "            '^/.*': DENY",
+                        "",
+                        "    external_redirects:",
+                        "        abort: true",
+                        "        log: true",
+                        "        allow_list:",
+                        "            - sso.inventis.be",
+                        "",
+                        "    csp:",
+                        "        hosts: [ ]",
+                        "        content_types: [ ]",
+                        "        enforce:",
+                        "            block-all-mixed-content: true",
+                        "            upgrade-insecure-requests: true",
+                        "            level1_fallback: false",
+                        "            browser_adaptive:",
+                        "                enabled: false",
+                        "            default-src:",
+                        "                - self",
+                        "                - https://*.youtube.com",
+                        "                - https://*.youtu.be",
+                        "                - https://*.vimeo.com",
+                        "                #- https://*.google-analytics.com",
+                        "                #- https://*.googletagmanager.com",
+                        "            img-src:",
+                        "                - 'data:'",
+                        "                - self",
+                        "                - https://placeholder.inventis.be",
+                        "                - https://*.ytimg.com",
+                        "                - https://*.youtube.com",
+                        "                - https://*.vimeocdn.com",
+                        "                #- https://*.google-analytics.com",
+                        "                #- https://*.googletagmanager.com",
+                        "            style-src:",
+                        "                - self",
+                        "                - 'unsafe-inline'",
+                        "                #- https://*.googletagmanager.com",
+                        "            script-src:",
+                        "                - self",
+                        "                #- 'strict-dynamic'",
+                        "                #- 'unsafe-inline'",
+                        "                #- 'unsafe-eval'",
+                        "                - https://*.youtube.com",
+                        "                - https://*.vimeo.com",
+                        "                #- https://*.google-analytics.com",
+                        "                #- https://*.googletagmanager.com",
+                        "            object-src:",
+                        "                - none",
+                        "",
+                        "    content_type:",
+                        "        nosniff: true",
+                        "",
+                        "    xss_protection:",
+                        "        enabled: true",
+                        "        mode_block: true",
+                        "",
+                        "    referrer_policy:",
+                        "        enabled: true",
+                        "        policies:",
+                        "            - no-referrer",
+                        "            - strict-origin-when-cross-origin",
+                        "",
+                        "    forced_ssl:",
+                        "        hsts_max_age: 2592000 # 30 days",
+                        "        hsts_subdomains: false",
+                        "        redirect_status_code: 302",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fb8e78bc61d5eab62f7e2f9f3bf546360c0b7791"
+        }
+    }
+}

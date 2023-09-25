@@ -207,7 +207,8 @@
             "1.0"
         ],
         "nelmio/security-bundle": [
-            "2.4"
+            "2.4",
+            "2.12"
         ],
         "sentry/sentry-symfony": [
             "3.0",
