@@ -16,6 +16,10 @@
         "contentmigrationsbundle": "inventis/content-migrations-bundle",
         "dashboard-bundle": "inventis/dashboard-bundle",
         "dashboardbundle": "inventis/dashboard-bundle",
+        "event-bundle": "inventis/event-bundle",
+        "event-uitdatabank-bridge-bundle": "inventis/event-uitdatabank-bridge-bundle",
+        "eventbundle": "inventis/event-bundle",
+        "eventuitdatabankbridgebundle": "inventis/event-uitdatabank-bridge-bundle",
         "faq-bundle": "inventis/faq-bundle",
         "faqbundle": "inventis/faq-bundle",
         "festival-bundle": "inventis/act-bundle",
@@ -56,11 +60,15 @@
         "templatecontentbridgebundle": "inventis/template-content-bridge-bundle",
         "text-bundle": "inventis/text-bundle",
         "textbundle": "inventis/text-bundle",
+        "ticketmatic-bundle": "inventis/ticketmatic-bundle",
+        "ticketmaticbundle": "inventis/ticketmatic-bundle",
         "translation": "symfony/translation",
         "translations": "symfony/translation",
         "translations-bundle": "inventis/translation-bundle",
         "translationsbundle": "inventis/translation-bundle",
         "translator": "symfony/translation",
+        "uitdatabank-bundle": "inventis/uitdatabank-bundle",
+        "uitdatabankbundle": "inventis/uitdatabank-bundle",
         "webadmin": "inventis/webadmin-bundle",
         "webadmin-bundle": "inventis/webadmin-bundle",
         "webadminbundle": "inventis/webadmin-bundle",
@@ -110,6 +118,12 @@
         "inventis/dashboard-bundle": [
             "0.28",
             "0.30"
+        ],
+        "inventis/event-bundle": [
+            "2.0"
+        ],
+        "inventis/event-uitdatabank-bridge-bundle": [
+            "2.0"
         ],
         "inventis/faq-bundle": [
             "0.1",
@@ -196,10 +210,16 @@
             "0.1",
             "1.0"
         ],
+        "inventis/ticketmatic-bundle": [
+            "2.0"
+        ],
         "inventis/translation-bundle": [
             "0.1",
             "0.30",
             "1.0"
+        ],
+        "inventis/uitdatabank-bundle": [
+            "2.0"
         ],
         "inventis/webadmin-bundle": [
             "0.1",

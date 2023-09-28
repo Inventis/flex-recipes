@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "inventis/event-uitdatabank-bridge-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\EventUitDatabankBridgeBundle\\InventisEventUitDatabankBridgeBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_eventuitdatabankbridgebundle.yaml": {
+                    "contents": [
+                        "inventis_event_uit_databank_bridge:",
+                        "    classes:",
+                        "        uitdatabank_location: App\\Entity\\UitDatabank\\UitDatabankLocation",
+                        "        uitdatabank_event: App\\Entity\\UitDatabank\\UitDatabankEvent",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "78843beae88927f86890416a3d4858a7498b4386"
+        }
+    }
+}
