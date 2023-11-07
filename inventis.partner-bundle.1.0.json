@@ -1,0 +1,88 @@
+{
+    "manifests": {
+        "inventis/partner-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\PartnerBundle\\InventisPartnerBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_partnerbundle.yaml": {
+                    "contents": [
+                        "inventis_partner:",
+                        "    classes:",
+                        "        partner: App\\Entity\\Partner",
+                        "        partner_translation: App\\Entity\\PartnerTranslation",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_partnerbundle.yaml": {
+                    "contents": [
+                        "inventis_partnerbundle_routing:",
+                        "    resource: \"@InventisPartnerBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Partner/Partner.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Partner;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\PartnerBundle\\Model\\PartnerModel;",
+                        "use Inventis\\Bundle\\PartnerBundle\\Repository\\PartnerRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: PartnerRepository::class)]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class Partner extends PartnerModel",
+                        "{",
+                        "    #[ORM\\PrePersist]",
+                        "    #[ORM\\PreUpdate]",
+                        "    public function onPrePersistAndUpdate(): void",
+                        "    {",
+                        "        if ($this->getPublishable() && $this->getPublishStartDate() === null) {",
+                        "            $this->setPublishStartDate(new \\DateTime());",
+                        "        }",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Partner/PartnerTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Partner;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\PartnerBundle\\Model\\PartnerTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class PartnerTranslation extends PartnerTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fc242db254ec3868b34c33a97a04b539c1981c18"
+        }
+    }
+}

@@ -36,6 +36,8 @@
         "mediabundle": "inventis/media-bundle",
         "navigation-bundle": "inventis/navigation-bundle",
         "navigationbundle": "inventis/navigation-bundle",
+        "partner-bundle": "inventis/partner-bundle",
+        "partnerbundle": "inventis/partner-bundle",
         "phpcr-migration": "inventis/phpcr-to-orm-migration-bundle",
         "phpcrmigration": "inventis/phpcr-to-orm-migration-bundle",
         "routing": "inventis/routing-bundle",
@@ -159,6 +161,9 @@
             "0.30",
             "0.31",
             "1.1"
+        ],
+        "inventis/partner-bundle": [
+            "1.0"
         ],
         "inventis/phpcr-to-orm-migration-bundle": [
             "0.31"
