@@ -1,0 +1,143 @@
+{
+    "manifests": {
+        "inventis/ticketmatic-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TicketmaticBundle\\InventisTicketmaticBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_ticketmaticbundle.yaml": {
+                    "contents": [
+                        "inventis_ticketmatic:",
+                        "    classes:",
+                        "        event: App\\Entity\\Event\\EventActivity",
+                        "        contingent: App\\Entity\\Ticketmatic\\TicketmaticContingent",
+                        "        price_type: App\\Entity\\Ticketmatic\\TicketmaticPriceType",
+                        "        price_type_translation: App\\Entity\\Ticketmatic\\TicketmaticPriceTypeTranslation",
+                        "        price: App\\Entity\\Ticketmatic\\TicketmaticPrice",
+                        "        last_imported_timestamp: App\\Entity\\Ticketmatic\\TicketmaticLastImportedTimestamp",
+                        "",
+                        "    website_sales_channel: 10000",
+                        "    last_tickets_threshold_percentage: 10",
+                        "",
+                        "    skippable_channel_condition_types:",
+                        "        - promocode",
+                        "",
+                        "    widget:",
+                        "        name: widgetName",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Ticketmatic/TicketmaticContingent.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Ticketmatic;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TicketmaticBundle\\Model\\TicketmaticContingentModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TicketmaticContingent extends TicketmaticContingentModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Ticketmatic/TicketmaticLastImportedTimestamp.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Ticketmatic;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TicketmaticBundle\\Model\\TicketmaticLastImportedTimestampModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TicketmaticLastImportedTimestamp extends TicketmaticLastImportedTimestampModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Ticketmatic/TicketmaticPrice.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Ticketmatic;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TicketmaticBundle\\Model\\TicketmaticPriceModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TicketmaticPrice extends TicketmaticPriceModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Ticketmatic/TicketmaticPriceType.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Ticketmatic;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TicketmaticBundle\\Model\\TicketmaticPriceTypeModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TicketmaticPriceType extends TicketmaticPriceTypeModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Ticketmatic/TicketmaticPriceTypeTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Ticketmatic;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TicketmaticBundle\\Model\\TicketmaticPriceTypeTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TicketmaticPriceTypeTranslation extends TicketmaticPriceTypeTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "485fdb3331daf692333994f5773cf62050d969d1"
+        }
+    }
+}

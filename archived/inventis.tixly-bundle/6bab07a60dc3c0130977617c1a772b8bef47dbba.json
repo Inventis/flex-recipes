@@ -1,0 +1,333 @@
+{
+    "manifests": {
+        "inventis/tixly-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\TixlyBundle\\InventisTixlyBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_tixlybundle.yaml": {
+                    "contents": [
+                        "inventis_tixly:",
+                        "    classes:",
+                        "        event: App\\Entity\\Tixly\\TixlyEvent",
+                        "        event_translation: App\\Entity\\Tixly\\TixlyEventTranslation",
+                        "        event_group: App\\Entity\\Tixly\\TixlyEventGroup",
+                        "        event_group_translation: App\\Entity\\Tixly\\TixlyEventGroupTranslation",
+                        "        price: App\\Entity\\Tixly\\TixlyPrice",
+                        "        price_list: App\\Entity\\Tixly\\TixlyPriceList",
+                        "        price_list_translation: App\\Entity\\Tixly\\TixlyPriceListTranslation",
+                        "        purchase_url: App\\Entity\\Tixly\\TixlyPurchaseUrl",
+                        "        product: App\\Entity\\Tixly\\TixlyProduct",
+                        "        product_translation: App\\Entity\\Tixly\\TixlyProductTranslation",
+                        "        benefit: App\\Entity\\Tixly\\TixlyBenefit",
+                        "        customer_tag: App\\Entity\\Tixly\\TixlyCustomerTag",
+                        "        subscription: App\\Entity\\Tixly\\TixlySubscription",
+                        "        subscription_translation: App\\Entity\\Tixly\\TixlySubscriptionTranslation",
+                        "",
+                        "    api:",
+                        "        key: '%env(resolve:TIXLY_API_KEY)%'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_tixlybundle.yaml": {
+                    "contents": [
+                        "inventis_tixlybundle_routing:",
+                        "    resource: \"@InventisTixlyBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyBenefit.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyBenefitModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyBenefit extends TixlyBenefitModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyCustomerTag.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyCustomerTagModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyCustomerTag extends TixlyCustomerTagModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyEvent.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyEventModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyEvent extends TixlyEventModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyEventGroup.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyEventGroupModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyEventGroup extends TixlyEventGroupModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyEventGroupTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyEventGroupTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyEventGroupTranslation extends TixlyEventGroupTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyEventTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyEventTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyEventTranslation extends TixlyEventTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyPrice.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyPriceModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyPrice extends TixlyPriceModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyPriceList.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyPriceListModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyPriceList extends TixlyPriceListModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyPriceListTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyPriceListTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyPriceListTranslation extends TixlyPriceListTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyProduct.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyProductModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyProduct extends TixlyProductModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyProductTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyProductTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyProductTranslation extends TixlyProductTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlyPurchaseUrl.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlyPurchaseUrlModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlyPurchaseUrl extends TixlyPurchaseUrlModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlySubscription.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlySubscriptionModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlySubscription extends TixlySubscriptionModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Tixly/TixlySubscriptionTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Tixly;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\TixlyBundle\\Model\\TixlySubscriptionTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class TixlySubscriptionTranslation extends TixlySubscriptionTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "6bab07a60dc3c0130977617c1a772b8bef47dbba"
+        }
+    }
+}

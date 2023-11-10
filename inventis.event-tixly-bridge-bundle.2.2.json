@@ -1,0 +1,39 @@
+{
+    "manifests": {
+        "inventis/event-tixly-bridge-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\EventTixlyBridgeBundle\\InventisEventTixlyBridgeBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/invents_eventtixlybridgebundle.yaml": {
+                    "contents": [
+                        "inventis_event_tixly_bridge:",
+                        "    status_workflow_map:",
+                        "        offline: offline",
+                        "        buy_tickets: buy_tickets",
+                        "        few_tickets: last_tickets",
+                        "        sold_out: sold_out",
+                        "        cancelled: cancelled",
+                        "        not_scheduled: offline",
+                        "        available_soon: available_soon",
+                        "        free: free",
+                        "        sales_ended: sales_ended",
+                        "        waiting_list: waiting_list",
+                        "",
+                        "    last_tickets_threshold_percentage: 10",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "33d96617fdb0f9ecbeb625c7c0ecc94b053b7f11"
+        }
+    }
+}

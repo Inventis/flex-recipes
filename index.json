@@ -17,8 +17,10 @@
         "dashboard-bundle": "inventis/dashboard-bundle",
         "dashboardbundle": "inventis/dashboard-bundle",
         "event-bundle": "inventis/event-bundle",
+        "event-tixly-bridge-bundle": "inventis/event-tixly-bridge-bundle",
         "event-uitdatabank-bridge-bundle": "inventis/event-uitdatabank-bridge-bundle",
         "eventbundle": "inventis/event-bundle",
+        "eventtixlybridgebundle": "inventis/event-tixly-bridge-bundle",
         "eventuitdatabankbridgebundle": "inventis/event-uitdatabank-bridge-bundle",
         "faq-bundle": "inventis/faq-bundle",
         "faqbundle": "inventis/faq-bundle",
@@ -64,6 +66,8 @@
         "textbundle": "inventis/text-bundle",
         "ticketmatic-bundle": "inventis/ticketmatic-bundle",
         "ticketmaticbundle": "inventis/ticketmatic-bundle",
+        "tixly-bundle": "inventis/tixly-bundle",
+        "tixlybundle": "inventis/tixly-bundle",
         "translation": "symfony/translation",
         "translations": "symfony/translation",
         "translations-bundle": "inventis/translation-bundle",
@@ -122,7 +126,11 @@
             "0.30"
         ],
         "inventis/event-bundle": [
-            "2.0"
+            "2.0",
+            "2.2"
+        ],
+        "inventis/event-tixly-bridge-bundle": [
+            "2.2"
         ],
         "inventis/event-uitdatabank-bridge-bundle": [
             "2.0"
@@ -216,7 +224,11 @@
             "1.0"
         ],
         "inventis/ticketmatic-bundle": [
-            "2.0"
+            "2.0",
+            "2.2"
+        ],
+        "inventis/tixly-bundle": [
+            "2.2"
         ],
         "inventis/translation-bundle": [
             "0.1",
