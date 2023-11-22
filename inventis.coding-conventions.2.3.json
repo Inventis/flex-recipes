@@ -1,0 +1,13 @@
+{
+    "manifests": {
+        "inventis/coding-conventions": {
+            "manifest": {
+                "copy-from-package": {
+                    "composer/grumphp/grumphp.yaml": "grumphp.yaml"
+                }
+            },
+            "files": [],
+            "ref": "39960077e0e9bfeae21e15a7b00cb63025e4dad6"
+        }
+    }
+}

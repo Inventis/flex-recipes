@@ -110,6 +110,9 @@
             "1.0",
             "1.1"
         ],
+        "inventis/coding-conventions": [
+            "2.3"
+        ],
         "inventis/content-bundle": [
             "0.1",
             "0.8",
