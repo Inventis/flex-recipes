@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "inventis/article-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ArticleBundle\\InventisArticleBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/inventis_articlebundle.yaml": {
+                    "contents": [
+                        "inventis_articlebundle_routing:",
+                        "    resource: \"@InventisArticleBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "340f4ac67e8969f8f3840476fa7b4e2a3c618ba4"
+        }
+    }
+}

@@ -4,6 +4,8 @@
         "act-bundle": "inventis/act-bundle",
         "actappmiralapibundle": "inventis/act-appmiral-api-bundle",
         "actbundle": "inventis/act-bundle",
+        "article-bundle": "inventis/article-bundle",
+        "articlebundle": "inventis/article-bundle",
         "boilerplate": "inventis/front-end-boilerplate-package",
         "bricks": "inventis/bricks-bundle",
         "bricks-bundle": "inventis/bricks-bundle",
@@ -94,6 +96,9 @@
         "inventis/act-bundle": [
             "1.0",
             "1.1"
+        ],
+        "inventis/article-bundle": [
+            "1.0"
         ],
         "inventis/bricks-bundle": [
             "0.1",
