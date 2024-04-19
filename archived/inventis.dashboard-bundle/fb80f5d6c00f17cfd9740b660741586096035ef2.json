@@ -1,0 +1,40 @@
+{
+    "manifests": {
+        "inventis/dashboard-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\DashboardBundle\\InventisDashboardBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_dashboardbundle.yaml": {
+                    "contents": [
+                        "inventis_dashboard:",
+                        "    unaudited_entities:",
+                        "        - Inventis\\Bundle\\MediaBundle\\Entity\\GalleryItem",
+                        "        - Inventis\\Bundle\\ContentMigrationsBundle\\Model\\ContentMigrationModel",
+                        "        - Symfony\\Cmf\\Bundle\\RoutingBundle\\Doctrine\\Orm\\Route",
+                        "        - Symfony\\Cmf\\Bundle\\RoutingBundle\\Doctrine\\Orm\\RedirectRoute"
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_dashboardbundle.yaml": {
+                    "contents": [
+                        "inventis_dashboard_bundle.webadmin:",
+                        "    resource: \"@InventisDashboardBundle/Controller\"",
+                        "    type:     annotation",
+                        "    prefix:   /{locale}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fb80f5d6c00f17cfd9740b660741586096035ef2"
+        }
+    }
+}
