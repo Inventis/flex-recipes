@@ -1,0 +1,299 @@
+{
+    "manifests": {
+        "inventis/uitdatabank-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\UitDatabankBundle\\InventisUitDatabankBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                },
+                "env": {
+                    "UITDATABANK_CLIENT_ID": "",
+                    "UITDATABANK_SECRET_ID": "",
+                    "UITDATABANK_API_KEY": "",
+                    "UITDATABANK_EMAIL": "",
+                    "UITDATABANK_PASSWORD": "",
+                    "UITDATABANK_BASE_URL": "",
+                    "UITDATABANK_CLIENT_URL": "",
+                    "UITDATABANK_JWT_URL": ""
+                }
+            },
+            "files": {
+                "config/packages/inventis_uitdatabankbundle.yaml": {
+                    "contents": [
+                        "inventis_uit_databank:",
+                        "    classes:",
+                        "        uitdatabank_event_api: App\\Entity\\UitDatabank\\UitDatabankEventApi",
+                        "        uitdatabank_place_api: App\\Entity\\UitDatabank\\UitDatabankPlaceApi",
+                        "        uitdatabank_media_api: App\\Entity\\UitDatabank\\UitDatabankMediaApi",
+                        "        uitdatabank_image_api: App\\Entity\\UitDatabank\\UitDatabankImageApi",
+                        "        uitdatabank_organizer_api: App\\Entity\\UitDatabank\\UitDatabankOrganizerApi",
+                        "        uitdatabank_type: App\\Entity\\UitDatabank\\UitDatabankType",
+                        "        uitdatabank_type_translation: App\\Entity\\UitDatabank\\UitDatabankTypeTranslation",
+                        "        uitdatabank_theme: App\\Entity\\UitDatabank\\UitDatabankTheme",
+                        "        uitdatabank_theme_translation: App\\Entity\\UitDatabank\\UitDatabankThemeTranslation",
+                        "        uitdatabank_token: App\\Entity\\UitDatabank\\UitDatabankToken",
+                        "",
+                        "    exporter:",
+                        "        image_format: default_big",
+                        "",
+                        "        # TODO, change url",
+                        "        site_url: https://architect-events.local/nl/",
+                        "",
+                        "    api:",
+                        "        version: 2",
+                        "        client_id: '%env(UITDATABANK_CLIENT_ID)%'",
+                        "        secret_id: '%env(UITDATABANK_SECRET_ID)%'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankEvent.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\EventUitDatabankBridgeBundle\\Model\\UitDatabankEventModel;",
+                        "use Inventis\\Bundle\\EventUitDatabankBridgeBundle\\Repository\\UitDatabankEventRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: UitDatabankEventRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankEvent extends UitDatabankEventModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankEventApi.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankEventApiModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankEventApi extends UitDatabankEventApiModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankImageApi.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankImageApiModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankImageApi extends UitDatabankImageApiModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankLocation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\EventUitDatabankBridgeBundle\\Model\\UitDatabankLocationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankLocation extends UitDatabankLocationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankMediaApi.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankMediaApiModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankMediaApi extends UitDatabankMediaApiModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankOrganizerApi.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankOrganizerApiModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankOrganizerApi extends UitDatabankOrganizerApiModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankPlaceApi.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankPlaceApiModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankPlaceApi extends UitDatabankPlaceApiModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankTheme.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankThemeModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankTheme extends UitDatabankThemeModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankThemeTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankThemeTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankThemeTranslation extends UitDatabankThemeTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankToken.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankTokenModel;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Repository\\UitDatabankTokenRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: UitDatabankTokenRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankToken extends UitDatabankTokenModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankType.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankTypeModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankType extends UitDatabankTypeModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UitDatabank/UitDatabankTypeTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\UitDatabank;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\UitDatabankBundle\\Model\\UitDatabankTypeTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class UitDatabankTypeTranslation extends UitDatabankTypeTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "9df1bf0847c11f3619127fe2e7abfe4d845e9f44"
+        }
+    }
+}

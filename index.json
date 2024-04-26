@@ -145,7 +145,8 @@
             "2.2"
         ],
         "inventis/event-uitdatabank-bridge-bundle": [
-            "2.0"
+            "2.0",
+            "2.3"
         ],
         "inventis/faq-bundle": [
             "0.1",
@@ -252,7 +253,8 @@
             "1.0"
         ],
         "inventis/uitdatabank-bundle": [
-            "2.0"
+            "2.0",
+            "2.3"
         ],
         "inventis/webadmin-bundle": [
             "0.1",
