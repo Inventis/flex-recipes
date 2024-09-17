@@ -140,7 +140,8 @@
         ],
         "inventis/event-bundle": [
             "2.0",
-            "2.2"
+            "2.2",
+            "2.5"
         ],
         "inventis/event-tixly-bridge-bundle": [
             "2.2"
