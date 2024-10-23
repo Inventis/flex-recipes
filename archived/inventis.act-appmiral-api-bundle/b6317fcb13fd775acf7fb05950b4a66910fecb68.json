@@ -1,0 +1,127 @@
+{
+    "manifests": {
+        "inventis/act-appmiral-api-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ActAppmiralApiBundle\\InventisActAppmiralApiBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/inventis_actappmiralbundle.yaml": {
+                    "contents": [
+                        "inventis_dashboard:",
+                        "    unaudited_entities:",
+                        "        # Don't log changes to the audit log",
+                        "        - Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralArtistInterface",
+                        "        - Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralArtistPerformanceInterface",
+                        "        - Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralStageInterface",
+                        "",
+                        "inventis_act_appmiral_api:",
+                        "    classes:",
+                        "        artist: App\\Entity\\AppmiralApi\\AppmiralArtist",
+                        "        artist_performance: App\\Entity\\AppmiralApi\\AppmiralArtistPerformance",
+                        "        stage: App\\Entity\\AppmiralApi\\AppmiralStage",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_actappmiralbundle.yaml": {
+                    "contents": [
+                        "inventis_actappmiralbundle_routing:",
+                        "    resource: \"@InventisActAppmiralApiBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/AppmiralApi/AppmiralArtist.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\AppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralArtistModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class AppmiralArtist extends AppmiralArtistModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/AppmiralApi/AppmiralArtistPerformance.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\AppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralArtistPerformanceModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class AppmiralArtistPerformance extends AppmiralArtistPerformanceModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/AppmiralApi/AppmiralSettings.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\AppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralSettingsModel;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Repository\\AppmiralSettingsRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: AppmiralSettingsRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class AppmiralSettings extends AppmiralSettingsModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/AppmiralApi/AppmiralStage.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\AppmiralApi;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActAppmiralApiBundle\\Model\\AppmiralStageModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class AppmiralStage extends AppmiralStageModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b6317fcb13fd775acf7fb05950b4a66910fecb68"
+        }
+    }
+}
