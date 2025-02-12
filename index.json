@@ -168,6 +168,9 @@
         "inventis/form-content-bridge-bundle": [
             "0.31"
         ],
+        "inventis/fos-http-cache-bridge-bundle": [
+            "1.15"
+        ],
         "inventis/front-end-boilerplate-package": [
             "0.17"
         ],

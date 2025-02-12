@@ -1,0 +1,75 @@
+{
+    "manifests": {
+        "inventis/fos-http-cache-bridge-bundle": {
+            "manifest": {
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "env": {
+                    "APP_DOMAIN": ""
+                }
+            },
+            "files": {
+                "config/packages/inventis_http_cache.yaml": {
+                    "contents": [
+                        "parameters:",
+                        "    env(VARNISH_SERVERS): '[]'",
+                        "",
+                        "fos_http_cache:",
+                        "    cache_manager:",
+                        "        enabled: true",
+                        "        generate_url_type: !php/const Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL",
+                        "    proxy_client:",
+                        "        noop: ~",
+                        "        default: noop",
+                        "",
+                        "when@dev:",
+                        "    parameters:",
+                        "        env(SYMFONY_SERVER): '%env(SYMFONY_DEFAULT_ROUTE_SCHEME)%://%env(SYMFONY_DEFAULT_ROUTE_HOST)%'",
+                        "        env(HTTPS_PROXY): 'http://127.0.0.1:7080' # see \\Symfony\\Component\\HttpClient\\HttpClientTrait::prepareRequest",
+                        "",
+                        "    services:",
+                        "        inventis.http_cache.fos_cache.symfony.server.client:",
+                        "            class: Symfony\\Component\\HttpClient\\HttpClient",
+                        "            arguments:",
+                        "                - '@symfony.server'",
+                        "                - '@?Psr\\Http\\Message\\ResponseFactoryInterface'",
+                        "                - '@?Psr\\Http\\Message\\StreamFactoryInterface'",
+                        "",
+                        "    framework:",
+                        "        http_cache: true",
+                        "",
+                        "        http_client:",
+                        "            scoped_clients:",
+                        "                # only requests matching scope will use these options",
+                        "                symfony.server:",
+                        "                    scope: '%env(SYMFONY_SERVER)%'",
+                        "                    verify_peer: false # allow symfony self-signed certificate",
+                        "    fos_http_cache:",
+                        "        proxy_client:",
+                        "            symfony:",
+                        "                http:",
+                        "                    http_client: 'inventis.http_cache.fos_cache.symfony.server.client' # Override can be replaced with \"httplug.symfony.server\" when Symfony 6.4+ is used",
+                        "                    servers:",
+                        "                        - '%env(SYMFONY_SERVER)%'",
+                        "            default: symfony",
+                        "",
+                        "when@prod: &prod",
+                        "    fos_http_cache:",
+                        "        proxy_client:",
+                        "            varnish:",
+                        "                http:",
+                        "                    servers_from_jsonenv: '%env(json:VARNISH_SERVERS)%'",
+                        "                    base_url: '%env(APP_DOMAIN)%'",
+                        "            default: varnish",
+                        "",
+                        "when@staging: *prod",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "3492f5d7c25bc79b320906521bf892145c3107db"
+        }
+    }
+}
