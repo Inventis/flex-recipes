@@ -154,7 +154,8 @@
         ],
         "inventis/faq-bundle": [
             "0.1",
-            "1.0"
+            "1.0",
+            "2.0"
         ],
         "inventis/form-bundle": [
             "0.18",
