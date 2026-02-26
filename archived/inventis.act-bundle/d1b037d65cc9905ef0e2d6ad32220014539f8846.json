@@ -1,0 +1,413 @@
+{
+    "manifests": {
+        "inventis/act-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Inventis\\Bundle\\ActBundle\\InventisActBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                },
+                "post-install-output": [
+                    "  * Use the provided varnish in <info>vendor/inventis/act-bundle/Resources/varnish/default.vcl</info> when activating the favorites add-on."
+                ]
+            },
+            "files": {
+                "config/packages/inventis_actbundle.yaml": {
+                    "contents": [
+                        "inventis_dashboard:",
+                        "    unaudited_entities:",
+                        "        # Don't log changes to favorite related entities to the audit log",
+                        "        - Inventis\\Bundle\\ActBundle\\Model\\FavoriteUserInfoInterface",
+                        "        - Inventis\\Bundle\\ActBundle\\Model\\FavoritePerformanceInterface",
+                        "",
+                        "inventis_act:",
+                        "    enable_act_page_builder: false",
+                        "    enable_favorites: false",
+                        "",
+                        "    edition_templates:",
+                        "        az_enabled: false",
+                        "",
+                        "    day_templates:",
+                        "        location_rendering: list",
+                        "",
+                        "    classes:",
+                        "        act: App\\Entity\\Act\\Act",
+                        "        act_translation: App\\Entity\\Act\\ActTranslation",
+                        "        act_performance: App\\Entity\\Act\\ActPerformance",
+                        "        act_day: App\\Entity\\Act\\ActDay",
+                        "        act_day_translation: App\\Entity\\Act\\ActDayTranslation",
+                        "        act_location: App\\Entity\\Act\\ActLocation",
+                        "        act_location_translation: App\\Entity\\Act\\ActLocationTranslation",
+                        "        act_genre: App\\Entity\\Act\\ActGenre",
+                        "        act_genre_translation: App\\Entity\\Act\\ActGenreTranslation",
+                        "        act_social: App\\Entity\\Act\\ActSocial",
+                        "        act_setting: App\\Entity\\Act\\ActSettings",
+                        "        act_edition: App\\Entity\\Act\\ActEdition",
+                        "        act_edition_translation: App\\Entity\\Act\\ActEditionTranslation",
+                        "        favorite_user_info: App\\Entity\\Act\\FavoriteUserInfo",
+                        "        favorite_performance: App\\Entity\\Act\\FavoritePerformance",
+                        "",
+                        "    socials:",
+                        "        website:",
+                        "            icon: website",
+                        "            title: form.act.social.website",
+                        "            regex_constraint: '/.*/'",
+                        "        youtube:",
+                        "            icon: youtube",
+                        "            title: form.act.social.youtube",
+                        "            regex_constraint: '/youtube*/'",
+                        "        spotify:",
+                        "            icon: spotify",
+                        "            title: form.act.social.spotify",
+                        "            regex_constraint: '/spotify.com*/'",
+                        "        soundcloud:",
+                        "            icon: soundcloud",
+                        "            title: form.act.social.soundcloud",
+                        "            regex_constraint: '/soundcloud*/'",
+                        "        facebook:",
+                        "            icon: facebook",
+                        "            title: form.act.social.facebook",
+                        "            regex_constraint: '/fb*/'",
+                        "        instagram:",
+                        "            icon: instagram",
+                        "            title: form.act.social.instagram",
+                        "            regex_constraint: '/instagram.com*/'",
+                        "        twitter:",
+                        "            icon: twitter",
+                        "            title: form.act.social.twitter",
+                        "            regex_constraint: '/twitter*/'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/inventis_actbundle.yaml": {
+                    "contents": [
+                        "inventis_actbundle_routing:",
+                        "    resource: \"@InventisActBundle/Resources/config/routing.yaml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/Act.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use DateTime;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActModel;",
+                        "use Inventis\\Bundle\\ActBundle\\Repository\\ActRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ActRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "#[ORM\\HasLifecycleCallbacks]",
+                        "class Act extends ActModel",
+                        "{",
+                        "    #[ORM\\PrePersist]",
+                        "    #[ORM\\PreUpdate]",
+                        "    public function onPrePersistAndUpdate(): void",
+                        "    {",
+                        "        if ($this->getPublishable() && $this->getPublishStartDate() === null) {",
+                        "            $this->setPublishStartDate(new DateTime());",
+                        "        }",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActDay.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActDayModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActDay extends ActDayModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActDayTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActDayTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActDayTranslation extends ActDayTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActEdition.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActEditionModel;",
+                        "use Inventis\\Bundle\\ActBundle\\Repository\\ActEditionRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ActEditionRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActEdition extends ActEditionModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActEditionTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActEditionTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActEditionTranslation extends ActEditionTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActGenre.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActGenreModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActGenre extends ActGenreModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActGenreTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActGenreTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActGenreTranslation extends ActGenreTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActLocation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActLocationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActLocation extends ActLocationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActLocationTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActLocationTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActLocationTranslation extends ActLocationTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActPerformance.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActPerformanceModel;",
+                        "use Inventis\\Bundle\\ActBundle\\Repository\\ActPerformanceRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ActPerformanceRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "#[ORM\\Index(fields: ['start'], name: 'order_by_idx')]",
+                        "class ActPerformance extends ActPerformanceModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActSettings.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActSettingsModel;",
+                        "use Inventis\\Bundle\\ActBundle\\Repository\\ActSettingsRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ActSettingsRepository::class)]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActSettings extends ActSettingsModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActSocial.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActSocialModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActSocial extends ActSocialModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/ActTranslation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "declare(strict_types=1);",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\ActTranslationModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]",
+                        "class ActTranslation extends ActTranslationModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/FavoritePerformance.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\FavoritePerformanceModel;",
+                        "use Inventis\\Bundle\\ActBundle\\Repository\\FavoritePerformanceRepository;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: FavoritePerformanceRepository::class)]",
+                        "#[ORM\\Table(name: 'favorite_performances')]",
+                        "class FavoritePerformance extends FavoritePerformanceModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Act/FavoriteUserInfo.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Act;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Inventis\\Bundle\\ActBundle\\Model\\FavoriteUserInfoModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'favorite_user_info')]",
+                        "#[ORM\\Index(fields: ['editId'], name: 'edit_idx')]",
+                        "#[ORM\\Index(fields: ['shareId'], name: 'view_idx')]",
+                        "class FavoriteUserInfo extends FavoriteUserInfoModel",
+                        "{",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "d1b037d65cc9905ef0e2d6ad32220014539f8846"
+        }
+    }
+}
